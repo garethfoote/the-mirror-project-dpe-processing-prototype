@@ -146,7 +146,7 @@ public class TheMirrorProject extends PApplet {
 		chainStop.add(new Repeat(stop));
 		chainStop.add(new MoveTo((int)(glPos.x), (int)yPosition));
 		
-		Condition condition = new HasReachedTarget(chainStop, outGlyphGravity, yPosition, false);
+		Condition condition = new HasReachedTarget(chainStop, outGlyphGravity, yPosition);
 				
 		Behaviour conditionBhvr = condition.makeBehaviour();
 		book.addGlyphBehaviour(conditionBhvr);

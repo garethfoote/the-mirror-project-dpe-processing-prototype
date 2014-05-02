@@ -8,7 +8,6 @@ import processing.core.PApplet;
 import processing.core.PFont;
 import processing.core.PVector;
 import processing.opengl.*;
-
 import net.nexttext.Book;
 import net.nexttext.TextObject;
 import net.nexttext.TextObjectBuilder;
@@ -35,15 +34,16 @@ import net.nexttext.behaviour.standard.DoNothing;
 import net.nexttext.behaviour.standard.MoveBy;
 import net.nexttext.behaviour.standard.MoveTo;
 import net.nexttext.property.ColorProperty;
+import net.nexttext.property.Property;
 
 public class TheMirrorProject extends PApplet {
 
 	private Book book;
 	private PFont fenix;
 	private String sourceSentence = "I am the Rock";
-	private String targetSentence = "I am the Sea";
+	private String targetSentence = "I am the Seamus";
 	private String sourceText = "Rock";
-	private String targetText = "Sea";
+	private String targetText = "am";
 	private TextObjectBuilder builder;
 	private TextPage poem1;
 	private TextPage poem2;
@@ -90,23 +90,15 @@ public class TheMirrorProject extends PApplet {
 		
 		// Do the building up front.
 		TextObjectGroup sourceLine = builder.buildSentence(sourceSentence, 20, 200);
-		sourceWord = builder.buildSentence(sourceText, width/2+20, 50);
 		TextObjectGroup targetLine = builder.buildSentence(targetSentence, width/2+20, 200);
 		
-		TextObjectIterator itrS = sourceLine.iterator();
-		while (itrS.hasNext()) {
-			TextObject element = itrS.next();	
-			if(element.toString().equals(sourceText)){
-				TextObjectGroup el = (TextObjectGroup)element;
-				TextObjectGlyphIterator glyphs = el.glyphIterator();
-				while (glyphs.hasNext()) {
-					AbstractAction doA = dropGlyphOut(glyphs.next());
-					// TODO - find equivalent sourceWord glyph.
-					
-				}
-			}
+		// Make propertyset hashmap.
+		Map<String, Property> ps = new HashMap();
+		for (String prop : sourceLine.getPropertyNames()) {
+			ps.put(prop, sourceLine.getProperty(prop));
 		}
-    	
+		ps.put("StrokeColor", new ColorProperty(new Color(0,0,0,0)));
+		
 		// Get target word.
 		TextObjectIterator itrT = targetLine.iterator();
 		while (itrT.hasNext()) {
@@ -116,49 +108,53 @@ public class TheMirrorProject extends PApplet {
 			}
 		}
 		
-		dropIn(sourceWord, targetWord);
-		
-	}
-	
-	public void dropIn(TextObjectGroup sourceWord, TextObject targetWord){
-		
-		TextObjectGlyphIterator glyphs = sourceWord.glyphIterator();
 		PVector targetPos = targetWord.getLocation();
 		
-		int offset = (int)(targetPos.x-sourceWord.getLocation().x);
-		
-		while (glyphs.hasNext()) {
-			
-			TextObject gl = glyphs.next();
-			dropGlyphIn(gl);
-
+		// Find source word and drop each glyph.
+		TextObjectIterator itrS = sourceLine.iterator();
+		while (itrS.hasNext()) {
+			TextObject element = itrS.next();	
+			if(element.toString().equals(sourceText)){
+				TextObjectGroup el = (TextObjectGroup)element;
+				TextObjectGlyphIterator glyphs = el.glyphIterator();
+				while (glyphs.hasNext()) {
+					// Drop glyphs and return action for chaining.
+					TextObjectGlyph dropOutGlyph = glyphs.next();
+					PVector dropOutLocation = dropOutGlyph.getLocation();
+					float dropOutParentXPos = dropOutGlyph.getParent().getLocation().x;
+					float dropOutGlyphXPos = dropOutLocation.x-dropOutParentXPos;
+					float dropInStartYPos = 0-(height-dropOutLocation.y);
+					AbstractAction outGlyphGravity = dropGlyphOut(dropOutGlyph);
+					// Make Glyph with same string.
+					// PositionY out of screen
+					// PositionX at targetWord x pos + sourceWord glyph x pos
+					TextObjectGlyph dropInGlyph = new TextObjectGlyph(dropOutGlyph.toString(), fenix, 28, ps, new PVector(targetPos.x+dropOutGlyphXPos, dropInStartYPos));
+					poem1.getTextRoot().attachChild(dropInGlyph);
+					
+					dropGlyphIn(dropInGlyph, outGlyphGravity, targetPos.y);
+				}
+			}
 		}
 	}
-	
-	public void dropInGlyph(TextObject gl){
+
+	public AbstractAction dropGlyphIn(TextObject gl, AbstractAction outGlyphGravity, float yPosition){
 		
 		PVector glPos = gl.getLocation();
-
-		MoveTo moveInstant = new MoveTo((int)(glPos.x+(offset)), 0);
-		Gravity dropIn = new Gravity((float)0.05);
-		Stop stop = new Stop();
 		
-		Chain chainMove = new Chain();		
-		chainMove.add(moveInstant);
-		chainMove.add(dropIn);
-		
+		Stop stop = new Stop();	
 		Multiplexer chainStop = new Multiplexer();		
 		chainStop.add(new Repeat(stop));
-		chainStop.add(new MoveTo((int)(glPos.x+(offset)), (int)targetPos.y));
+		chainStop.add(new MoveTo((int)(glPos.x), (int)yPosition));
 		
-		Condition condition = new HasReachedTarget(chainStop, chainMove, targetPos.y);
+		Condition condition = new HasReachedTarget(chainStop, outGlyphGravity, yPosition, false);
 				
-		Behaviour topBhvr = condition.makeBehaviour();
-		book.addGlyphBehaviour(topBhvr);
+		Behaviour conditionBhvr = condition.makeBehaviour();
+		book.addGlyphBehaviour(conditionBhvr);
 		
-		topBhvr.addObject(gl);
+		conditionBhvr.addObject(gl);
 		moveBehaviour.addObject(gl);
 		
+		return condition;
 	}
 	
 	public AbstractAction dropGlyphOut(TextObject gl){
@@ -173,49 +169,21 @@ public class TheMirrorProject extends PApplet {
 		moveBehaviour.addObject(gl);
 		gravityBehaviour.addObject(gl);
 		
-		// TODO - Make this HasReachedTarget condition/action.
 		return gravity;
 	}
-
-	
 	
 	public void draw() {
 		
 		background(255);
 
-	/*	TextObjectGlyphIterator itr = line.glyphIterator();
-		while (itr.hasNext()) {
-			TextObject el = itr.next();
-			PVector v = el.getLocation();
-			if(applied == false && v.y > 300){
-				
-				for(AbstractAction a: activeA){
-					println(a);
-					a.complete(el);
-				}
-				move.complete(el);
-				
-				for(AbstractBehaviour b: activeB){
-					book.removeGlyphBehaviour(b);
-				}
-				book.removeGlyphBehaviour(moveBehaviour);
-				applied = true;
-								
-				AbstractAction stop = new Stop();
-				Behaviour stopBehaviour = stop.makeBehaviour();
-				book.addGlyphBehaviour(stopBehaviour);
-				
-				stopBehaviour.addObject(element);
-			}
-			
-		}*/
-		
 		// apply the behaviours to the text and draw it
 		book.step();
 		book.draw();
+		
 //		ActionResult ar = moveTo.behave(sourceWord);
 //		println(ar.complete);
 //		moveToBhvr.behaveAll();
+		
 	}
 
 }

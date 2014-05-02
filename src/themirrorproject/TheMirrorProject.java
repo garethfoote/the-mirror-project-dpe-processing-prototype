@@ -2,6 +2,7 @@ package themirrorproject;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Rectangle;
 import java.util.*;
 
 import processing.core.PApplet;
@@ -99,54 +100,84 @@ public class TheMirrorProject extends PApplet {
 		}
 		ps.put("StrokeColor", new ColorProperty(new Color(0,0,0,0)));
 		
-		// Get target word.
-		TextObjectIterator itrT = targetLine.iterator();
-		while (itrT.hasNext()) {
-			TextObject element = itrT.next();
-			if(element.toString().equals(targetText)){
-				targetWord = (TextObjectGroup)element;
-			}
-		}
-		
-		PVector targetPos = targetWord.getLocation();
-		
-		// Find source word and drop each glyph.
+		TextObjectGroup sourceWord = null;
+		// Find source word.
 		TextObjectIterator itrS = sourceLine.iterator();
 		while (itrS.hasNext()) {
-			TextObject element = itrS.next();	
+			TextObject element = itrS.next();
 			if(element.toString().equals(sourceText)){
-				TextObjectGroup el = (TextObjectGroup)element;
-				TextObjectGlyphIterator glyphs = el.glyphIterator();
-				while (glyphs.hasNext()) {
-					// Drop glyphs and return action for chaining.
-					TextObjectGlyph dropOutGlyph = glyphs.next();
-					PVector dropOutLocation = dropOutGlyph.getLocation();
-					float dropOutParentXPos = dropOutGlyph.getParent().getLocation().x;
-					float dropOutGlyphXPos = dropOutLocation.x-dropOutParentXPos;
-					float dropInStartYPos = 0-(height-dropOutLocation.y);
-					AbstractAction outGlyphGravity = dropGlyphOut(dropOutGlyph);
-					// Make Glyph with same string.
-					// PositionY out of screen
-					// PositionX at targetWord x pos + sourceWord glyph x pos
-					TextObjectGlyph dropInGlyph = new TextObjectGlyph(dropOutGlyph.toString(), fenix, 28, ps, new PVector(targetPos.x+dropOutGlyphXPos, dropInStartYPos));
-					poem1.getTextRoot().attachChild(dropInGlyph);
-					
-					dropGlyphIn(dropInGlyph, outGlyphGravity, targetPos.y);
-				}
+				sourceWord = (TextObjectGroup)element;
 			}
 		}
+		
+		PVector targetPos = null;
+		Rectangle targetBox = null;
+		Rectangle sourceBox = sourceWord.getBounds();
+		
+		// Find target word.
+		TextObjectIterator itrT = targetLine.iterator();
+		TextObjectGroup postTargetWord = null;
+		AbstractAction shiftPostTargetWord = null;
+		boolean found = false;
+		while (itrT.hasNext()) {
+			TextObject element = itrT.next();
+			
+			if(found == true && !element.toString().equals(targetSentence) && element.getClass().getSimpleName().equals("TextObjectGroup")){
+				postTargetWord = (TextObjectGroup)element;
+				float incrementX = (sourceBox.width-targetBox.width);
+				PVector pos = postTargetWord.getLocation();
+				
+				// TODO - Maybe add delay based on sentence index.
+				shiftPostTargetWord = new MoveTo((int)(pos.x+incrementX), (int)pos.y);
+				Behaviour shiftBhvr = shiftPostTargetWord.makeBehaviour();
+				
+				book.addGlyphBehaviour(shiftBhvr);
+				
+				moveBehaviour.addObject(postTargetWord);
+				shiftBhvr.addObject(postTargetWord);
+
+			}
+			
+			if(element.toString().equals(targetText)){
+				targetWord = (TextObjectGroup)element;
+				targetPos = targetWord.getLocation();
+				targetBox = targetWord.getBounds();
+				found = true;
+			}	
+		}
+		
+		TextObjectGlyphIterator glyphs = sourceWord.glyphIterator();
+		while (glyphs.hasNext()) {
+			// Drop glyphs and return action for chaining.
+			TextObjectGlyph dropOutGlyph = glyphs.next();
+			PVector dropOutLocation = dropOutGlyph.getLocation();
+			float dropOutParentXPos = dropOutGlyph.getParent().getLocation().x;
+			float dropOutGlyphXPos = dropOutLocation.x-dropOutParentXPos;
+			float dropInStartYPos = 0-(height-dropOutLocation.y);
+			AbstractAction outGlyphGravity = dropGlyphOut(dropOutGlyph);
+			// Make Glyph with same string.
+			// PositionY out of screen
+			// PositionX at targetWord x pos + sourceWord glyph x pos
+			TextObjectGlyph dropInGlyph = new TextObjectGlyph(dropOutGlyph.toString(), fenix, 28, ps, new PVector(targetPos.x+dropOutGlyphXPos, dropInStartYPos));
+			poem1.getTextRoot().attachChild(dropInGlyph);
+			dropGlyphIn(dropInGlyph, outGlyphGravity, shiftPostTargetWord, targetPos.y);
+		}			
+
 	}
 
-	public AbstractAction dropGlyphIn(TextObject gl, AbstractAction outGlyphGravity, float yPosition){
+	public AbstractAction dropGlyphIn(TextObject gl, AbstractAction outGlyphGravity, AbstractAction shiftPostTargetWord, float yPosition){
 		
 		PVector glPos = gl.getLocation();
 		
-		Stop stop = new Stop();	
-		Multiplexer chainStop = new Multiplexer();		
-		chainStop.add(new Repeat(stop));
-		chainStop.add(new MoveTo((int)(glPos.x), (int)yPosition));
+		Repeat stopGravity = new Repeat(new Stop());	
+		MoveTo moveToFinal = new MoveTo((int)(glPos.x), (int)yPosition);
+		outGlyphGravity.makeBehaviour().addObject(gl);
 		
-		Condition condition = new HasReachedTarget(chainStop, outGlyphGravity, yPosition);
+		Multiplexer stop = new Multiplexer();		
+		stop.add(stopGravity);
+		stop.add(moveToFinal);
+		
+		Condition condition = new HasReachedTarget(stop, outGlyphGravity, yPosition);
 				
 		Behaviour conditionBhvr = condition.makeBehaviour();
 		book.addGlyphBehaviour(conditionBhvr);

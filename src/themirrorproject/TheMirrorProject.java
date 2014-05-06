@@ -35,6 +35,8 @@ import net.nexttext.behaviour.standard.DoNothing;
 import net.nexttext.behaviour.standard.MoveBy;
 import net.nexttext.behaviour.standard.MoveTo;
 import net.nexttext.property.ColorProperty;
+import net.nexttext.property.PVectorProperty;
+import net.nexttext.property.Property;
 
 public class TheMirrorProject extends PApplet {
 
@@ -43,15 +45,16 @@ public class TheMirrorProject extends PApplet {
 	private String sourceSentence = "I am the Rock";
 	private String targetSentence = "I am the Sea";
 	private String sourceText = "Rock";
-	private String targetText = "Sea";
+	private String targetText = "the";
 	private TextObjectBuilder builder;
-	private TextPage poem1;
-	private TextPage poem2;
+	private TextObjectGroup poem1Root;
+	private TextObjectGroup poem2Root;
 	private TextObjectGroup sourceWord;
 	private TextObjectGroup targetWord;
 	private Boolean applied = false;
 	private double strMax = 0.06;
 	private double strMin = 0.03;
+	private Map<String,Property> ps = new HashMap<String,Property>();
 	
 //	private List<AbstractBehaviour> activeB = new ArrayList<AbstractBehaviour>();
 //	private List<AbstractAction> activeA = new ArrayList<AbstractAction>();
@@ -85,25 +88,33 @@ public class TheMirrorProject extends PApplet {
 		builder.setFont(fenix, 28);
 		builder.addGlyphProperty("StrokeColor", new ColorProperty(new Color(0,0,0,0)));
 		
-		poem1 = book.addPage("poem1");
-		builder.setParent(poem1.getTextRoot());
+		TextPage poem1 = book.addPage("poem1");;
+		TextPage poem2 = book.addPage("poem2");;
+		
+		poem1Root = poem1.getTextRoot();
+		poem2Root = poem2.getTextRoot();
+		// Position poem2.
+		poem2Root.getPosition().set(new PVector(width/2,0));
 		
 		// Do the building up front.
-		TextObjectGroup sourceLine = builder.buildSentence(sourceSentence, 20, 200);
-		sourceWord = builder.buildSentence(sourceText, width/2+20, 50);
-		TextObjectGroup targetLine = builder.buildSentence(targetSentence, width/2+20, 200);
+		builder.setParent(poem1Root);
+		TextObjectGroup sourceLine = builder.buildSentence(sourceSentence, 0, 200);
+
+		builder.setParent(poem2Root);
+		TextObjectGroup targetLine = builder.buildSentence(targetSentence, 0, 200);
+		
+		// Create property set from TextObject.
+		Set<String> pNames = sourceLine.getPropertyNames();
+		for (String propName: pNames) {
+			ps.put(propName, sourceLine.getProperty(propName));
+		}
+		ps.put("StrokeColor", new ColorProperty(new Color(0,0,0,0)));
 		
 		TextObjectIterator itrS = sourceLine.iterator();
 		while (itrS.hasNext()) {
 			TextObject element = itrS.next();	
 			if(element.toString().equals(sourceText)){
-				TextObjectGroup el = (TextObjectGroup)element;
-				TextObjectGlyphIterator glyphs = el.glyphIterator();
-				while (glyphs.hasNext()) {
-					AbstractAction doA = dropGlyphOut(glyphs.next());
-					// TODO - find equivalent sourceWord glyph.
-					
-				}
+				sourceWord = (TextObjectGroup)element;
 			}
 		}
     	
@@ -115,41 +126,40 @@ public class TheMirrorProject extends PApplet {
 				targetWord = (TextObjectGroup)element;
 			}
 		}
-		
-		dropIn(sourceWord, targetWord);
-		
-	}
-	
-	public void dropIn(TextObjectGroup sourceWord, TextObject targetWord){
-		
-		TextObjectGlyphIterator glyphs = sourceWord.glyphIterator();
-		PVector targetPos = targetWord.getLocation();
-		
-		int offset = (int)(targetPos.x-sourceWord.getLocation().x);
-		
-		while (glyphs.hasNext()) {
-			
-			TextObject gl = glyphs.next();
-			dropGlyphIn(gl);
 
-		}
+		PVector tPos = targetWord.getPosition().get();
+		TextObjectGlyphIterator glyphs = sourceWord.glyphIterator();
+        while (glyphs.hasNext()) {
+        	TextObject glyph = glyphs.next();
+        	PVectorProperty gLocal = glyph.getPosition();
+        	PVector gPos = new PVector(gLocal.getX()+tPos.x, sourceWord.getLocation().y-height);
+
+        	// Make text object glyph and position above target.
+        	TextObjectGlyph toG = new TextObjectGlyph(glyph.toString(), fenix, 28, ps, gPos);
+        	// Pass gravity action to this new glyph from drop out.
+        	AbstractAction doA = dropGlyphOut(glyph);
+        	poem2Root.attachChild(toG);
+        	// Returns chain of events that occur as glyph finds target.
+        	AbstractAction chainStop = dropGlyphIn(toG, doA, targetWord.getLocation());
+        }
+
 	}
 	
-	public void dropInGlyph(TextObject gl){
+	public AbstractAction dropGlyphIn(TextObject gl, AbstractAction dropIn, PVector targetPos){
 		
 		PVector glPos = gl.getLocation();
 
-		MoveTo moveInstant = new MoveTo((int)(glPos.x+(offset)), 0);
-		Gravity dropIn = new Gravity((float)0.05);
+//		MoveTo moveInstant = new MoveTo((int)(glPos.x+(offset)), 0);
+//		Gravity dropIn = new Gravity((float)0.05);
 		Stop stop = new Stop();
 		
-		Chain chainMove = new Chain();		
-		chainMove.add(moveInstant);
+		Chain chainMove = new Chain();
 		chainMove.add(dropIn);
 		
+		println(poem2Root.getLocation());
 		Multiplexer chainStop = new Multiplexer();		
 		chainStop.add(new Repeat(stop));
-		chainStop.add(new MoveTo((int)(glPos.x+(offset)), (int)targetPos.y));
+		chainStop.add(new MoveTo((int)(glPos.x), (int)targetPos.y));
 		
 		Condition condition = new HasReachedTarget(chainStop, chainMove, targetPos.y);
 				
@@ -158,6 +168,8 @@ public class TheMirrorProject extends PApplet {
 		
 		topBhvr.addObject(gl);
 		moveBehaviour.addObject(gl);
+		
+		return chainStop;
 		
 	}
 	
@@ -173,7 +185,6 @@ public class TheMirrorProject extends PApplet {
 		moveBehaviour.addObject(gl);
 		gravityBehaviour.addObject(gl);
 		
-		// TODO - Make this HasReachedTarget condition/action.
 		return gravity;
 	}
 

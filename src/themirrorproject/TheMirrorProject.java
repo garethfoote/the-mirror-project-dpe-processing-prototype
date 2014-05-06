@@ -2,6 +2,7 @@ package themirrorproject;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Rectangle;
 import java.util.*;
 
 import processing.core.PApplet;
@@ -40,24 +41,27 @@ import net.nexttext.property.Property;
 
 public class TheMirrorProject extends PApplet {
 
+	// DEBUG
+	private TrackerExtra trackAction;
+	// end DEBUG
+
 	private Book book;
 	private PFont fenix;
-	private String sourceSentence = "I am the Rock";
+	private String sourceSentence = "I am the tremendous Rock";
 	private String targetSentence = "I am the Sea";
-	private String sourceText = "Rock";
-	private String targetText = "the";
+	private String sourceText = "tremendous";
+	private String targetText = "am";
 	private TextObjectBuilder builder;
 	private TextObjectGroup poem1Root;
 	private TextObjectGroup poem2Root;
 	private TextObjectGroup sourceWord;
 	private TextObjectGroup targetWord;
 	private Boolean applied = false;
-	private double strMax = 0.06;
-	private double strMin = 0.03;
+	private double strMax = 0.03;
+	private double strMin = 0.01;
 	private Map<String,Property> ps = new HashMap<String,Property>();
 	
-//	private List<AbstractBehaviour> activeB = new ArrayList<AbstractBehaviour>();
-//	private List<AbstractAction> activeA = new ArrayList<AbstractAction>();
+	private List<TextObject> postTargetWords = new ArrayList<TextObject>();
 			
 	// create and add the Move Behaviour, required by all physics Actions
 	AbstractAction move = new Move();
@@ -118,17 +122,44 @@ public class TheMirrorProject extends PApplet {
 			}
 		}
     	
-		// Get target word.
+		Rectangle targetBox = null;
+		Rectangle sourceBox = sourceWord.getBounds();
+		boolean found = false;
+
+		// Get target word and collect words to right of this.
 		TextObjectIterator itrT = targetLine.iterator();
 		while (itrT.hasNext()) {
 			TextObject element = itrT.next();
+			if(found == true
+					&& !element.toString().equals(targetSentence)
+					&& element.getClass().getSimpleName().equals("TextObjectGroup")){
+
+				postTargetWords.add(element);
+				// TODO - Perhaps add this to all TextObjects.
+				moveBehaviour.addObject(element);
+			}
+
 			if(element.toString().equals(targetText)){
 				targetWord = (TextObjectGroup)element;
+				targetBox = targetWord.getBounds();
+				found = true;
 			}
 		}
+		
+		// Alternate move action with a bit of drag.
+//		Behaviour moveDragBehaviour = (new Move((float)0.25,0)).makeBehaviour();
+//		book.addBehaviour(moveDragBehaviour);
+//		for (TextObject to : postTargetWords) {
+//			moveDragBehaviour.addObject(to);
+//		}
 
+		int sourceLength = sourceText.length();
+		println("Space offset", book.getSpaceOffset());
+        
+		// Do the business. Drop out, then queue drop in and shift words.
 		PVector tPos = targetWord.getPosition().get();
 		TextObjectGlyphIterator glyphs = sourceWord.glyphIterator();
+		int j = 0;
         while (glyphs.hasNext()) {
         	TextObject glyph = glyphs.next();
         	PVectorProperty gLocal = glyph.getPosition();
@@ -137,48 +168,82 @@ public class TheMirrorProject extends PApplet {
         	// Make text object glyph and position above target.
         	TextObjectGlyph toG = new TextObjectGlyph(glyph.toString(), fenix, 28, ps, gPos);
         	// Pass gravity action to this new glyph from drop out.
-        	AbstractAction doA = dropGlyphOut(glyph);
+        	AbstractAction doA = dropGlyphOut(glyph, sourceLength-j);
         	poem2Root.attachChild(toG);
-        	// Returns chain of events that occur as glyph finds target.
-        	AbstractAction chainStop = dropGlyphIn(toG, doA, targetWord.getLocation());
+
+        	// Returns condition for glyph drop.
+        	TrackerExtra dropAction = (TrackerExtra)dropGlyphIn(toG, doA, targetWord.getLocation());
+
+        	float incrementX = (sourceBox.width-targetBox.width)/sourceLength;
+			// Apply shift to words right of target.
+			for (TextObject to : postTargetWords) {
+				TextObjectGroup postTargetWord = (TextObjectGroup)to;
+				PVector pos = postTargetWord.getLocation();
+
+				// TODO - Maybe add delay based on sentence index.
+				println("Increment by", incrementX*(j+1));
+				AbstractAction shiftPostTargetWord = new MoveTo((int)(pos.x+(incrementX*(j+1)))+book.getSpaceOffset(), (int)pos.y, 3);
+//				AbstractAction shiftPostTargetWord = new Push((float)(pos.x+(incrementX*(j+1))), 0, (float)2);
+				HasStoppedProcessing hsp = new HasStoppedProcessing(shiftPostTargetWord, new DoNothing(), dropAction);
+				Behaviour hspBhvr = hsp.makeBehaviour();
+				hspBhvr.addObject(to);
+
+				book.addBehaviour(hspBhvr);
+
+//				Behaviour shiftBhvr = shiftPostTargetWord.makeBehaviour();
+//				shiftBhvr.addObject(postTargetWord);
+
+				// Add to book...
+//				book.addBehaviour(shiftBhvr);
+				// and collect.
+//				postTargetShiftActions.add(shiftPostTargetWord);
+
+//        		shift.add(postTargetShiftActions.get(k+(j*sourceLength)));
+//				book.addBehaviour(postTargetShiftActions.get(k+(j*sourceLength)).makeBehaviour());
+
+        	}
+
+//			shiftBhvr.addObject(to);
+//        	book.addBehaviour(shiftBhvr);
+
+        	j++;
         }
 
 	}
 	
-	public AbstractAction dropGlyphIn(TextObject gl, AbstractAction dropIn, PVector targetPos){
+	public void shiftTargetLineObject(TextObject to, AbstractAction aa, int shiftX){
+		
+		
+	}
+	
+	public AbstractAction dropGlyphIn(TextObject gl, AbstractAction dropInAction, PVector targetPos){
 		
 		PVector glPos = gl.getLocation();
 
-//		MoveTo moveInstant = new MoveTo((int)(glPos.x+(offset)), 0);
-//		Gravity dropIn = new Gravity((float)0.05);
+		Multiplexer stopActions = new Multiplexer();		
 		Stop stop = new Stop();
+		stopActions.add(new Repeat(stop));
+		stopActions.add(new MoveTo((int)(glPos.x), (int)targetPos.y));
 		
-		Chain chainMove = new Chain();
-		chainMove.add(dropIn);
-		
-		println(poem2Root.getLocation());
-		Multiplexer chainStop = new Multiplexer();		
-		chainStop.add(new Repeat(stop));
-		chainStop.add(new MoveTo((int)(glPos.x), (int)targetPos.y));
-		
-		Condition condition = new HasReachedTarget(chainStop, chainMove, targetPos.y);
-				
-		Behaviour topBhvr = condition.makeBehaviour();
+		Condition condition = new HasReachedTarget(stopActions, dropInAction, targetPos.y);
+        trackAction = new TrackerExtra(condition);
+
+        // Combined condition, multiplexer, etc.
+		Behaviour topBhvr = trackAction.makeBehaviour();
 		book.addGlyphBehaviour(topBhvr);
 		
 		topBhvr.addObject(gl);
 		moveBehaviour.addObject(gl);
-		
-		return chainStop;
-		
+
+		return trackAction;
 	}
 	
-	public AbstractAction dropGlyphOut(TextObject gl){
+	public AbstractAction dropGlyphOut(TextObject gl, int index){
 			
 		double rand = strMin + (strMax-strMin) * Math.random();
 		
 		// create and add the Gravity Behaviour
-		AbstractAction gravity = new Gravity((float) rand);
+		AbstractAction gravity = new Gravity((float)(0.03*index+rand));
 		Behaviour gravityBehaviour = gravity.makeBehaviour();
 		book.addGlyphBehaviour(gravityBehaviour);
 					
@@ -224,9 +289,10 @@ public class TheMirrorProject extends PApplet {
 		// apply the behaviours to the text and draw it
 		book.step();
 		book.draw();
-//		ActionResult ar = moveTo.behave(sourceWord);
-//		println(ar.complete);
-//		moveToBhvr.behaveAll();
+
+		if(trackAction.getCount() > 0){
+			println("COUNT>>",trackAction.getCount());
+		}
 	}
 
 }

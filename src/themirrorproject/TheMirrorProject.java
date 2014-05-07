@@ -8,7 +8,6 @@ import java.util.*;
 import processing.core.PApplet;
 import processing.core.PFont;
 import processing.core.PVector;
-import processing.opengl.*;
 
 import net.nexttext.Book;
 import net.nexttext.TextObject;
@@ -19,21 +18,16 @@ import net.nexttext.TextObjectGroup;
 import net.nexttext.TextObjectIterator;
 import net.nexttext.TextPage;
 import net.nexttext.behaviour.AbstractAction;
-import net.nexttext.behaviour.AbstractBehaviour;
-import net.nexttext.behaviour.Action;
 import net.nexttext.behaviour.Behaviour;
-import net.nexttext.behaviour.Action.ActionResult;
-import net.nexttext.behaviour.control.Chain;
 import net.nexttext.behaviour.control.Condition;
+import net.nexttext.behaviour.control.Delay;
 import net.nexttext.behaviour.control.Multiplexer;
+import net.nexttext.behaviour.control.OnCollision;
 import net.nexttext.behaviour.control.Repeat;
-import net.nexttext.behaviour.physics.Approach;
 import net.nexttext.behaviour.physics.Gravity;
 import net.nexttext.behaviour.physics.Move;
-import net.nexttext.behaviour.physics.Push;
 import net.nexttext.behaviour.physics.Stop;
 import net.nexttext.behaviour.standard.DoNothing;
-import net.nexttext.behaviour.standard.MoveBy;
 import net.nexttext.behaviour.standard.MoveTo;
 import net.nexttext.property.ColorProperty;
 import net.nexttext.property.PVectorProperty;
@@ -47,18 +41,18 @@ public class TheMirrorProject extends PApplet {
 
 	private Book book;
 	private PFont fenix;
-	private String sourceSentence = "I am the tremendous Rock";
+	private String sourceSentence = "I am the Rock thing";
 	private String targetSentence = "I am the Sea";
-	private String sourceText = "tremendous";
-	private String targetText = "am";
+	private String sourceText = "Rock";
+	private String targetText = "the";
 	private TextObjectBuilder builder;
 	private TextObjectGroup poem1Root;
 	private TextObjectGroup poem2Root;
 	private TextObjectGroup sourceWord;
 	private TextObjectGroup targetWord;
 	private Boolean applied = false;
-	private double strMax = 0.03;
-	private double strMin = 0.01;
+	private double strMax = 0.07;
+	private double strMin = 0.05;
 	private Map<String,Property> ps = new HashMap<String,Property>();
 	
 	private List<TextObject> postTargetWords = new ArrayList<TextObject>();
@@ -91,6 +85,7 @@ public class TheMirrorProject extends PApplet {
 		builder = new TextObjectBuilder(book);
 		builder.setFont(fenix, 28);
 		builder.addGlyphProperty("StrokeColor", new ColorProperty(new Color(0,0,0,0)));
+		builder.setAddToSpatialList(true);
 		
 		TextPage poem1 = book.addPage("poem1");;
 		TextPage poem2 = book.addPage("poem2");;
@@ -123,7 +118,8 @@ public class TheMirrorProject extends PApplet {
 		}
     	
 		Rectangle targetBox = null;
-		Rectangle sourceBox = sourceWord.getBounds();
+		int sourceWidth = sourceWord.getBounds().width+sourceWord.getRightSibling().getBounds().width;
+		println(sourceWord.getBounds(), sourceWord.getRightSibling().getBounds());
 		boolean found = false;
 
 		// Get target word and collect words to right of this.
@@ -142,21 +138,20 @@ public class TheMirrorProject extends PApplet {
 			if(element.toString().equals(targetText)){
 				targetWord = (TextObjectGroup)element;
 				targetBox = targetWord.getBounds();
+
+				OnCollision col = new OnCollision(new RemoveObject());
+				Behaviour colBhvr = col.makeBehaviour();
+				colBhvr.addObject(element);
+				book.addBehaviour(colBhvr);
 				found = true;
 			}
 		}
 		
-		// Alternate move action with a bit of drag.
-//		Behaviour moveDragBehaviour = (new Move((float)0.25,0)).makeBehaviour();
-//		book.addBehaviour(moveDragBehaviour);
-//		for (TextObject to : postTargetWords) {
-//			moveDragBehaviour.addObject(to);
-//		}
-
-		int sourceLength = sourceText.length();
-		println("Space offset", book.getSpaceOffset());
-        
+		// TODO - (??) Possibly count how many collisions with post target 
+		//        glyphs and then increment only on those drops.
+		
 		// Do the business. Drop out, then queue drop in and shift words.
+		int sourceLength = sourceText.length();
 		PVector tPos = targetWord.getPosition().get();
 		TextObjectGlyphIterator glyphs = sourceWord.glyphIterator();
 		int j = 0;
@@ -164,56 +159,32 @@ public class TheMirrorProject extends PApplet {
         	TextObject glyph = glyphs.next();
         	PVectorProperty gLocal = glyph.getPosition();
         	PVector gPos = new PVector(gLocal.getX()+tPos.x, sourceWord.getLocation().y-height);
-
-        	// Make text object glyph and position above target.
+        	// Make text object glyph, position above target and add to root.
         	TextObjectGlyph toG = new TextObjectGlyph(glyph.toString(), fenix, 28, ps, gPos);
-        	// Pass gravity action to this new glyph from drop out.
-        	AbstractAction doA = dropGlyphOut(glyph, sourceLength-j);
         	poem2Root.attachChild(toG);
-
-        	// Returns condition for glyph drop.
+        	book.getSpatialList().add(toG);
+        	// Pass gravity action to this new glyph from drop out.
+        	AbstractAction doA = dropGlyphOut(glyph, j);
+        	// Returns condition action for glyph drop which is a condition for shifting words right.
         	TrackerExtra dropAction = (TrackerExtra)dropGlyphIn(toG, doA, targetWord.getLocation());
 
-        	float incrementX = (sourceBox.width-targetBox.width)/sourceLength;
 			// Apply shift to words right of target.
+        	float incrementX = (sourceWidth-targetBox.width)/sourceLength;
 			for (TextObject to : postTargetWords) {
-				TextObjectGroup postTargetWord = (TextObjectGroup)to;
-				PVector pos = postTargetWord.getLocation();
-
-				// TODO - Maybe add delay based on sentence index.
-				println("Increment by", incrementX*(j+1));
-				AbstractAction shiftPostTargetWord = new MoveTo((int)(pos.x+(incrementX*(j+1)))+book.getSpaceOffset(), (int)pos.y, 3);
-//				AbstractAction shiftPostTargetWord = new Push((float)(pos.x+(incrementX*(j+1))), 0, (float)2);
+				// TODO - (??) Maybe add delay based on sentence index.
+				// Move post target words along incrementally.
+				// AbstractAction shiftPostTargetWord = new MoveTo((int)(pos.x+(incrementX*(j+1))), (int)pos.y, 3);
+				AbstractAction shiftPostTargetWord = new MoveToRelative(incrementX, 0, 2);
+				// The HasReachedTarget condition has stopped processing.
 				HasStoppedProcessing hsp = new HasStoppedProcessing(shiftPostTargetWord, new DoNothing(), dropAction);
 				Behaviour hspBhvr = hsp.makeBehaviour();
 				hspBhvr.addObject(to);
-
 				book.addBehaviour(hspBhvr);
-
-//				Behaviour shiftBhvr = shiftPostTargetWord.makeBehaviour();
-//				shiftBhvr.addObject(postTargetWord);
-
-				// Add to book...
-//				book.addBehaviour(shiftBhvr);
-				// and collect.
-//				postTargetShiftActions.add(shiftPostTargetWord);
-
-//        		shift.add(postTargetShiftActions.get(k+(j*sourceLength)));
-//				book.addBehaviour(postTargetShiftActions.get(k+(j*sourceLength)).makeBehaviour());
-
         	}
-
-//			shiftBhvr.addObject(to);
-//        	book.addBehaviour(shiftBhvr);
 
         	j++;
         }
 
-	}
-	
-	public void shiftTargetLineObject(TextObject to, AbstractAction aa, int shiftX){
-		
-		
 	}
 	
 	public AbstractAction dropGlyphIn(TextObject gl, AbstractAction dropInAction, PVector targetPos){
@@ -241,9 +212,9 @@ public class TheMirrorProject extends PApplet {
 	public AbstractAction dropGlyphOut(TextObject gl, int index){
 			
 		double rand = strMin + (strMax-strMin) * Math.random();
-		
+
 		// create and add the Gravity Behaviour
-		AbstractAction gravity = new Gravity((float)(0.03*index+rand));
+		AbstractAction gravity = new Delay(new Gravity((float)rand), (float)0.2*index);
 		Behaviour gravityBehaviour = gravity.makeBehaviour();
 		book.addGlyphBehaviour(gravityBehaviour);
 					

@@ -24,7 +24,7 @@ public class TrackerExtra extends AbstractAction {
         textObjectData.put(to, null);
 
         ActionResult res = action.behave(to);
-		PApplet.println(res.canComplete, res.complete);
+//		PApplet.println(res.canComplete, res.complete);
 
         if (res.complete) {
             complete(to);

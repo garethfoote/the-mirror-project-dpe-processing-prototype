@@ -44,5 +44,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="lib/base/core/core.jar"/>
 	<classpathentry kind="lib" path="lib/user/NextText/library/NextText.jar" sourcepath="lib/user/NextText/src/"/>
+	<classpathentry kind="lib" path="lib/user/controlP5-2.0.4/library/controlP5.jar" sourcepath="lib/user/controlP5-2.0.4/src"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

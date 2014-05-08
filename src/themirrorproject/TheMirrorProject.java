@@ -5,6 +5,10 @@ import java.awt.Color;
 import java.awt.Rectangle;
 import java.util.*;
 
+import controlP5.Button;
+import controlP5.ControlEvent;
+import controlP5.ControlP5;
+
 import processing.core.PApplet;
 import processing.core.PFont;
 import processing.core.PVector;
@@ -41,20 +45,23 @@ public class TheMirrorProject extends PApplet {
 
 	private Book book;
 	private PFont fenix;
-	private String sourceSentence = "I am the Rock thing";
-	private String targetSentence = "I am the Sea";
-	private String sourceText = "Rock";
-	private String targetText = "the";
+	private double strMax = 0.03;
+	private double strMin = 0.0;
+	private double strength = 0.06;
+	private double delay = 0.2;
+	private String targetSentence = "Hold it fast with sleepless eyes";
+	private String sourceSentence = "The preening water laps with the ambivalence of your look.";
+	private String targetText = "sleepless";
+	private String sourceText = "ambivalence";
 	private TextObjectBuilder builder;
 	private TextObjectGroup poem1Root;
 	private TextObjectGroup poem2Root;
 	private TextObjectGroup sourceWord;
 	private TextObjectGroup targetWord;
-	private Boolean applied = false;
-	private double strMax = 0.07;
-	private double strMin = 0.05;
+	private int sourceWidth;
+	private Rectangle targetBox;
+
 	private Map<String,Property> ps = new HashMap<String,Property>();
-	
 	private List<TextObject> postTargetWords = new ArrayList<TextObject>();
 			
 	// create and add the Move Behaviour, required by all physics Actions
@@ -64,10 +71,14 @@ public class TheMirrorProject extends PApplet {
 	AbstractAction moveTo;
 	Behaviour moveToBhvr;	
 	
+	ControlP5 cp;
+	Button startButton;
+	
 	public void setup() {
 		  
 		// init the applet
-		size(640, 360);
+		size(1200, 800);
+//		size(1024, 768);
 		smooth();
 		
 		// init and set the font
@@ -77,7 +88,83 @@ public class TheMirrorProject extends PApplet {
 		// set the text colour
 	  	fill(0);
 	  	noStroke();
+	  	
+	  	prepareBook();
+	  	buildText();
+	  	
+	  	buildUI();
 
+	}
+	
+	public void buildUI(){
+
+		cp = new ControlP5(this);
+		
+		cp.addButton("resetText")
+				.setCaptionLabel("Reset")
+                .setPosition(0, 0)
+                .setSize(200, 19);
+
+		startButton = cp.addButton("startDrop")
+				.setCaptionLabel("Start")
+                .setPosition(0, 0)
+                .setSize(200, 19);
+
+		cp.addSlider("updateStrength")	
+			 .setColorCaptionLabel(0)
+			 .setCaptionLabel("Gravity strength")
+			 .setValue((float)strength)
+		     .setRange((float)0.02, (float)0.2)
+		     .setPosition(0, 19)
+		     .setSize(200, 29);
+
+		cp.addSlider("updateDelay")	
+			 .setColorCaptionLabel(0)
+			 .setCaptionLabel("Drop time delay")
+			 .setValue((float)delay)
+		     .setRange((float)0, (float)0.5)
+		     .setPosition(0, 19+29)
+		     .setSize(200, 29);
+
+		cp.addSlider("updateStrengthVariant")	
+			 .setCaptionLabel("Gravity strength variant")
+			 .setColorCaptionLabel(0)
+			 .setValue((float)strMax)
+		     .setRange((float)0, (float)0.8)
+		     .setPosition(0, 19+29+29)
+		     .setSize(200, 29);
+		
+	}
+	
+	public void updateDelay(ControlEvent ce){
+		delay = ce.getValue();
+	}
+
+	public void updateStrengthVariant(ControlEvent ce){
+		strMax = ce.getValue();
+	}
+	
+	public void updateStrength(ControlEvent ce){
+		strength = ce.getValue();
+	}
+	
+	public void resetText(){
+		
+		book.clear();
+		book.removeQueuedObjects();
+		book.removeAllGlyphBehaviours();
+		book.removeAllGroupBehaviours();
+		book.removeAllWordBehaviours();
+		ps = new HashMap<String,Property>();
+		postTargetWords = new ArrayList<TextObject>();
+
+	  	buildText();
+	  	startButton.show();
+		
+	}
+	
+	public void prepareBook(){
+		
 	  	book = new Book(this);
 	  	// Must be added for any physics action to work.
 		book.addGlyphBehaviour(moveBehaviour);
@@ -86,21 +173,25 @@ public class TheMirrorProject extends PApplet {
 		builder.setFont(fenix, 28);
 		builder.addGlyphProperty("StrokeColor", new ColorProperty(new Color(0,0,0,0)));
 		builder.setAddToSpatialList(true);
-		
-		TextPage poem1 = book.addPage("poem1");;
-		TextPage poem2 = book.addPage("poem2");;
-		
+
+		TextPage poem1 = book.addPage("poem1");
+		TextPage poem2 = book.addPage("poem2");
 		poem1Root = poem1.getTextRoot();
 		poem2Root = poem2.getTextRoot();
+	
+	}
+	
+	public void buildText() {
+		  
 		// Position poem2.
-		poem2Root.getPosition().set(new PVector(width/2,0));
+		poem2Root.getPosition().set(new PVector(2*(width/3),0));
 		
 		// Do the building up front.
 		builder.setParent(poem1Root);
-		TextObjectGroup sourceLine = builder.buildSentence(sourceSentence, 0, 200);
+		TextObjectGroup sourceLine = builder.buildSentence(sourceSentence, 0, height/2);
 
 		builder.setParent(poem2Root);
-		TextObjectGroup targetLine = builder.buildSentence(targetSentence, 0, 200);
+		TextObjectGroup targetLine = builder.buildSentence(targetSentence, 0, height/2);
 		
 		// Create property set from TextObject.
 		Set<String> pNames = sourceLine.getPropertyNames();
@@ -117,9 +208,8 @@ public class TheMirrorProject extends PApplet {
 			}
 		}
     	
-		Rectangle targetBox = null;
-		int sourceWidth = sourceWord.getBounds().width+sourceWord.getRightSibling().getBounds().width;
-		println(sourceWord.getBounds(), sourceWord.getRightSibling().getBounds());
+		targetBox = null;
+		sourceWidth = sourceWord.getBounds().width+sourceWord.getRightSibling().getBounds().width;
 		boolean found = false;
 
 		// Get target word and collect words to right of this.
@@ -147,9 +237,17 @@ public class TheMirrorProject extends PApplet {
 			}
 		}
 		
+//		startDrop();
+
+	}
+	
+	public void startDrop(){
+		
+		startButton.hide();
+		
 		// TODO - (??) Possibly count how many collisions with post target 
 		//        glyphs and then increment only on those drops.
-		
+
 		// Do the business. Drop out, then queue drop in and shift words.
 		int sourceLength = sourceText.length();
 		PVector tPos = targetWord.getPosition().get();
@@ -159,14 +257,17 @@ public class TheMirrorProject extends PApplet {
         	TextObject glyph = glyphs.next();
         	PVectorProperty gLocal = glyph.getPosition();
         	PVector gPos = new PVector(gLocal.getX()+tPos.x, sourceWord.getLocation().y-height);
-        	// Make text object glyph, position above target and add to root.
-        	TextObjectGlyph toG = new TextObjectGlyph(glyph.toString(), fenix, 28, ps, gPos);
-        	poem2Root.attachChild(toG);
-        	book.getSpatialList().add(toG);
+        	// Duplicate glyph and position in same place.
+        	TextObjectGlyph toDropOut = new TextObjectGlyph(glyph.toString(), fenix, 28, ps, glyph.getLocation());
+        	poem1Root.attachChild(toDropOut);
+        	// Make text object glyph, and position above target.
+        	TextObjectGlyph toDropIn = new TextObjectGlyph(glyph.toString(), fenix, 28, ps, gPos);
+        	poem2Root.attachChild(toDropIn);
+        	book.getSpatialList().add(toDropIn);
         	// Pass gravity action to this new glyph from drop out.
-        	AbstractAction doA = dropGlyphOut(glyph, j);
+        	AbstractAction doA = dropGlyphOut(toDropOut, j);
         	// Returns condition action for glyph drop which is a condition for shifting words right.
-        	TrackerExtra dropAction = (TrackerExtra)dropGlyphIn(toG, doA, targetWord.getLocation());
+        	TrackerExtra dropAction = (TrackerExtra)dropGlyphIn(toDropIn, doA, targetWord.getLocation());
 
 			// Apply shift to words right of target.
         	float incrementX = (sourceWidth-targetBox.width)/sourceLength;
@@ -174,7 +275,7 @@ public class TheMirrorProject extends PApplet {
 				// TODO - (??) Maybe add delay based on sentence index.
 				// Move post target words along incrementally.
 				// AbstractAction shiftPostTargetWord = new MoveTo((int)(pos.x+(incrementX*(j+1))), (int)pos.y, 3);
-				AbstractAction shiftPostTargetWord = new MoveToRelative(incrementX, 0, 2);
+				AbstractAction shiftPostTargetWord = new MoveToRelative(incrementX, 0);
 				// The HasReachedTarget condition has stopped processing.
 				HasStoppedProcessing hsp = new HasStoppedProcessing(shiftPostTargetWord, new DoNothing(), dropAction);
 				Behaviour hspBhvr = hsp.makeBehaviour();
@@ -184,7 +285,7 @@ public class TheMirrorProject extends PApplet {
 
         	j++;
         }
-
+		
 	}
 	
 	public AbstractAction dropGlyphIn(TextObject gl, AbstractAction dropInAction, PVector targetPos){
@@ -212,56 +313,37 @@ public class TheMirrorProject extends PApplet {
 	public AbstractAction dropGlyphOut(TextObject gl, int index){
 			
 		double rand = strMin + (strMax-strMin) * Math.random();
+		println("RAND", strMin, strMax, rand);
 
 		// create and add the Gravity Behaviour
-		AbstractAction gravity = new Delay(new Gravity((float)rand), (float)0.2*index);
+		AbstractAction gravity = new Delay(new Gravity((float)strength+(float)rand), (float)delay*index);
 		Behaviour gravityBehaviour = gravity.makeBehaviour();
 		book.addGlyphBehaviour(gravityBehaviour);
-					
+
 		moveBehaviour.addObject(gl);
 		gravityBehaviour.addObject(gl);
 		
 		return gravity;
 	}
 
-	
-	
 	public void draw() {
 		
 		background(255);
-
-	/*	TextObjectGlyphIterator itr = line.glyphIterator();
-		while (itr.hasNext()) {
-			TextObject el = itr.next();
-			PVector v = el.getLocation();
-			if(applied == false && v.y > 300){
-				
-				for(AbstractAction a: activeA){
-					println(a);
-					a.complete(el);
-				}
-				move.complete(el);
-				
-				for(AbstractBehaviour b: activeB){
-					book.removeGlyphBehaviour(b);
-				}
-				book.removeGlyphBehaviour(moveBehaviour);
-				applied = true;
-								
-				AbstractAction stop = new Stop();
-				Behaviour stopBehaviour = stop.makeBehaviour();
-				book.addGlyphBehaviour(stopBehaviour);
-				
-				stopBehaviour.addObject(element);
-			}
-			
-		}*/
 		
 		// apply the behaviours to the text and draw it
 		book.step();
 		book.draw();
 
-		if(trackAction.getCount() > 0){
+/*		int c1 = color(255);
+		int c2 = color(unhex("999999"));
+		for (int i = 0; i <= height; i++) {
+			float inter = map(i, 0, height, 0, 1);
+			int c = lerpColor(c1, c2, inter);
+			stroke(c);
+			line(0, i, width, i);
+		}*/
+
+		if(trackAction != null && trackAction.getCount() > 0){
 			println("COUNT>>",trackAction.getCount());
 		}
 	}

@@ -118,22 +118,23 @@ public class TheMirrorProject extends PApplet {
 		     .setPosition(0, 19)
 		     .setSize(200, 29);
 
+		cp.addSlider("updateStrengthVariant")	
+			 .setCaptionLabel("Gravity strength variant")
+			 .setColorCaptionLabel(0)
+			 .setValue((float)strMax)
+		     .setRange((float)0, (float)0.08)
+		     .setPosition(0, 19+29+29)
+		     .setPosition(0, 19+29)
+		     .setSize(200, 29);
+		
 		cp.addSlider("updateDelay")	
 			 .setColorCaptionLabel(0)
 			 .setCaptionLabel("Drop time delay")
 			 .setValue((float)delay)
 		     .setRange((float)0, (float)0.5)
-		     .setPosition(0, 19+29)
-		     .setSize(200, 29);
-
-		cp.addSlider("updateStrengthVariant")	
-			 .setCaptionLabel("Gravity strength variant")
-			 .setColorCaptionLabel(0)
-			 .setValue((float)strMax)
-		     .setRange((float)0, (float)0.8)
 		     .setPosition(0, 19+29+29)
 		     .setSize(200, 29);
-		
+
 	}
 	
 	public void updateDelay(ControlEvent ce){
@@ -313,7 +314,6 @@ public class TheMirrorProject extends PApplet {
 	public AbstractAction dropGlyphOut(TextObject gl, int index){
 			
 		double rand = strMin + (strMax-strMin) * Math.random();
-		println("RAND", strMin, strMax, rand);
 
 		// create and add the Gravity Behaviour
 		AbstractAction gravity = new Delay(new Gravity((float)strength+(float)rand), (float)delay*index);

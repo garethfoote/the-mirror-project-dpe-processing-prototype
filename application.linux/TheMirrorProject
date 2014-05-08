@@ -1,0 +1,4 @@
+#!/bin/sh
+
+APPDIR=$(dirname "$0")
+java  -Djava.library.path="$APPDIR" -cp "$APPDIR/lib/TheMirrorProject.jar:$APPDIR/lib/ant.jar:$APPDIR/lib/ant-launcher.jar:$APPDIR/lib/org.eclipse.osgi_3.8.1.v20120830-144521.jar:$APPDIR/lib/jdimodel.jar:$APPDIR/lib/jna.jar:$APPDIR/lib/jdi.jar:$APPDIR/lib/org-netbeans-swing-outline.jar:$APPDIR/lib/com.ibm.icu_4.4.2.v20110823.jar:$APPDIR/lib/core.jar:$APPDIR/lib/NextText.jar:$APPDIR/lib/controlP5.jar" themirrorproject.TheMirrorProject

@@ -32,6 +32,7 @@ import net.nexttext.behaviour.physics.Gravity;
 import net.nexttext.behaviour.physics.Move; 
 import net.nexttext.behaviour.physics.Stop; 
 import net.nexttext.behaviour.standard.DoNothing; 
+import net.nexttext.behaviour.standard.FadeTo; 
 import net.nexttext.behaviour.standard.MoveTo; 
 import net.nexttext.property.ColorProperty; 
 import net.nexttext.property.PVectorProperty; 
@@ -85,7 +86,9 @@ public class TheMirrorProject extends PApplet {
 
 
 
-  // DEBUG
+
+
+// DEBUG
   private TrackerExtra trackAction;
   // end DEBUG
 
@@ -93,12 +96,29 @@ public class TheMirrorProject extends PApplet {
   private PFont fenix;
   private double strMax = 0.03f;
   private double strMin = 0.0f;
-  private double strength = 0.06f;
+  private double strength = 0.09f;
   private double delay = 0.2f;
+  private int fadeSpeedMax = 10;
+  private int fadeSpeedMin = 1;
+  private int fadeSpeed = 3;
+  String[] targetPoem = {"I am the sea . I hold the Land",
+              "as one holds an apple in his hand.",
+              "Hold it fast with sleepless eyes.", 
+              "Watching the continents sink and rise.",
+              "Out of my bosom the mountains grow,",
+              "Back to its depths they crumble slow;"
+              };
+  String[] sourcePoem = {"pur means the place where", 
+              "a goddess resides", 
+              "stretch marks the sky in a color of war",
+              "we pull on either end",
+              "giant five-headed snake",
+              "wrapped around us"
+              };
+  private String targetText = "bosom";
+  private String sourceText = "goddess";
   private String targetSentence = "Hold it fast with sleepless eyes";
   private String sourceSentence = "The preening water laps with the ambivalence of your look.";
-  private String targetText = "sleepless";
-  private String sourceText = "ambivalence";
   private TextObjectBuilder builder;
   private TextObjectGroup poem1Root;
   private TextObjectGroup poem2Root;
@@ -181,8 +201,23 @@ public class TheMirrorProject extends PApplet {
          .setPosition(0, 19+29+29)
          .setSize(200, 29);
 
+    cp.addSlider("updateFadeSpeed")  
+       .setColorCaptionLabel(0)
+       .setCaptionLabel("Fade out speed")
+       .setValue((int)fadeSpeed)
+         .setRange(fadeSpeedMin, fadeSpeedMax)
+         .setPosition(0, 19+29+29+29)
+         .setSize(200, 29)
+         .setNumberOfTickMarks((fadeSpeedMax-fadeSpeedMin)+1)
+         .showTickMarks(true)
+         .snapToTickMarks(true);
+
   }
   
+  public void updateFadeSpeed(ControlEvent ce){
+    fadeSpeed = (int)ce.getValue();
+  }
+
   public void updateDelay(ControlEvent ce){
     delay = ce.getValue();
   }
@@ -230,23 +265,37 @@ public class TheMirrorProject extends PApplet {
   
   public void buildText() {
       
+    TextObjectGroup sourceLine = null;
+    TextObjectGroup targetLine = null;
+
     // Position poem2.
-    poem2Root.getPosition().set(new PVector(2*(width/3),0));
+    poem2Root.getPosition().set(new PVector(width/2,0));
     
+    int lineHeight = 40;
+
     // Do the building up front.
     builder.setParent(poem1Root);
-    TextObjectGroup sourceLine = builder.buildSentence(sourceSentence, 0, height/2);
-
-    builder.setParent(poem2Root);
-    TextObjectGroup targetLine = builder.buildSentence(targetSentence, 0, height/2);
-    
-    // Create property set from TextObject.
-    Set<String> pNames = sourceLine.getPropertyNames();
-    for (String propName: pNames) {
-      ps.put(propName, sourceLine.getProperty(propName));
+    for (int i = 0; i < sourcePoem.length; i++) {
+      if(sourcePoem[i].contains(sourceText)){
+        // Capture source line.
+        sourceLine = builder.buildSentence(sourcePoem[i], 0, (lineHeight*i)+(height/2));
+      } else {
+        builder.buildSentence(sourcePoem[i], 0, (lineHeight*i)+(height/2));
+      }
     }
-    ps.put("StrokeColor", new ColorProperty(new Color(0,0,0,0)));
+
+    // Build target sentence
+    builder.setParent(poem2Root);
+    for (int i = 0; i < targetPoem.length; i++) {
+      if(targetPoem[i].contains(targetText)){
+        // Capture target line.
+        targetLine = builder.buildSentence(targetPoem[i], 0, (lineHeight*i)+(height/2));
+      } else {
+        builder.buildSentence(targetPoem[i], 0, (lineHeight*i)+(height/2));
+      }
+    }
     
+    // Get source word TextObject from TextObjectGroup.
     TextObjectIterator itrS = sourceLine.iterator();
     while (itrS.hasNext()) {
       TextObject element = itrS.next();  
@@ -254,6 +303,13 @@ public class TheMirrorProject extends PApplet {
         sourceWord = (TextObjectGroup)element;
       }
     }
+
+    // Create property set from TextObject.
+    Set<String> pNames = sourceLine.getPropertyNames();
+    for (String propName: pNames) {
+      ps.put(propName, sourceLine.getProperty(propName));
+    }
+    ps.put("StrokeColor", new ColorProperty(new Color(0,0,0,0)));
       
     targetBox = null;
     sourceWidth = sourceWord.getBounds().width+sourceWord.getRightSibling().getBounds().width;
@@ -264,7 +320,7 @@ public class TheMirrorProject extends PApplet {
     while (itrT.hasNext()) {
       TextObject element = itrT.next();
       if(found == true
-          && !element.toString().equals(targetSentence)
+          && !element.toString().equals(targetLine.toString())
           && element.getClass().getSimpleName().equals("TextObjectGroup")){
 
         postTargetWords.add(element);
@@ -284,8 +340,6 @@ public class TheMirrorProject extends PApplet {
       }
     }
     
-//    startDrop();
-
   }
   
   public void startDrop(){
@@ -361,15 +415,16 @@ public class TheMirrorProject extends PApplet {
       
     double rand = strMin + (strMax-strMin) * Math.random();
 
-    // create and add the Gravity Behaviour
-    AbstractAction gravity = new Delay(new Gravity((float)strength+(float)rand), (float)delay*index);
+    AbstractAction gravityNoFade = new Delay(new Gravity((float)strength+(float)rand), (float)delay*index);
+    AbstractAction gravity = new Delay(new GravityFadeTo((float)strength+(float)rand, 0, fadeSpeed, true, false), (float)delay*index);
+
     Behaviour gravityBehaviour = gravity.makeBehaviour();
     book.addGlyphBehaviour(gravityBehaviour);
+    gravityBehaviour.addObject(gl);
 
     moveBehaviour.addObject(gl);
-    gravityBehaviour.addObject(gl);
     
-    return gravity;
+    return gravityNoFade;
   }
 
   public void draw() {
@@ -393,7 +448,6 @@ public class TheMirrorProject extends PApplet {
       println("COUNT>>",trackAction.getCount());
     }
   }
-
   static public void main(String[] passedArgs) {
     String[] appletArgs = new String[] { "TheMirrorProject" };
     if (passedArgs != null) {

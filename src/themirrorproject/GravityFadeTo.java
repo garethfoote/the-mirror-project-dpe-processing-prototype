@@ -1,3 +1,22 @@
+/*
+ * 	  This file is part of The Mirror Project.
+ * 
+ *    Copyright (C) 2014 Gareth Foote and Mary Flanagan
+ *
+ *    The Mirror Project program is free software: you can redistribute it and/or modify
+ *    it under the terms of the GNU Affero General Public License as
+ *    published by the Free Software Foundation, either version 3 of the
+ *    License, or (at your option) any later version.
+ *
+ *    The Mirror Project program is distributed in the hope that it will be useful,
+ *    but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *    GNU Affero General Public License for more details.
+ *
+ *    You should have received a copy of the GNU Affero General Public License
+ *    along with The Mirror Project.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package themirrorproject;
 
 import java.awt.Color;
@@ -10,7 +29,9 @@ import net.nexttext.Book;
 import net.nexttext.TextObject;
 import net.nexttext.property.ColorProperty;
 import net.nexttext.property.NumberProperty;
-
+/**
+ * A combination of Gravity and FadeTo classes from NextText package.
+ */
 public class GravityFadeTo extends PhysicsAction {
 
     private boolean applyToFill = false;
@@ -34,9 +55,11 @@ public class GravityFadeTo extends PhysicsAction {
     
     public ActionResult behave( TextObject to) {
         
+    	// Gravity
     	PVector acc = new PVector(0, ((NumberProperty)properties().get("Strength")).get() );
         applyAcceleration(to, acc);
 
+        // FadeTo
         ColorProperty cProp;
         boolean doneFill = false;
         boolean doneStroke = false;

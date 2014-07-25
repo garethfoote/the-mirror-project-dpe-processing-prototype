@@ -30,11 +30,14 @@ import net.nexttext.behaviour.control.OnCollision;
 import net.nexttext.behaviour.control.Repeat; 
 import net.nexttext.behaviour.physics.Gravity; 
 import net.nexttext.behaviour.physics.Move; 
+import net.nexttext.behaviour.physics.Push; 
 import net.nexttext.behaviour.physics.Stop; 
 import net.nexttext.behaviour.standard.DoNothing; 
 import net.nexttext.behaviour.standard.FadeTo; 
+import net.nexttext.behaviour.standard.MoveBy; 
 import net.nexttext.behaviour.standard.MoveTo; 
 import net.nexttext.property.ColorProperty; 
+import net.nexttext.property.NumberProperty; 
 import net.nexttext.property.PVectorProperty; 
 import net.nexttext.property.Property; 
 
@@ -47,56 +50,79 @@ import java.io.InputStream;
 import java.io.OutputStream; 
 import java.io.IOException; 
 
+
+
+/*
+ *     This file is part of The Mirror Project.
+ * 
+ *    Copyright (C) 2014 Gareth Foote and Mary Flanagan
+ *
+ *    The Mirror Project program is free software: you can redistribute it and/or modify
+ *    it under the terms of the GNU Affero General Public License as
+ *    published by the Free Software Foundation, either version 3 of the
+ *    License, or (at your option) any later version.
+ *
+ *    The Mirror Project program is distributed in the hope that it will be useful,
+ *    but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *    GNU Affero General Public License for more details.
+ *
+ *    You should have received a copy of the GNU Affero General Public License
+ *    along with The Mirror Project.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 public class TheMirrorProject extends PApplet {
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// DEBUG
+  // DEBUG
   private TrackerExtra trackAction;
   // end DEBUG
-
+  
   private Book book;
   private PFont fenix;
   private double strMax = 0.03f;
   private double strMin = 0.0f;
-  private double strength = 0.09f;
+  private float strength = 0.09f;
   private double delay = 0.2f;
   private int fadeSpeedMax = 10;
   private int fadeSpeedMin = 1;
@@ -171,7 +197,7 @@ public class TheMirrorProject extends PApplet {
                 .setPosition(0, 0)
                 .setSize(200, 19);
 
-    startButton = cp.addButton("startDrop")
+    startButton = cp.addButton("startThrow")
         .setCaptionLabel("Start")
                 .setPosition(0, 0)
                 .setSize(200, 19);
@@ -273,7 +299,7 @@ public class TheMirrorProject extends PApplet {
     
     int lineHeight = 40;
 
-    // Do the building up front.
+    // Build source sentence (left).
     builder.setParent(poem1Root);
     for (int i = 0; i < sourcePoem.length; i++) {
       if(sourcePoem[i].contains(sourceText)){
@@ -284,7 +310,7 @@ public class TheMirrorProject extends PApplet {
       }
     }
 
-    // Build target sentence
+    // Build target sentence (right).
     builder.setParent(poem2Root);
     for (int i = 0; i < targetPoem.length; i++) {
       if(targetPoem[i].contains(targetText)){
@@ -340,8 +366,77 @@ public class TheMirrorProject extends PApplet {
       }
     }
     
+//    startThrow();
   }
   
+  private float g = 0.281f;
+  public void startThrow(){
+
+    PVector targetWordPos = targetWord.getPositionAbsolute().get();
+    PVector sourceWordPos = sourceWord.getPositionAbsolute().get();
+    float horizontalDistance = targetWordPos.x - sourceWordPos.x;
+    int verticalUpDistance = (int) sourceWordPos.y + 500;
+    int verticalDownDistance = (int) targetWordPos.y + 500;
+
+    float delay = 0.03f;
+    TextObjectGlyphIterator glyphs = sourceWord.glyphIterator();
+    int j = 0;
+        while (glyphs.hasNext()) {
+          j++;
+          TextObject glyph = glyphs.next();
+          println((int)horizontalDistance, verticalUpDistance, verticalDownDistance);
+          println(totalFlightTime(verticalUpDistance, verticalDownDistance));
+          float hv = horizontalVelocityToTravelDistance((int)horizontalDistance, totalFlightTime(verticalUpDistance, verticalDownDistance));
+          float vv = verticalVelocityToReachHeight((int)verticalUpDistance);
+//          println(hv, vv);
+          PVector pv = new PVector(hv, 0-vv);
+          
+        Multiplexer throwActions = new Multiplexer();    
+          AbstractAction gravity = new Delay(new Gravity(g), (float)delay*j);
+          AbstractAction push = new Delay(new MoveBy(pv), (float)delay*j);
+
+        throwActions.add(gravity);
+          throwActions.add(push);
+
+        Multiplexer stopActions = new Multiplexer();    
+        Stop stop = new Stop();
+        stopActions.add(new Repeat(stop));
+//        stopActions.add(new MoveTo((int)(glPos.x), (int)targetWordPos.y));
+        Condition condition = new HasReachedTarget(stopActions, throwActions, targetWordPos.y);
+        Behaviour topBehaviour = condition.makeBehaviour();
+
+        book.addGlyphBehaviour(topBehaviour);
+        topBehaviour.addObject(glyph);
+        moveBehaviour.addObject(glyph);
+        }
+    
+  }
+  
+  public float verticalVelocityToReachHeight(float h) {
+      // Same as equation to find velocity at point of impact for a body
+      // dropped from a given height.
+      // http://en.wikipedia.org/wiki/Equations_for_a_falling_body
+      return (float) Math.sqrt(2 * g * h);
+  }
+
+  
+  public float horizontalVelocityToTravelDistance(int d, float t) {
+      // Speed = distance / time, there is no acceleration horizontally
+      return d / t;
+  }
+
+  public float timeToFallHeight(int h){
+    // Just the time to travel a given distance from stationary under a
+      // constant acceleration (g).
+      // http://en.wikipedia.org/wiki/Equations_for_a_falling_body
+    return (float) Math.sqrt((2 * h) / g);
+  }
+
+  public float totalFlightTime(int upH, int downH) {
+      // Just add the times for the upwards and downwards journeys separately
+      return timeToFallHeight(upH) + timeToFallHeight(downH);
+  }
+
   public void startDrop(){
     
     startButton.hide();
@@ -361,7 +456,7 @@ public class TheMirrorProject extends PApplet {
           // Duplicate glyph and position in same place.
           TextObjectGlyph toDropOut = new TextObjectGlyph(glyph.toString(), fenix, 28, ps, glyph.getLocation());
           poem1Root.attachChild(toDropOut);
-          // Make text object glyph, and position above target.
+          // Duplicate glyph again and position above target.
           TextObjectGlyph toDropIn = new TextObjectGlyph(glyph.toString(), fenix, 28, ps, gPos);
           poem2Root.attachChild(toDropIn);
           book.getSpatialList().add(toDropIn);
@@ -435,25 +530,9 @@ public class TheMirrorProject extends PApplet {
     book.step();
     book.draw();
 
-/*    int c1 = color(255);
-    int c2 = color(unhex("999999"));
-    for (int i = 0; i <= height; i++) {
-      float inter = map(i, 0, height, 0, 1);
-      int c = lerpColor(c1, c2, inter);
-      stroke(c);
-      line(0, i, width, i);
-    }*/
-
-    if(trackAction != null && trackAction.getCount() > 0){
-      println("COUNT>>",trackAction.getCount());
-    }
-  }
-  static public void main(String[] passedArgs) {
-    String[] appletArgs = new String[] { "TheMirrorProject" };
-    if (passedArgs != null) {
-      PApplet.main(concat(appletArgs, passedArgs));
-    } else {
-      PApplet.main(appletArgs);
-    }
+//    if(trackAction != null && trackAction.getCount() > 0){
+//      println("COUNT>>",trackAction.getCount());
+//    }
   }
 }
+

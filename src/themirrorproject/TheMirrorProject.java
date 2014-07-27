@@ -71,7 +71,7 @@ public class TheMirrorProject extends PApplet {
 	private double strMax = 0.03;
 	private double strMin = 0.0;
 	private float strength = 0.09f;
-	private double delay = 0.2;
+	private double delay = 0.0;
 	private int fadeSpeedMax = 10;
 	private int fadeSpeedMin = 1;
 	private int fadeSpeed = 3;
@@ -145,7 +145,8 @@ public class TheMirrorProject extends PApplet {
                 .setPosition(0, 0)
                 .setSize(200, 19);
 
-		startButton = cp.addButton("startThrow")
+		startButton = cp.addButton("startDrop")
+//		startButton = cp.addButton("startThrow")
 				.setCaptionLabel("Start")
                 .setPosition(0, 0)
                 .setSize(200, 19);
@@ -317,26 +318,47 @@ public class TheMirrorProject extends PApplet {
 //		startThrow();
 	}
 	
-	private float g = 0.281f;
+
+	private float g = 0.181f;
 	public void startThrow(){
+
+		float delayMin = 0.00f;
+		float delayMax = 0.5f;
+		int verticalThrowDistance = 200;
 
 		PVector targetWordPos = targetWord.getPositionAbsolute().get();
 		PVector sourceWordPos = sourceWord.getPositionAbsolute().get();
 		float horizontalDistance = targetWordPos.x - sourceWordPos.x;
-		int verticalUpDistance = (int) sourceWordPos.y + 500;
-		int verticalDownDistance = (int) targetWordPos.y + 500;
+		int verticalUpDistance = (int) sourceWordPos.y + verticalThrowDistance;
+		int verticalDownDistance = (int) targetWordPos.y + verticalThrowDistance;
 
-		float delay = 0.03f;
 		TextObjectGlyphIterator glyphs = sourceWord.glyphIterator();
+		double delay = 0.0f;
 		int j = 0;
         while (glyphs.hasNext()) {
+
+//        	http://stackoverflow.com/questions/2106503/pseudorandom-number-generator-exponential-distribution
+//        	// Uniform distribution
+//        	delay = delayMin + (delayMax-delayMin)*x;
+//        	double u = Math.random();
+//        	// Increase expoentially.
+//        	double x = Math.log(1-u)/(-0.1);
+//        	delay = delayMin + (delayMax-delayMin)*x;
+//        	println(delay);
+
+        	delay = delayMin + (delayMax-delayMin)*Math.random();
+
         	j++;
-        	TextObject glyph = glyphs.next();
-        	println((int)horizontalDistance, verticalUpDistance, verticalDownDistance);
-        	println(totalFlightTime(verticalUpDistance, verticalDownDistance));
+        	TextObject originalGlyph = glyphs.next();
+        	TextObject glyph = makeDuplicate(originalGlyph, true);
+        	PVectorProperty gLocal = originalGlyph.getPosition();
+        	
+        	originalGlyph.getColor().set(new Color(0,0,0,127));
+//        	ps.put("StrokeColor", new ColorProperty(new Color(0,0,0,0)));
+
+        	
         	float hv = horizontalVelocityToTravelDistance((int)horizontalDistance, totalFlightTime(verticalUpDistance, verticalDownDistance));
         	float vv = verticalVelocityToReachHeight((int)verticalUpDistance);
-//        	println(hv, vv);
         	PVector pv = new PVector(hv, 0-vv);
         	
     		Multiplexer throwActions = new Multiplexer();		
@@ -349,9 +371,13 @@ public class TheMirrorProject extends PApplet {
     		Multiplexer stopActions = new Multiplexer();		
     		Stop stop = new Stop();
     		stopActions.add(new Repeat(stop));
-//    		stopActions.add(new MoveTo((int)(glPos.x), (int)targetWordPos.y));
+    		stopActions.add(new MoveTo((int)(gLocal.getX()+targetWordPos.x), (int)targetWordPos.y));
     		Condition condition = new HasReachedTarget(stopActions, throwActions, targetWordPos.y);
-    		Behaviour topBehaviour = condition.makeBehaviour();
+    		// Tracker works out if object is being processed by action.
+    		trackAction = new TrackerExtra(condition);
+    		Behaviour topBehaviour = trackAction.makeBehaviour();
+    		
+    		shiftTargetLine(trackAction);
 
     		book.addGlyphBehaviour(topBehaviour);
     		topBehaviour.addObject(glyph);
@@ -359,7 +385,7 @@ public class TheMirrorProject extends PApplet {
         }
 		
 	}
-	
+
 	public float verticalVelocityToReachHeight(float h) {
 	    // Same as equation to find velocity at point of impact for a body
 	    // dropped from a given height.
@@ -383,6 +409,35 @@ public class TheMirrorProject extends PApplet {
 	public float totalFlightTime(int upH, int downH) {
 	    // Just add the times for the upwards and downwards journeys separately
 	    return timeToFallHeight(upH) + timeToFallHeight(downH);
+	}
+	
+	public TextObject makeDuplicate(TextObject to, Boolean addToSpatialList){
+        
+		TextObject duplicate = new TextObjectGlyph(to.toString(), fenix, 28, ps, to.getLocation());
+        poem1Root.attachChild(duplicate);
+        if(addToSpatialList == true){
+        	book.getSpatialList().add(duplicate);
+        }
+		
+		return duplicate;
+		
+	}
+	
+	public void shiftTargetLine(TrackerExtra tracker){
+
+        // Apply shift to words right of target.
+		float incrementX = (sourceWidth-targetBox.width)/sourceText.length();
+        for (TextObject to : postTargetWords) {
+        	// TODO - (??) Maybe add delay based on sentence index.
+        	// Move post target words along incrementally.
+            AbstractAction shiftPostTargetWord = new MoveToRelative(incrementX, 0);
+            // The HasReachedTarget condition has stopped processing.
+            HasStoppedProcessing hsp = new HasStoppedProcessing(shiftPostTargetWord, new DoNothing(), tracker);
+            Behaviour hspBhvr = hsp.makeBehaviour();
+            hspBhvr.addObject(to);
+            book.addBehaviour(hspBhvr);
+        }
+
 	}
 
 	public void startDrop(){
@@ -410,6 +465,8 @@ public class TheMirrorProject extends PApplet {
         	book.getSpatialList().add(toDropIn);
         	// Pass gravity action to this new glyph from drop out.
         	AbstractAction doA = dropGlyphOut(toDropOut, j);
+        	// Change opacity or original.
+        	glyph.getColor().set(new Color(0,0,0,127));
         	// Returns condition action for glyph drop which is a condition for shifting words right.
         	TrackerExtra dropAction = (TrackerExtra)dropGlyphIn(toDropIn, doA, targetWord.getLocation());
 

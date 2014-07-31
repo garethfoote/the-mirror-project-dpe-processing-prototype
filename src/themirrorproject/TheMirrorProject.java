@@ -33,6 +33,7 @@ import processing.core.PFont;
 import processing.core.PVector;
 
 import net.nexttext.Book;
+import net.nexttext.FastMath;
 import net.nexttext.TextObject;
 import net.nexttext.TextObjectBuilder;
 import net.nexttext.TextObjectGlyph;
@@ -50,6 +51,7 @@ import net.nexttext.behaviour.control.Repeat;
 import net.nexttext.behaviour.physics.Gravity;
 import net.nexttext.behaviour.physics.Move;
 import net.nexttext.behaviour.physics.Push;
+import net.nexttext.behaviour.physics.Spin;
 import net.nexttext.behaviour.physics.Stop;
 import net.nexttext.behaviour.standard.DoNothing;
 import net.nexttext.behaviour.standard.FadeTo;
@@ -68,12 +70,14 @@ public class TheMirrorProject extends PApplet {
 	
 	private Book book;
 	private PFont fenix;
+	private int arcHeight = 200;
+	private int arcVariant = 50;
+	private int angleVariant = 10;
 	private double strMax = 0.03;
 	private double strMin = 0.0;
-	private float strength = 0.09f;
-	private double delay = 0.0;
-	private int fadeSpeedMax = 10;
-	private int fadeSpeedMin = 1;
+	private float g = 0.081f;
+	private int delay = 0;
+	private int delayVariant = 500;
 	private int fadeSpeed = 3;
 	String[] targetPoem = {"I am the sea . I hold the Land",
 							"as one holds an apple in his hand.",
@@ -145,8 +149,8 @@ public class TheMirrorProject extends PApplet {
                 .setPosition(0, 0)
                 .setSize(200, 19);
 
-		startButton = cp.addButton("startDrop")
-//		startButton = cp.addButton("startThrow")
+//		startButton = cp.addButton("startDrop")
+		startButton = cp.addButton("startThrow")
 				.setCaptionLabel("Start")
                 .setPosition(0, 0)
                 .setSize(200, 19);
@@ -154,38 +158,55 @@ public class TheMirrorProject extends PApplet {
 		cp.addSlider("updateStrength")	
 			 .setColorCaptionLabel(0)
 			 .setCaptionLabel("Gravity strength")
-			 .setValue((float)strength)
+			 .setValue((float)g)
 		     .setRange((float)0.02, (float)0.2)
 		     .setPosition(0, 19)
 		     .setSize(200, 29);
 
-		cp.addSlider("updateStrengthVariant")	
-			 .setCaptionLabel("Gravity strength variant")
+		cp.addSlider("updateHeight")	
 			 .setColorCaptionLabel(0)
-			 .setValue((float)strMax)
-		     .setRange((float)0, (float)0.08)
-		     .setPosition(0, 19+29+29)
+			 .setCaptionLabel("Arc height (pixels)")
+			 .setValue((float)arcHeight)
+		     .setRange((float)0, (float)760)
 		     .setPosition(0, 19+29)
+		     .setSize(200, 29);
+
+		cp.addSlider("updateHeightVariant")	
+			 .setColorCaptionLabel(0)
+			 .setCaptionLabel("Max arc height variant (pixels)")
+			 .setValue((float)arcVariant)
+		     .setRange((float)0, (float)arcVariant)
+		     .setPosition(0, 19+29+29)
 		     .setSize(200, 29);
 		
 		cp.addSlider("updateDelay")	
 			 .setColorCaptionLabel(0)
-			 .setCaptionLabel("Drop time delay")
-			 .setValue((float)delay)
-		     .setRange((float)0, (float)0.5)
-		     .setPosition(0, 19+29+29)
+			 .setCaptionLabel("Max variant in time delay (millisecond)")
+			 .setValue(delayVariant)
+		     .setRange(0, 3000)
+             .setPosition(0, 19+29+29+29)
 		     .setSize(200, 29);
 
+		cp.addSlider("updateAngleVariant")	
+			 .setColorCaptionLabel(0)
+			 .setCaptionLabel("Max variant in rotation from 12 o'clock (degrees)")
+			 .setValue(angleVariant)
+		     .setRange(0.0f, 15.0f)
+             .setPosition(0, 19+29+29+29+29)
+		     .setSize(200, 29);
+
+		/*
 		cp.addSlider("updateFadeSpeed")	
 			 .setColorCaptionLabel(0)
 			 .setCaptionLabel("Fade out speed")
 			 .setValue((int)fadeSpeed)
 		     .setRange(fadeSpeedMin, fadeSpeedMax)
-		     .setPosition(0, 19+29+29+29)
+		     .setPosition(0, 19+29+29+29+29)
 		     .setSize(200, 29)
 		     .setNumberOfTickMarks((fadeSpeedMax-fadeSpeedMin)+1)
 		     .showTickMarks(true)
 		     .snapToTickMarks(true);
+		*/
 
 	}
 	
@@ -194,7 +215,19 @@ public class TheMirrorProject extends PApplet {
 	}
 
 	public void updateDelay(ControlEvent ce){
-		delay = ce.getValue();
+		delayVariant = (int) ce.getValue();
+	}
+
+	public void updateHeight(ControlEvent ce){
+		arcHeight = (int) ce.getValue();
+	}
+
+	public void updateHeightVariant(ControlEvent ce){
+		arcVariant = (int) ce.getValue();
+	}
+
+	public void updateAngleVariant(ControlEvent ce){
+		angleVariant = (int) ce.getValue();
 	}
 
 	public void updateStrengthVariant(ControlEvent ce){
@@ -202,7 +235,7 @@ public class TheMirrorProject extends PApplet {
 	}
 	
 	public void updateStrength(ControlEvent ce){
-		strength = ce.getValue();
+		g = ce.getValue();
 	}
 	
 	public void resetText(){
@@ -223,6 +256,7 @@ public class TheMirrorProject extends PApplet {
 	public void prepareBook(){
 		
 	  	book = new Book(this);
+	  	book.bRemoveEmptyGroups = false;
 	  	// Must be added for any physics action to work.
 		book.addGlyphBehaviour(moveBehaviour);
 		
@@ -319,23 +353,29 @@ public class TheMirrorProject extends PApplet {
 	}
 	
 
-	private float g = 0.181f;
 	public void startThrow(){
 
-		float delayMin = 0.00f;
-		float delayMax = 0.5f;
-		int verticalThrowDistance = 200;
+		startButton.hide();
+
+		int delayMin = 0;
+		int delayMax = delayVariant;
+		int delay = 0;
+
+		int angleMin = 0;
+		int angleMax = angleVariant;
+		int angle = 0;
 
 		PVector targetWordPos = targetWord.getPositionAbsolute().get();
 		PVector sourceWordPos = sourceWord.getPositionAbsolute().get();
 		float horizontalDistance = targetWordPos.x - sourceWordPos.x;
-		int verticalUpDistance = (int) sourceWordPos.y + verticalThrowDistance;
-		int verticalDownDistance = (int) targetWordPos.y + verticalThrowDistance;
 
 		TextObjectGlyphIterator glyphs = sourceWord.glyphIterator();
-		double delay = 0.0f;
 		int j = 0;
         while (glyphs.hasNext()) {
+
+        	int variant = (int) (Math.random()*arcVariant);
+        	int verticalUpDistance = (int) arcHeight + variant;
+        	int verticalDownDistance = (int) arcHeight + variant - (int)(sourceWordPos.y-targetWordPos.y);
 
 //        	http://stackoverflow.com/questions/2106503/pseudorandom-number-generator-exponential-distribution
 //        	// Uniform distribution
@@ -346,7 +386,8 @@ public class TheMirrorProject extends PApplet {
 //        	delay = delayMin + (delayMax-delayMin)*x;
 //        	println(delay);
 
-        	delay = delayMin + (delayMax-delayMin)*Math.random();
+        	delay = delayMin + (int)((delayMax-delayMin)*Math.random());
+        	angle = angleMin + (int)((angleMax-angleMin)*Math.random());
 
         	j++;
         	TextObject originalGlyph = glyphs.next();
@@ -354,24 +395,27 @@ public class TheMirrorProject extends PApplet {
         	PVectorProperty gLocal = originalGlyph.getPosition();
         	
         	originalGlyph.getColor().set(new Color(0,0,0,127));
-//        	ps.put("StrokeColor", new ColorProperty(new Color(0,0,0,0)));
 
-        	
         	float hv = horizontalVelocityToTravelDistance((int)horizontalDistance, totalFlightTime(verticalUpDistance, verticalDownDistance));
         	float vv = verticalVelocityToReachHeight((int)verticalUpDistance);
         	PVector pv = new PVector(hv, 0-vv);
         	
+//        	println(delay);
+//        	println((float)delay/1000);
     		Multiplexer throwActions = new Multiplexer();		
-        	AbstractAction gravity = new Delay(new Gravity(g), (float)delay*j);
-        	AbstractAction push = new Delay(new MoveBy(pv), (float)delay*j);
+        	AbstractAction gravity = new Delay(new Gravity(g), delay/(j*100+1000));
+        	AbstractAction push = new Delay(new MoveBy(pv), delay/(j*100+1000));
+        	AbstractAction rotate = new Delay(new Rotate((0-angle)*FastMath.DEG_TO_RAD), delay/(j*100+1000));
 
     		throwActions.add(gravity);
         	throwActions.add(push);
+        	throwActions.add(rotate);
 
     		Multiplexer stopActions = new Multiplexer();		
     		Stop stop = new Stop();
     		stopActions.add(new Repeat(stop));
     		stopActions.add(new MoveTo((int)(gLocal.getX()+targetWordPos.x), (int)targetWordPos.y));
+    		stopActions.add(new Rotate(0));
     		Condition condition = new HasReachedTarget(stopActions, throwActions, targetWordPos.y);
     		// Tracker works out if object is being processed by action.
     		trackAction = new TrackerExtra(condition);
@@ -515,8 +559,8 @@ public class TheMirrorProject extends PApplet {
 			
 		double rand = strMin + (strMax-strMin) * Math.random();
 
-		AbstractAction gravityNoFade = new Delay(new Gravity((float)strength+(float)rand), (float)delay*index);
-		AbstractAction gravity = new Delay(new GravityFadeTo((float)strength+(float)rand, 0, fadeSpeed, true, false), (float)delay*index);
+		AbstractAction gravityNoFade = new Delay(new Gravity((float)g+(float)rand), (float)delay*index);
+		AbstractAction gravity = new Delay(new GravityFadeTo((float)g+(float)rand, 0, fadeSpeed, true, false), (float)delay*index);
 
 		Behaviour gravityBehaviour = gravity.makeBehaviour();
 		book.addGlyphBehaviour(gravityBehaviour);

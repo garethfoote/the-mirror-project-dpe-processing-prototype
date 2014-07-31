@@ -77,7 +77,7 @@ public class TheMirrorProject extends PApplet {
 	private double strMin = 0.0;
 	private float g = 0.081f;
 	private int delay = 0;
-	private int delayVariant = 500;
+	private int delayVariant = 150;
 	private int fadeSpeed = 3;
 	String[] targetPoem = {"I am the sea . I hold the Land",
 							"as one holds an apple in his hand.",
@@ -183,7 +183,7 @@ public class TheMirrorProject extends PApplet {
 			 .setColorCaptionLabel(0)
 			 .setCaptionLabel("Max variant in time delay (millisecond)")
 			 .setValue(delayVariant)
-		     .setRange(0, 3000)
+		     .setRange(0, 300)
              .setPosition(0, 19+29+29+29)
 		     .setSize(200, 29);
 
@@ -400,12 +400,11 @@ public class TheMirrorProject extends PApplet {
         	float vv = verticalVelocityToReachHeight((int)verticalUpDistance);
         	PVector pv = new PVector(hv, 0-vv);
         	
-//        	println(delay);
-//        	println((float)delay/1000);
+        	float d = ((j*300+delay)/1000.0f);
     		Multiplexer throwActions = new Multiplexer();		
-        	AbstractAction gravity = new Delay(new Gravity(g), delay/(j*100+1000));
-        	AbstractAction push = new Delay(new MoveBy(pv), delay/(j*100+1000));
-        	AbstractAction rotate = new Delay(new Rotate((0-angle)*FastMath.DEG_TO_RAD), delay/(j*100+1000));
+        	AbstractAction gravity = new Delay(new Gravity(g), d);
+        	AbstractAction push = new Delay(new MoveBy(pv), d);
+        	AbstractAction rotate = new Delay(new Rotate((0-angle)*FastMath.DEG_TO_RAD), d);
 
     		throwActions.add(gravity);
         	throwActions.add(push);

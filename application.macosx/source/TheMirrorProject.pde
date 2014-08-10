@@ -72,9 +72,11 @@ import net.nexttext.property.Property;
   private double strMax = 0.03;
   private double strMin = 0.0;
   private float g = 0.081f;
-  private int delay = 0;
+  private int staggerDelay = 300;
   private int delayVariant = 150;
   private int fadeSpeed = 3;
+  private float minFlightTime;
+  private float maxFlightTime;
   String[] targetPoem = {"I am the sea . I hold the Land",
               "as one holds an apple in his hand.",
               "Hold it fast with sleepless eyes.", 
@@ -91,14 +93,13 @@ import net.nexttext.property.Property;
               };
   private String targetText = "bosom";
   private String sourceText = "goddess";
-  private String targetSentence = "Hold it fast with sleepless eyes";
-  private String sourceSentence = "The preening water laps with the ambivalence of your look.";
   private TextObjectBuilder builder;
   private TextObjectGroup poem1Root;
   private TextObjectGroup poem2Root;
   private TextObjectGroup sourceWord;
   private TextObjectGroup targetWord;
   private int sourceWidth;
+  private int targetWidth;
   private Rectangle targetBox;
 
   private Map<String,Property> ps = new HashMap<String,Property>();
@@ -118,7 +119,6 @@ import net.nexttext.property.Property;
       
     // init the applet
     size(1200, 800);
-//    size(1024, 768);
     smooth();
     
     // init and set the font
@@ -177,7 +177,7 @@ import net.nexttext.property.Property;
     
     cp.addSlider("updateDelay")  
        .setColorCaptionLabel(0)
-       .setCaptionLabel("Max variant in time delay (millisecond)")
+       .setCaptionLabel("Max variant in additional time delay (millisecond)")
        .setValue(delayVariant)
          .setRange(0, 300)
              .setPosition(0, 19+29+29+29)
@@ -252,7 +252,7 @@ import net.nexttext.property.Property;
   public void prepareBook(){
     
       book = new Book(this);
-      book.bRemoveEmptyGroups = false;
+      Book.bRemoveEmptyGroups = false;
       // Must be added for any physics action to work.
     book.addGlyphBehaviour(moveBehaviour);
     
@@ -317,7 +317,9 @@ import net.nexttext.property.Property;
     ps.put("StrokeColor", new ColorProperty(new Color(0,0,0,0)));
       
     targetBox = null;
+//    sourceWidth = sourceWord.getBounds().width;
     sourceWidth = sourceWord.getBounds().width+sourceWord.getRightSibling().getBounds().width;
+    println(sourceWord.getBounds().width,sourceWord.getRightSibling().getBounds().width );
     boolean found = false;
 
     // Get target word and collect words to right of this.
@@ -329,49 +331,51 @@ import net.nexttext.property.Property;
           && element.getClass().getSimpleName().equals("TextObjectGroup")){
 
         postTargetWords.add(element);
-        // TODO - Perhaps add this to all TextObjects.
-        moveBehaviour.addObject(element);
       }
 
       if(element.toString().equals(targetText)){
         targetWord = (TextObjectGroup)element;
         targetBox = targetWord.getBounds();
-
-        OnCollision col = new OnCollision(new RemoveObject());
-        Behaviour colBhvr = col.makeBehaviour();
-        colBhvr.addObject(element);
-        book.addBehaviour(colBhvr);
+        targetWidth = targetWord.getBounds().width-targetWord.getRightSibling().getBounds().width;
+        println(targetWidth);
         found = true;
       }
     }
     
-//    startThrow();
   }
   
-
-  public void startThrow(){
-
-    startButton.hide();
-
-    int delayMin = 0;
-    int delayMax = delayVariant;
-    int delay = 0;
-
-    int angleMin = 0;
-    int angleMax = angleVariant;
-    int angle = 0;
-
+  public void applySourceActions(){
+    
     PVector targetWordPos = targetWord.getPositionAbsolute().get();
     PVector sourceWordPos = sourceWord.getPositionAbsolute().get();
-    float horizontalDistance = targetWordPos.x - sourceWordPos.x;
 
     TextObjectGlyphIterator glyphs = sourceWord.glyphIterator();
     int j = 0;
         while (glyphs.hasNext()) {
+          j++;
+          // Duplicate.
+          TextObject originalGlyph = glyphs.next();
+          TextObject glyph = makeDuplicate(originalGlyph, true);
+          applyDuplicateGlyphActions(glyph, 
+              sourceWordPos, 
+              targetWordPos, 
+              originalGlyph.getPosition().get(), 
+              j);
 
-          int variant = (int) (Math.random()*arcVariant);
-          int verticalUpDistance = (int) arcHeight + variant;
-          int verticalDownDistance = (int) arcHeight + variant - (int)(sourceWordPos.y-targetWordPos.y);
+          // Change letter opacity.
+          originalGlyph.getColor().set(new Color(0,0,0,20));
+
+          // Fade back.
+          int additionalDelay = (int)(minFlightTime/frameRate)*1000;
+          float d = ((j*staggerDelay)+additionalDelay)/1000.0f;
+          AbstractAction fadeTo = new FadeTo(255, 5, true, false);
+          AbstractAction fadeToDelay = new Delay(fadeTo, d);
+          Behaviour fadeToBhvr = fadeToDelay.makeBehaviour();
+          fadeToBhvr.addObject(originalGlyph);
+          book.addGlyphBehaviour(fadeToBhvr);
+        }
+        
+  }
 
 //          http://stackoverflow.com/questions/2106503/pseudorandom-number-generator-exponential-distribution
 //          // Uniform distribution
@@ -382,46 +386,121 @@ import net.nexttext.property.Property;
 //          delay = delayMin + (delayMax-delayMin)*x;
 //          println(delay);
 
-          delay = delayMin + (int)((delayMax-delayMin)*Math.random());
-          angle = angleMin + (int)((angleMax-angleMin)*Math.random());
+  public void applyDuplicateGlyphActions(TextObject dto, PVector sourcePos, PVector targetPos, PVector glyphLocalPos, int index){
+    
+    int hDistance = (int)(targetPos.x -sourcePos.x);
+    int vDistance = (int)(sourcePos.y - targetPos.y);
 
-          j++;
-          TextObject originalGlyph = glyphs.next();
-          TextObject glyph = makeDuplicate(originalGlyph, true);
-          PVectorProperty gLocal = originalGlyph.getPosition();
-          
-          originalGlyph.getColor().set(new Color(0,0,0,127));
+    int delayMin = 0;
+    int delayMax = delayVariant;
 
-          float hv = horizontalVelocityToTravelDistance((int)horizontalDistance, totalFlightTime(verticalUpDistance, verticalDownDistance));
-          float vv = verticalVelocityToReachHeight((int)verticalUpDistance);
-          PVector pv = new PVector(hv, 0-vv);
-          
-          float d = ((j*300+delay)/1000.0f);
+    int angleMin = 0;
+    int angleMax = angleVariant;
+
+    // Glyph position relative to word/group.
+        PVector gLocal = glyphLocalPos;
+
+    // Add a random variation in arc height, start delay and rotation angle.
+        int variant = (int) (Math.random()*arcVariant);
+        int delay = delayMin + (int)((delayMax-delayMin)*Math.random());
+        int angle = angleMin + (int)((angleMax-angleMin)*Math.random());
+
+        int verticalUpDistance = (int) arcHeight + variant;
+        int verticalDownDistance = (int) arcHeight + variant - vDistance;
+
+        // Calculate flight time and vectors for horizontal and vertical.
+        float flightTime = totalFlightTime(verticalUpDistance, verticalDownDistance);
+        float hv = horizontalVelocityToTravelDistance((int)hDistance, flightTime);
+        float vv = verticalVelocityToReachHeight((int)verticalUpDistance);
+        PVector pv = new PVector(hv, 0-vv);
+
+    // Throw actions.
         Multiplexer throwActions = new Multiplexer();    
-          AbstractAction gravity = new Delay(new Gravity(g), d);
-          AbstractAction push = new Delay(new MoveBy(pv), d);
-          AbstractAction rotate = new Delay(new Rotate((0-angle)*FastMath.DEG_TO_RAD), d);
+        throwActions.add(new Gravity(g));
+        throwActions.add(new MoveBy(pv));
+        throwActions.add(new Rotate((0-angle)*FastMath.DEG_TO_RAD));
 
-        throwActions.add(gravity);
-          throwActions.add(push);
-          throwActions.add(rotate);
+        // Delay.
+        float d = ((index*staggerDelay+delay)/1000.0f);
+        AbstractAction throwActionsDelay = new Delay(throwActions, d);
 
+        // Stop actions.
         Multiplexer stopActions = new Multiplexer();    
         Stop stop = new Stop();
         stopActions.add(new Repeat(stop));
-        stopActions.add(new MoveTo((int)(gLocal.getX()+targetWordPos.x), (int)targetWordPos.y));
+        stopActions.add(new MoveTo((int)(gLocal.x+targetPos.x), (int)targetPos.y));
         stopActions.add(new Rotate(0));
-        Condition condition = new HasReachedTarget(stopActions, throwActions, targetWordPos.y);
-        // Tracker works out if object is being processed by action.
-        trackAction = new TrackerExtra(condition);
-        Behaviour topBehaviour = trackAction.makeBehaviour();
-        
-        shiftTargetLine(trackAction);
-
+        Condition condition = new HasReachedTarget(stopActions, throwActionsDelay, targetPos.y);
+        Behaviour topBehaviour = condition.makeBehaviour();
+    
         book.addGlyphBehaviour(topBehaviour);
-        topBehaviour.addObject(glyph);
-        moveBehaviour.addObject(glyph);
+        topBehaviour.addObject(dto);
+        moveBehaviour.addObject(dto);
+    
+  }
+
+  public void applyTargetActions(){
+    
+    TextObjectGlyphIterator glyphs = targetWord.glyphIterator();
+    int j = 0;
+        while (glyphs.hasNext()) {
+          j++;
+          TextObject glyph = glyphs.next();
+          // Fade out.
+          int additionalDelay = (int)(minFlightTime/frameRate)*1000;
+          float d = ((j*staggerDelay)+additionalDelay)/1000.0f;
+          AbstractAction fadeTo = new FadeTo(1, 5, true, false);
+          AbstractAction fadeToDelay = new Delay(fadeTo, d);
+          
+          Behaviour fadeToBhvr = fadeToDelay.makeBehaviour();
+          fadeToBhvr.addObject(glyph);
+          book.addGlyphBehaviour(fadeToBhvr);
         }
+    
+  }
+
+  public void applyTargetLineActions(){
+    
+    // Shift words along to create space as letters land.
+    float incrementX = (float)(sourceWidth-targetWidth)/sourceText.length();
+    println("targetBox.width", targetBox.width);
+    println("sourceWidth", sourceWidth);
+    println("-", (float)(20)/7);
+    println("incrementX", incrementX);
+    for(int i=0; i<sourceText.length(); i++){
+          i++;
+          int additionalDelay = (int)(minFlightTime/frameRate)*1000;
+          float d = ((i*staggerDelay)+additionalDelay)/1000.0f;
+
+          for (TextObject to : postTargetWords) {
+            // Move post target words along incrementally.
+            AbstractAction moveRelativeAction = new MoveToRelative(incrementX, 0);
+            AbstractAction moveToDelay = new Delay(moveRelativeAction, d);
+            Behaviour moveBhvr = moveToDelay.makeBehaviour();
+            moveBhvr.addObject(to);
+            book.addBehaviour(moveBhvr);
+          }
+        }
+
+    
+  }
+  
+
+  public void startThrow(){
+
+    startButton.hide();
+
+    PVector targetWordPos = targetWord.getPositionAbsolute().get();
+    PVector sourceWordPos = sourceWord.getPositionAbsolute().get();
+        int verticalDownDistance = (int) arcHeight - (int)(sourceWordPos.y - targetWordPos.y);
+
+        // Calculate minimum flight time.
+        minFlightTime = totalFlightTime(arcHeight, verticalDownDistance);
+//        maxFlightTime = totalFlightTime(arcHeight, verticalDownDistance);
+
+    applySourceActions();
+    applyTargetActions();
+    applyTargetLineActions();
     
   }
 
@@ -554,8 +633,8 @@ import net.nexttext.property.Property;
       
     double rand = strMin + (strMax-strMin) * Math.random();
 
-    AbstractAction gravityNoFade = new Delay(new Gravity((float)g+(float)rand), (float)delay*index);
-    AbstractAction gravity = new Delay(new GravityFadeTo((float)g+(float)rand, 0, fadeSpeed, true, false), (float)delay*index);
+    AbstractAction gravityNoFade = new Delay(new Gravity((float)g+(float)rand), (float)staggerDelay*index);
+    AbstractAction gravity = new Delay(new GravityFadeTo((float)g+(float)rand, 0, fadeSpeed, true, false), (float)staggerDelay*index);
 
     Behaviour gravityBehaviour = gravity.makeBehaviour();
     book.addGlyphBehaviour(gravityBehaviour);
@@ -574,8 +653,5 @@ import net.nexttext.property.Property;
     book.step();
     book.draw();
 
-//    if(trackAction != null && trackAction.getCount() > 0){
-//      println("COUNT>>",trackAction.getCount());
-//    }
   }
 

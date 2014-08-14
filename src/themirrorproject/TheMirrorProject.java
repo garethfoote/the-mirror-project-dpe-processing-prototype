@@ -79,9 +79,9 @@ public class TheMirrorProject extends PApplet {
 	private int staggerDelay = 300;
 	private int delayVariant = 150;
 	private int fadeSpeed = 3;
-	private float minFlightTime;
-	private float maxFlightTime;
-	String[] targetPoem = {"I am the sea . I hold the Land",
+	private float minFlightTime = Float.MAX_VALUE;
+	private float maxFlightTime = 0.0f;
+	String[] targetPoem = {"I am the sea. I hold the Land",
 							"as one holds an apple in his hand.",
 							"Hold it fast with sleepless eyes.", 
 							"Watching the continents sink and rise.",
@@ -95,7 +95,7 @@ public class TheMirrorProject extends PApplet {
 							"giant five-headed snake",
 							"wrapped around us"
 							};
-	private String targetText = "bosom";
+	private String targetText = "continents";
 	private String sourceText = "goddess";
 	private TextObjectBuilder builder;
 	private TextObjectGroup poem1Root;
@@ -263,7 +263,7 @@ public class TheMirrorProject extends PApplet {
 		builder = new TextObjectBuilder(book);
 		builder.setFont(fenix, 28);
 		builder.addGlyphProperty("StrokeColor", new ColorProperty(new Color(0,0,0,0)));
-		builder.setAddToSpatialList(true);
+//		builder.setAddToSpatialList(true);
 
 		TextPage poem1 = book.addPage("poem1");
 		TextPage poem2 = book.addPage("poem2");
@@ -321,9 +321,7 @@ public class TheMirrorProject extends PApplet {
 		ps.put("StrokeColor", new ColorProperty(new Color(0,0,0,0)));
     	
 		targetBox = null;
-//		sourceWidth = sourceWord.getBounds().width;
-		sourceWidth = sourceWord.getBounds().width+sourceWord.getRightSibling().getBounds().width;
-		println(sourceWord.getBounds().width,sourceWord.getRightSibling().getBounds().width );
+		sourceWidth = sourceWord.getBounds().width;
 		boolean found = false;
 
 		// Get target word and collect words to right of this.
@@ -340,14 +338,22 @@ public class TheMirrorProject extends PApplet {
 			if(element.toString().equals(targetText)){
 				targetWord = (TextObjectGroup)element;
 				targetBox = targetWord.getBounds();
-				targetWidth = targetWord.getBounds().width-targetWord.getRightSibling().getBounds().width;
-				println(targetWidth);
+				targetWidth = targetWord.getBounds().width;
+				book.getSpatialList().add(targetWord);
 				found = true;
 			}
 		}
 		
 	}
 	
+	
+	
+	public void findTarget(){
+		
+		
+		
+	}
+
 	public void applySourceActions(){
 		
 		PVector targetWordPos = targetWord.getPositionAbsolute().get();
@@ -427,6 +433,12 @@ public class TheMirrorProject extends PApplet {
         // Delay.
         float d = ((index*staggerDelay+delay)/1000.0f);
         AbstractAction throwActionsDelay = new Delay(throwActions, d);
+        if(minFlightTime > flightTime+(d*frameRate)){
+        	minFlightTime = flightTime+(d*frameRate);
+        }
+        if(maxFlightTime < flightTime+(d*frameRate)){
+        	maxFlightTime = flightTime+(d*frameRate);
+        }
 
         // Stop actions.
         Multiplexer stopActions = new Multiplexer();		
@@ -434,7 +446,7 @@ public class TheMirrorProject extends PApplet {
         stopActions.add(new Repeat(stop));
         stopActions.add(new MoveTo((int)(gLocal.x+targetPos.x), (int)targetPos.y));
         stopActions.add(new Rotate(0));
-        Condition condition = new HasReachedTarget(stopActions, throwActionsDelay, targetPos.y);
+        Condition condition = new HasReachedTarget(stopActions, throwActionsDelay, targetPos);
         Behaviour topBehaviour = condition.makeBehaviour();
     
         book.addGlyphBehaviour(topBehaviour);
@@ -446,13 +458,13 @@ public class TheMirrorProject extends PApplet {
 	public void applyTargetActions(){
 		
 		TextObjectGlyphIterator glyphs = targetWord.glyphIterator();
-		int j = 0;
+		int j = targetWord.getNumChildren();
         while (glyphs.hasNext()) {
-        	j++;
+        	j--;
         	TextObject glyph = glyphs.next();
         	// Fade out.
         	int additionalDelay = (int)(minFlightTime/frameRate)*1000;
-        	float d = ((j*staggerDelay)+additionalDelay)/1000.0f;
+        	float d = (additionalDelay-(j*staggerDelay))/1000.0f;
         	AbstractAction fadeTo = new FadeTo(1, 5, true, false);
         	AbstractAction fadeToDelay = new Delay(fadeTo, d);
         	
@@ -466,29 +478,25 @@ public class TheMirrorProject extends PApplet {
 	public void applyTargetLineActions(){
 		
 		// Shift words along to create space as letters land.
-		float incrementX = (float)(sourceWidth-targetWidth)/sourceText.length();
-		println("targetBox.width", targetBox.width);
-		println("sourceWidth", sourceWidth);
-		println("-", (float)(20)/7);
-		println("incrementX", incrementX);
-		for(int i=0; i<sourceText.length(); i++){
-        	i++;
-        	int additionalDelay = (int)(minFlightTime/frameRate)*1000;
-        	float d = ((i*staggerDelay)+additionalDelay)/1000.0f;
-
-        	for (TextObject to : postTargetWords) {
-        		// Move post target words along incrementally.
-        		AbstractAction moveRelativeAction = new MoveToRelative(incrementX, 0);
-        		AbstractAction moveToDelay = new Delay(moveRelativeAction, d);
-        		Behaviour moveBhvr = moveToDelay.makeBehaviour();
-        		moveBhvr.addObject(to);
-        		book.addBehaviour(moveBhvr);
-        	}
+		float changeX = (float)(sourceWidth-targetWidth);
+		int additionalDelay = (int)(maxFlightTime/frameRate);
+        for (TextObject to : postTargetWords) {
+                // Move post target words along incrementally.
+                PVector pos = to.getPosition().get();
+                pos.add(changeX, 0, 0);
+        		AbstractAction moveAction = new MoveToEase(pos, 1);
+        		AbstractAction moveDelay = new Delay(moveAction, additionalDelay);
+        		Behaviour moveBhvr;
+        		if(changeX > 0){
+        			moveBhvr = moveAction.makeBehaviour();
+        		} else {
+        			moveBhvr = moveDelay.makeBehaviour();
+        		}
+                moveBhvr.addObject(to);
+                book.addBehaviour(moveBhvr);
         }
-
 		
 	}
-	
 
 	public void startThrow(){
 
@@ -497,10 +505,6 @@ public class TheMirrorProject extends PApplet {
 		PVector targetWordPos = targetWord.getPositionAbsolute().get();
 		PVector sourceWordPos = sourceWord.getPositionAbsolute().get();
         int verticalDownDistance = (int) arcHeight - (int)(sourceWordPos.y - targetWordPos.y);
-
-        // Calculate minimum flight time.
-        minFlightTime = totalFlightTime(arcHeight, verticalDownDistance);
-//        maxFlightTime = totalFlightTime(arcHeight, verticalDownDistance);
 
 		applySourceActions();
 		applyTargetActions();
@@ -620,7 +624,7 @@ public class TheMirrorProject extends PApplet {
 		stopActions.add(new Repeat(stop));
 		stopActions.add(new MoveTo((int)(glPos.x), (int)targetPos.y));
 		
-		Condition condition = new HasReachedTarget(stopActions, dropInAction, targetPos.y);
+		Condition condition = new HasReachedTarget(stopActions, dropInAction, targetPos);
         trackAction = new TrackerExtra(condition);
 
         // Combined condition, multiplexer, etc.
@@ -656,11 +660,8 @@ public class TheMirrorProject extends PApplet {
 		// apply the behaviours to the text and draw it
 		book.step();
 		book.draw();
-
-//		if(trackAction != null && trackAction.getCount() > 0){
-//			println("COUNT>>",trackAction.getCount());
-//		}
 	}
+
 	
     public static void main(String args[]){
     	PApplet.main(new String[] { themirrorproject.TheMirrorProject.class.getName() });

@@ -2,26 +2,19 @@ package themirrorproject;
 
 import processing.core.PApplet;
 import processing.core.PVector;
+import net.nexttext.Locatable;
 import net.nexttext.PLocatableVector;
 import net.nexttext.TextObject;
+import net.nexttext.behaviour.AbstractAction;
 import net.nexttext.behaviour.Action.ActionResult;
-import net.nexttext.behaviour.standard.MoveTo;
 import net.nexttext.property.NumberProperty;
 import net.nexttext.property.PVectorProperty;
-import net.nexttext.property.Property;
 
-public class MoveToEase extends MoveTo {
+public class MoveToEase extends AbstractAction {
 
+    protected Locatable target;
 	int currentFrame;
 	PVector originalPos;
-    /**
-     * Move a TextObject to a specified position.
-     * @param x x target position
-     * @param y y target position
-     */
-    public MoveToEase(int x, int y) {
-    	super(x,y);
-    }
 
     /**
      * Move a TextObject to a specified position.
@@ -31,9 +24,8 @@ public class MoveToEase extends MoveTo {
 	 * travel.
      */
     public MoveToEase( PVector target, long speed ) {
-    	super(target, speed);
-//        PApplet.println("target", target);
-        properties().init("CurrentFrame", new NumberProperty(0));
+    	this.target = new PLocatableVector(target);
+        properties().init("Speed", new NumberProperty(speed));
     }
     
     public static float easeInOutCubic (float t,float b , float c, float d) {
@@ -56,7 +48,6 @@ public class MoveToEase extends MoveTo {
      * <p>Result is complete if it has reached its target. </p>
      */
     public ActionResult behave(TextObject to) {
-        currentFrame++;
 
         float speed = ((NumberProperty)properties().get("Speed")).get();
         if(originalPos == null){
@@ -88,6 +79,8 @@ public class MoveToEase extends MoveTo {
         	posProp.set(target.getLocation().get());
             result.complete = true;
         }
+
+        currentFrame++;
 
         return result;
     }

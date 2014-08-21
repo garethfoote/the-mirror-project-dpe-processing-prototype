@@ -9,7 +9,7 @@ import net.nexttext.behaviour.control.Condition;
 
 public class HasReachedTarget extends Condition {
 
-	private float yPos;
+	private PVector target;
 	
 	/** 
      * Creates a new instance of HasReachedTarget
@@ -17,9 +17,9 @@ public class HasReachedTarget extends Condition {
      * @param trueAction the actions to perform if the TextObject is in the snake
      * @param falseAction the actions to perform if the TextObject is not in the snake
      */
-    public HasReachedTarget(Action trueAction, Action falseAction, float yPos) {
+    public HasReachedTarget(Action trueAction, Action falseAction, PVector target) {
         super(trueAction, falseAction);
-        this.yPos = yPos;
+        this.target = target;
     }
 	
 	@Override
@@ -28,7 +28,8 @@ public class HasReachedTarget extends Condition {
 		
 //		PApplet.println(to, v.y, this.yPos, v.y>this.yPos);
 		
-		if(v.y > this.yPos-10)
+		if(v.y > this.target.y-5 
+			&& v.x > this.target.x-5)
 			return true;
 		
 		return false;

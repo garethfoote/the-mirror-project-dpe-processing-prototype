@@ -49,11 +49,20 @@ public class FlightTo extends PhysicsAction implements TargetingAction{
         int verticalDownDistance = (int) arcHeight + variant - vDistance;
         
         // Calculate flight time and vectors for horizontal and vertical.
-        float flightTime = totalFlightTime(verticalUpDistance, verticalDownDistance);
+        float strength = ((NumberProperty)properties().get("Strength")).get();
+        float flightTime = totalFlightTime(verticalUpDistance, verticalDownDistance, strength);
         float hv = horizontalVelocityToTravelDistance((int)hDistance, flightTime);
         float vv = verticalVelocityToReachHeight((int)verticalUpDistance);
         
         return new PVector(hv, 0-vv);
+    }
+    
+    public static float calculateFlightTime(PVector from, PVector to, int arcHeight, float strength){
+    	
+        // Calculate flight time and vectors for horizontal and vertical.
+        float flightTime = totalFlightTime(arcHeight, arcHeight - (int)(from.y - to.y), strength);
+    	
+    	return flightTime;
     }
     
     public ActionResult behave( TextObject to) {
@@ -88,7 +97,6 @@ public class FlightTo extends PhysicsAction implements TargetingAction{
         // Has reached target?
 		if(sLocal.getY() > tLocal.y-targetArea && sLocal.getY() < tLocal.y+targetArea
 				&& sLocal.getX() > tLocal.x-targetArea && sLocal.getX() < tLocal.x+targetArea){
-			PApplet.println("Has reached target");
 			
 			// Stop at vector.
 			sLocal.set(new PVector((int)tLocal.x, (int)tLocal.y));
@@ -124,22 +132,22 @@ public class FlightTo extends PhysicsAction implements TargetingAction{
 	    return (float) Math.sqrt(2 * g * h);
 	}
 
-	private float horizontalVelocityToTravelDistance(int d, float t) {
+	public static float horizontalVelocityToTravelDistance(int d, float t) {
 	    // Speed = distance / time, there is no acceleration horizontally
 	    return d / t;
 	}
 
-	private float timeToFallHeight(int h){
-        float g = ((NumberProperty)properties().get("Strength")).get();
+	public static float timeToFallHeight(int h, float strength){
+        float g = strength;
 		// Just the time to travel a given distance from stationary under a
 	    // constant acceleration (g).
 	    // http://en.wikipedia.org/wiki/Equations_for_a_falling_body
 		return (float) Math.sqrt((2 * h) / g);
 	}
 
-	private float totalFlightTime(int upH, int downH) {
+	public static float totalFlightTime(int upH, int downH, float strength) {
 	    // Just add the times for the upwards and downwards journeys separately
-	    return timeToFallHeight(upH) + timeToFallHeight(downH);
+	    return timeToFallHeight(upH, strength) + timeToFallHeight(downH, strength);
 	}
 
     /**

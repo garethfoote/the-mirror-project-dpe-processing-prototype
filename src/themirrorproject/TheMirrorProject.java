@@ -300,9 +300,11 @@ public class TheMirrorProject extends PApplet {
 				}
 				postTargetWords.add(element);
 			}
+			
 
 			if(!element.getClass().getSimpleName().equals("TextObjectGlyph")
-				&& element.toString().equals(search)){
+				&& element.toString().equals(search)
+				|| element.toString().equals(search+".")){
 				targetWord = (TextObjectGroup)element;
 				targetLine = targetWord.getParent();
 				targetBox = targetWord.getBounds();
@@ -354,7 +356,7 @@ public class TheMirrorProject extends PApplet {
 		startButton.hide();
 
 		getSource(poem1Root, "goddess");
-		getTarget(poem2Root, "Land");
+		getTarget(poem2Root, "sea");
 
 		println("sourceWord", sourceWord);
 		println("targetWord", targetWord);
@@ -410,7 +412,18 @@ public class TheMirrorProject extends PApplet {
         flightBhvr.addObject(dto);
 
         // Change letter opacity.
-        sourceWord.getColor().set(new Color(0,0,0,20));
+        TextObjectGlyphIterator sourcegi = ((TextObjectGroup)sourceWord).glyphIterator();
+        // For some reason you cannot apply a ApplyToGlyph action to TextObjectGroup.
+        // ...therefore must iterate through Glyphs.
+        while (sourcegi.hasNext()) {
+        	TextObjectGlyph gl = sourcegi.next();
+//        	gl.getColor().set(new Color(0,0,0,20));
+        }
+
+        float minFlightTime = FlightTo.calculateFlightTime(sourcePos, targetPos, arcHeight, g);
+        float maxFlightTime = FlightTo.calculateFlightTime(sourcePos, targetPos, arcHeight+arcVariant, g);
+        maxFlightTime += frameRate*((staggerDelay*(sourceWord.getNumChildren()-1))/1000);
+        println("min/maxFlightTime", minFlightTime, maxFlightTime);
 
 		/*
         // Delay.
@@ -472,12 +485,13 @@ public class TheMirrorProject extends PApplet {
 		
 		// Shift words along to create space as letters land.
 		float changeX = (float)(sourceWidth-targetWidth);
-		int additionalDelay = (int)(maxFlightTime/frameRate);
+//		int additionalDelay = (int)(maxFlightTime/frameRate);
         for (TextObject to : postTargetWords) {
                 // Move post target words along incrementally.
                 PVector pos = to.getPosition().get();
                 pos.add(changeX, 0, 0);
-        		AbstractAction moveAction = new MoveToEase(pos, 1);
+                // Move at 0.5 px per frame.
+        		AbstractAction moveAction = new MoveToEase(pos, 0.5f);
         		Delay pauseDelay = new Delay(moveAction, delaySeconds);
         		Behaviour moveBhvr = pauseDelay.makeBehaviour();
                 moveBhvr.addObject(to);

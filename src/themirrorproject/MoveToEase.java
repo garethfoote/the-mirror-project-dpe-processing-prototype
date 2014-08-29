@@ -23,7 +23,7 @@ public class MoveToEase extends AbstractAction {
 	 * pixels to move in each frame.  Use a very large number for instant
 	 * travel.
      */
-    public MoveToEase( PVector target, long speed ) {
+    public MoveToEase( PVector target, float speed ) {
     	this.target = new PLocatableVector(target);
         properties().init("Speed", new NumberProperty(speed));
     }
@@ -49,33 +49,37 @@ public class MoveToEase extends AbstractAction {
      */
     public ActionResult behave(TextObject to) {
 
+    	// Px per frame.
         float speed = ((NumberProperty)properties().get("Speed")).get();
         if(originalPos == null){
         	originalPos = to.getPosition().get();
         }
 
-        // Total difference
-        PVector newDir = target.getLocation();
-        newDir.sub(originalPos);
+        // Total distance
+        PVector distance = target.getLocation();
+        distance.sub(originalPos);
         
-        // Total frames.
+        // Total frames = distance/speed.
         if(properties().get("TotalFrames") == null){
-        	float frames = (int)(newDir.mag()/speed);
+        	float frames = (int)(distance.mag()/speed);
         	properties().init("TotalFrames", new NumberProperty(frames));
         }
 
-        // Calculate unit position with ease and multiply by that factor.
+        // Current frame / total frames.
         int t = (int)((NumberProperty)properties().get("TotalFrames")).get();
-        float factor = easeInOutCubic(currentFrame, 0, 1, t);
-        newDir.mult(factor);
-        newDir.add(originalPos);
+        // Factor on scale of 0-1.
+        float factor = easeInOutSine(currentFrame, 0, 1, t);
+        // Factor is on 0 to 1 scale so multiple this by distance.
+        distance.mult(factor);
+        // New position.
+        distance.add(originalPos);
 
         ActionResult result = new ActionResult(false, true, false);
         
         PVectorProperty posProp = to.getPosition();
-        posProp.set(newDir);
+        posProp.set(distance);
         
-        if (newDir.mag()-target.getLocation().get().mag() <= 0) {
+        if(factor >= 1) {
         	posProp.set(target.getLocation().get());
             result.complete = true;
         }

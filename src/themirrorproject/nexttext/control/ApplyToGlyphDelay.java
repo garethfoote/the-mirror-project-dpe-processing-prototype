@@ -18,9 +18,11 @@ public class ApplyToGlyphDelay extends AbstractAction {
     private Action action;
     private int index;
     private Long startTime;
+    private boolean reverse;
  
-    public ApplyToGlyphDelay(Action descendantAction, float duration) {
+    public ApplyToGlyphDelay(Action descendantAction, float duration, boolean reverse) {
         this.action = descendantAction;
+        this.reverse = reverse;
         properties().init("Duration", new NumberProperty(1000*duration));
     }
 
@@ -48,13 +50,22 @@ public class ApplyToGlyphDelay extends AbstractAction {
         else {
 
             ActionResult res = new ActionResult();
+            // getNumChildren() returning 1 in all cases here so iterating glyphs to count.
             TextObjectGlyphIterator i = ((TextObjectGroup)to).glyphIterator();            
+            int total = 0;
+            while (i.hasNext()) {                
+            	i.next();
+            	total++;
+            }
+
+            // Now iterate children and apply delay.
+            i = ((TextObjectGroup)to).glyphIterator();            
             while (i.hasNext()) {                
             	TextObject gl = i.next();
             	index++;
             	// get duration property
             	long now = System.currentTimeMillis();
-            	long duration = getDuration(gl, index);
+            	long duration = getDuration(gl, index, total);
             	if(startTime == null){
             		startTime = System.currentTimeMillis();
             	}
@@ -101,7 +112,7 @@ public class ApplyToGlyphDelay extends AbstractAction {
     }
     
     
-    public Long getDuration(TextObject to, int index){
+    public Long getDuration(TextObject to, int index, int total){
 
         long duration = ((NumberProperty)properties().get("Duration")).getLong();
 
@@ -110,7 +121,8 @@ public class ApplyToGlyphDelay extends AbstractAction {
     
     	// create a map entry for new objects
     	if ( toDuration == null ) {
-    		toDuration = new Long( duration*index );   
+    		int factor = (this.reverse == true) ? total-index : index;
+    		toDuration = new Long( duration*factor );   
     		textObjectData.put(to, toDuration);
     	}
         

@@ -82,12 +82,10 @@ public class TheMirrorProject extends PApplet {
 	private int staggerDelay = 300;
 	private int delayVariant = 150;
 	private int fadeSpeed = 3;
-	private float minFlightTime = Float.MAX_VALUE;
-	private float maxFlightTime = 0.0f;
 	String test = "I am the sea . I hold the Land " + '\n' +
 			"as one holds an apple in his hand." + '\n' +
 			"Hold it fast with sleepless eyes.";
-	String[] poemTwo = {"I am the sea. I hold the Land",
+	String[] poemTwo = {"I am the seasoness. I hold the Land",
 							"as one holds an apple in his hand.",
 							"Hold it fast with sleepless eyes.", 
 							"Watching the continents sink and rise.",
@@ -148,7 +146,7 @@ public class TheMirrorProject extends PApplet {
 
 	}
 	
-	public void buildUI(){
+	private void buildUI(){
 
 		cp = new ControlP5(this);
 		
@@ -257,10 +255,9 @@ public class TheMirrorProject extends PApplet {
 
 	  	buildText();
 	  	startButton.show();
-		
 	}
 	
-	public void prepareBook(){
+	private void prepareBook(){
 		
 	  	book = new Book(this);
 	  	Book.bRemoveEmptyGroups = false;
@@ -271,16 +268,14 @@ public class TheMirrorProject extends PApplet {
 		builder = new TextObjectBuilder(book);
 		builder.setFont(fenix, 28);
 		builder.addGlyphProperty("StrokeColor", new ColorProperty(new Color(0,0,0,0)));
-//		builder.setAddToSpatialList(true);
 
 		TextPage poem1 = book.addPage("poem1");
 		TextPage poem2 = book.addPage("poem2");
 		poem1Root = poem1.getTextRoot();
 		poem2Root = poem2.getTextRoot();
-	
 	}
 	
-	public void getTarget(TextObjectGroup poemRoot, String search){
+	private void getTarget(TextObjectGroup poemRoot, String search){
 
 		boolean found = false;
 		targetBox = null;
@@ -292,7 +287,6 @@ public class TheMirrorProject extends PApplet {
 		while (itrT.hasNext()) {
 			TextObject element = itrT.next();
 			if(found == true
-//					&& !element.toString().equals(targetLine.toString())
 					&& element.getClass().getSimpleName().equals("TextObjectGroup")){
 
 				if(element.toString().equals(targetLine.toString())){
@@ -301,7 +295,6 @@ public class TheMirrorProject extends PApplet {
 				postTargetWords.add(element);
 			}
 			
-
 			if(!element.getClass().getSimpleName().equals("TextObjectGlyph")
 				&& element.toString().equals(search)
 				|| element.toString().equals(search+".")){
@@ -315,7 +308,7 @@ public class TheMirrorProject extends PApplet {
 		}	
 	}
 	
-	public void getSource(TextObjectGroup poemRoot, String search){
+	private void getSource(TextObjectGroup poemRoot, String search){
 		
 		// Get source word TextObject from TextObjectGroup.
 		TextObjectIterator itrS = poemRoot.iterator();
@@ -329,7 +322,7 @@ public class TheMirrorProject extends PApplet {
 		sourceWidth = sourceWord.getBounds().width;
 	}
 
-	public void buildText() {
+	private void buildText() {
 
 		// Position poem2.
 		poem2Root.getPosition().set(new PVector(width/2,0));
@@ -347,16 +340,15 @@ public class TheMirrorProject extends PApplet {
 		for (int i = 0; i < poemTwo.length; i++) {
 			builder.buildSentence(poemTwo[i], 0, (lineHeight*i)+(height/2));
 		}
-//		builder.buildSentence(test, 0, 0);
 		
 	}
 
-	public void startThrow(){
+	private void startThrow(){
 
 		startButton.hide();
 
 		getSource(poem1Root, "goddess");
-		getTarget(poem2Root, "sea");
+		getTarget(poem2Root, "seasoness");
 
 		println("sourceWord", sourceWord);
 		println("targetWord", targetWord);
@@ -387,17 +379,18 @@ public class TheMirrorProject extends PApplet {
 
 	}
 
-	public void applySourceActions(int delaySeconds){
+	private void applySourceActions(int delaySeconds){
 		
 		PVector targetPos = targetWord.getPositionAbsolute().get();
 		PVector sourcePos = sourceWord.getPositionAbsolute().get();
+		boolean leftToRight = targetPos.x > sourcePos.x;
 
 		PVector diff = new PVector();
 		diff.set(targetPos);
 		diff.sub(sourcePos);
         TextObject dto = makeDuplicate(sourceWord, true);
 		FlightTo flight = new FlightTo(diff, (int)arcHeight, arcVariant, (float)g);
-		ApplyToGlyphDelay applyToGlyph = new ApplyToGlyphDelay(flight, (float)staggerDelay/1000);
+		ApplyToGlyphDelay applyToGlyph = new ApplyToGlyphDelay(flight, (float)staggerDelay/1000, leftToRight);
 		Delay delay = new Delay(applyToGlyph, delaySeconds);
 		Behaviour flightBhvr = delay.makeBehaviour();
 		
@@ -417,39 +410,12 @@ public class TheMirrorProject extends PApplet {
         // ...therefore must iterate through Glyphs.
         while (sourcegi.hasNext()) {
         	TextObjectGlyph gl = sourcegi.next();
-//        	gl.getColor().set(new Color(0,0,0,20));
+        	gl.getColor().set(new Color(0,0,0, 127));
         }
 
-        float minFlightTime = FlightTo.calculateFlightTime(sourcePos, targetPos, arcHeight, g);
-        float maxFlightTime = FlightTo.calculateFlightTime(sourcePos, targetPos, arcHeight+arcVariant, g);
-        maxFlightTime += frameRate*((staggerDelay*(sourceWord.getNumChildren()-1))/1000);
-        println("min/maxFlightTime", minFlightTime, maxFlightTime);
 
-		/*
-        // Delay.
-        float d = ((index*staggerDelay)/1000.0f);
-        AbstractAction throwActionsDelay = new Delay(throwActions, d);
-        if(minFlightTime > flightTime+(d*frameRate)){
-        	minFlightTime = flightTime+(d*frameRate);
-        }
-        if(maxFlightTime < flightTime+(d*frameRate)){
-        	maxFlightTime = flightTime+(d*frameRate);
-        }
-        */
-
-        /*
-        	// Fade back.
-        	int additionalDelay = (int)(minFlightTime/frameRate)*1000;
-        	float d = ((j*staggerDelay)+additionalDelay)/1000.0f;
-        	AbstractAction fadeTo = new FadeTo(255, 5, true, false);
-        	AbstractAction fadeToDelay = new Delay(fadeTo, d);
-        	Behaviour fadeToBhvr = fadeToDelay.makeBehaviour();
-        	fadeToBhvr.addObject(originalGlyph);
-        	book.addGlyphBehaviour(fadeToBhvr);
-        	*/
 	}
-        
-
+	
 //        	http://stackoverflow.com/questions/2106503/pseudorandom-number-generator-exponential-distribution
 //        	// Uniform distribution
 //        	delay = delayMin + (delayMax-delayMin)*x;
@@ -459,16 +425,21 @@ public class TheMirrorProject extends PApplet {
 //        	delay = delayMin + (delayMax-delayMin)*x;
 //        	println(delay);
 
-	public void applyTargetActions(int delaySeconds){
+	private void applyTargetActions(int delaySeconds){
 		
+		PVector targetPos = targetWord.getPositionAbsolute().get();
+		PVector sourcePos = sourceWord.getPositionAbsolute().get();
+        int minFlightMillis = (int)((calculateMinFlightTime()/frameRate)*1000);
+		boolean leftToRight = targetPos.x > sourcePos.x;
+
 		TextObjectGlyphIterator glyphs = targetWord.glyphIterator();
-		int j = targetWord.getNumChildren();
+		int j = (leftToRight == false) ? targetWord.getNumChildren() : 0;
         while (glyphs.hasNext()) {
-        	j--;
+        	j = (leftToRight == false) ? j-1 : j+1;
         	TextObject glyph = glyphs.next();
-        	// Fade out.
-        	int additionalDelay = (int)(minFlightTime/frameRate)*1000;
-        	float d = (additionalDelay-(j*staggerDelay))/1000.0f;
+        	// Ensure the last glyph has started to fade at minFlightTime.
+        	float d = (minFlightMillis-(j*staggerDelay))/1000.f;
+
         	AbstractAction fadeTo = new FadeTo(1, 5, true, false);
         	AbstractAction fadeToDelay = new Delay(fadeTo, d);
         	// Keeping these two delays separate for the moment.
@@ -478,21 +449,36 @@ public class TheMirrorProject extends PApplet {
         	fadeToBhvr.addObject(glyph);
         	book.addGlyphBehaviour(fadeToBhvr);
         }
-		
 	}
 
-	public void applyTargetLineActions(int delaySeconds){
+	private void applyTargetLineActions(int delaySeconds){
 		
+		PVector targetPos = targetWord.getPositionAbsolute().get();
+		PVector sourcePos = sourceWord.getPositionAbsolute().get();
+        float minFlight = calculateMinFlightTime();
+		boolean leftToRight = targetPos.x > sourcePos.x;
+		
+		float speed = 0.5f; // pixels per frame
+		float distance = (float)(sourceWidth-targetWidth);
+		float time = Math.abs(distance)/speed; // frames
+
+		// If right to left and space if reducing.
+		if(leftToRight == false && distance < 0){
+			// Wait until full minFlightTime
+			time = 0-(127/5);
+		}
+
+        float d = (minFlight-time)/frameRate;
+
 		// Shift words along to create space as letters land.
-		float changeX = (float)(sourceWidth-targetWidth);
-//		int additionalDelay = (int)(maxFlightTime/frameRate);
         for (TextObject to : postTargetWords) {
                 // Move post target words along incrementally.
                 PVector pos = to.getPosition().get();
-                pos.add(changeX, 0, 0);
+                pos.add(distance, 0, 0);
                 // Move at 0.5 px per frame.
-        		AbstractAction moveAction = new MoveToEase(pos, 0.5f);
-        		Delay pauseDelay = new Delay(moveAction, delaySeconds);
+        		AbstractAction moveAction = new MoveToEase(pos, speed);
+        		AbstractAction moveDelay = new Delay(moveAction, d);
+        		Delay pauseDelay = new Delay(moveDelay, delaySeconds);
         		Behaviour moveBhvr = pauseDelay.makeBehaviour();
                 moveBhvr.addObject(to);
                 book.addBehaviour(moveBhvr);
@@ -500,151 +486,31 @@ public class TheMirrorProject extends PApplet {
 		
 	}
 
-	public float verticalVelocityToReachHeight(float h) {
-	    // Same as equation to find velocity at point of impact for a body
-	    // dropped from a given height.
-	    // http://en.wikipedia.org/wiki/Equations_for_a_falling_body
-	    return (float) Math.sqrt(2 * g * h);
-	}
-
-	
-	public float horizontalVelocityToTravelDistance(int d, float t) {
-	    // Speed = distance / time, there is no acceleration horizontally
-	    return d / t;
-	}
-
-	public float timeToFallHeight(int h){
-		// Just the time to travel a given distance from stationary under a
-	    // constant acceleration (g).
-	    // http://en.wikipedia.org/wiki/Equations_for_a_falling_body
-		return (float) Math.sqrt((2 * h) / g);
-	}
-
-	public float totalFlightTime(int upH, int downH) {
-	    // Just add the times for the upwards and downwards journeys separately
-	    return timeToFallHeight(upH) + timeToFallHeight(downH);
-	}
-	
-	public TextObject makeDuplicateGlyph(TextObject to, Boolean addToSpatialList){
-        
-		TextObject duplicate = new TextObjectGlyph(to.toString(), fenix, 28, ps, to.getLocation());
-        poem1Root.attachChild(duplicate);
-        if(addToSpatialList == true){
-        	book.getSpatialList().add(duplicate);
-        }
+	private float calculateMinFlightTime(){
 		
-		return duplicate;
+		PVector targetPos = targetWord.getPositionAbsolute().get();
+		PVector sourcePos = sourceWord.getPositionAbsolute().get();
+
+        return FlightTo.calculateFlightTime(sourcePos, targetPos, arcHeight, g);
+	}
+        
+	private float calculateMaxFlightTime(){
+		
+		PVector targetPos = targetWord.getPositionAbsolute().get();
+		PVector sourcePos = sourceWord.getPositionAbsolute().get();
+
+		float maxFlightTime = FlightTo.calculateFlightTime(sourcePos, targetPos, arcHeight+arcVariant, g);
+        maxFlightTime += frameRate*((staggerDelay*(sourceWord.getNumChildren()-1))/1000);
+
+        return maxFlightTime;
 	}
 
-	public TextObject makeDuplicate(TextObject to, Boolean addToSpatialList){
+	private TextObject makeDuplicate(TextObject to, Boolean addToSpatialList){
         
 		builder.setParent(poem1Root);
 		TextObject duplicate = builder.buildSentence(to.toString(), to.getLocation(), Integer.MAX_VALUE);
 		
 		return duplicate;
-	}
-	
-	public void shiftTargetLine(TrackerExtra tracker){
-
-        // Apply shift to words right of target.
-		float incrementX = (sourceWidth-targetBox.width)/sourceText.length();
-        for (TextObject to : postTargetWords) {
-        	// TODO - (??) Maybe add delay based on sentence index.
-        	// Move post target words along incrementally.
-            AbstractAction shiftPostTargetWord = new MoveToRelative(incrementX, 0);
-            // The HasReachedTarget condition has stopped processing.
-            HasStoppedProcessing hsp = new HasStoppedProcessing(shiftPostTargetWord, new DoNothing(), tracker);
-            Behaviour hspBhvr = hsp.makeBehaviour();
-            hspBhvr.addObject(to);
-            book.addBehaviour(hspBhvr);
-        }
-	}
-
-	public void startDrop(){
-		
-		startButton.hide();
-		
-		// TODO - (??) Possibly count how many collisions with post target 
-		//        glyphs and then increment only on those drops.
-
-		// Do the business. Drop out, then queue drop in and shift words.
-		int sourceLength = sourceText.length();
-		PVector tPos = targetWord.getPosition().get();
-		TextObjectGlyphIterator glyphs = sourceWord.glyphIterator();
-		int j = 0;
-        while (glyphs.hasNext()) {
-        	TextObject glyph = glyphs.next();
-        	PVectorProperty gLocal = glyph.getPosition();
-        	PVector gPos = new PVector(gLocal.getX()+tPos.x, sourceWord.getLocation().y-height);
-        	// Duplicate glyph and position in same place.
-        	TextObjectGlyph toDropOut = new TextObjectGlyph(glyph.toString(), fenix, 28, ps, glyph.getLocation());
-        	poem1Root.attachChild(toDropOut);
-        	// Duplicate glyph again and position above target.
-        	TextObjectGlyph toDropIn = new TextObjectGlyph(glyph.toString(), fenix, 28, ps, gPos);
-        	poem2Root.attachChild(toDropIn);
-        	book.getSpatialList().add(toDropIn);
-        	// Pass gravity action to this new glyph from drop out.
-        	AbstractAction doA = dropGlyphOut(toDropOut, j);
-        	// Change opacity or original.
-        	glyph.getColor().set(new Color(0,0,0,127));
-        	// Returns condition action for glyph drop which is a condition for shifting words right.
-        	TrackerExtra dropAction = (TrackerExtra)dropGlyphIn(toDropIn, doA, targetWord.getLocation());
-
-			// Apply shift to words right of target.
-        	float incrementX = (sourceWidth-targetBox.width)/sourceLength;
-			for (TextObject to : postTargetWords) {
-				// TODO - (??) Maybe add delay based on sentence index.
-				// Move post target words along incrementally.
-				// AbstractAction shiftPostTargetWord = new MoveTo((int)(pos.x+(incrementX*(j+1))), (int)pos.y, 3);
-				AbstractAction shiftPostTargetWord = new MoveToRelative(incrementX, 0);
-				// The HasReachedTarget condition has stopped processing.
-				HasStoppedProcessing hsp = new HasStoppedProcessing(shiftPostTargetWord, new DoNothing(), dropAction);
-				Behaviour hspBhvr = hsp.makeBehaviour();
-				hspBhvr.addObject(to);
-				book.addBehaviour(hspBhvr);
-        	}
-
-        	j++;
-        }
-		
-	}
-	
-	public AbstractAction dropGlyphIn(TextObject gl, AbstractAction dropInAction, PVector targetPos){
-		
-		PVector glPos = gl.getLocation();
-
-		Multiplexer stopActions = new Multiplexer();		
-		Stop stop = new Stop();
-		stopActions.add(new Repeat(stop));
-		stopActions.add(new MoveTo((int)(glPos.x), (int)targetPos.y));
-		
-		Condition condition = new HasReachedTarget(stopActions, dropInAction, targetPos);
-        trackAction = new TrackerExtra(condition);
-
-        // Combined condition, multiplexer, etc.
-		Behaviour topBhvr = trackAction.makeBehaviour();
-		book.addGlyphBehaviour(topBhvr);
-		
-		topBhvr.addObject(gl);
-		moveBehaviour.addObject(gl);
-
-		return trackAction;
-	}
-	
-	public AbstractAction dropGlyphOut(TextObject gl, int index){
-			
-		double rand = strMin + (strMax-strMin) * Math.random();
-
-		AbstractAction gravityNoFade = new Delay(new Gravity((float)g+(float)rand), (float)staggerDelay*index);
-		AbstractAction gravity = new Delay(new GravityFadeTo((float)g+(float)rand, 0, fadeSpeed, true, false), (float)staggerDelay*index);
-
-		Behaviour gravityBehaviour = gravity.makeBehaviour();
-		book.addGlyphBehaviour(gravityBehaviour);
-		gravityBehaviour.addObject(gl);
-
-		moveBehaviour.addObject(gl);
-		
-		return gravityNoFade;
 	}
 
 	public void draw() {

@@ -377,6 +377,28 @@ public class TheMirrorProject extends PApplet {
 		applyTargetActions(10);
 		applyTargetLineActions(10);
 
+		applyLastSourceActions(10);
+
+	}
+
+	private void applyLastSourceActions(int delaySeconds){
+	
+        float d = calculateMaxFlightTime()/frameRate;
+        AbstractAction fadeTo = new FadeTo(255, 5, true, false);
+        Delay flightDelay = new Delay(fadeTo, d);
+        Delay pauseDelay = new Delay(flightDelay, delaySeconds);
+
+        // Change letter opacity.
+        TextObjectGlyphIterator sourcegi = ((TextObjectGroup)sourceWord).glyphIterator();
+        // For some reason you cannot apply a ApplyToGlyph action to TextObjectGroup.
+        // ...therefore must iterate through Glyphs.
+        while (sourcegi.hasNext()) {
+        	TextObjectGlyph gl = sourcegi.next();
+            Behaviour fadeToBhvr = pauseDelay.makeBehaviour();
+            fadeToBhvr.addObject(gl);
+            book.addGlyphBehaviour(fadeToBhvr);
+        }
+
 	}
 
 	private void applySourceActions(int delaySeconds){

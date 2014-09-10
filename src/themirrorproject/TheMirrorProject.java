@@ -74,7 +74,7 @@ public class TheMirrorProject extends PApplet {
 	private Book book;
 	private PFont fenix;
 	private int arcHeight = 200;
-	private int arcVariant = 50;
+	private int arcVariant = 10;
 	private int angleVariant = 10;
 	private double strMax = 0.03;
 	private double strMin = 0.0;
@@ -85,7 +85,7 @@ public class TheMirrorProject extends PApplet {
 	String test = "I am the sea . I hold the Land " + '\n' +
 			"as one holds an apple in his hand." + '\n' +
 			"Hold it fast with sleepless eyes.";
-	String[] poemTwo = {"I am the seasoness. I hold the Land",
+	String[] poemTwo = {"I am the sea. I hold the Land",
 							"as one holds an apple in his hand.",
 							"Hold it fast with sleepless eyes.", 
 							"Watching the continents sink and rise.",
@@ -99,8 +99,6 @@ public class TheMirrorProject extends PApplet {
 							"giant five-headed snake",
 							"wrapped around us"
 							};
-	private String targetText = "marks";
-	private String sourceText = "apple";
 	private TextObjectBuilder builder;
 	private TextObjectGroup poem1Root;
 	private TextObjectGroup poem2Root;
@@ -139,10 +137,12 @@ public class TheMirrorProject extends PApplet {
 	  	fill(0);
 	  	noStroke();
 	  	
+	  	buildUI();
+	  	textSize(32);
+//	  	text("22", 200, 19+29+29+29+29+29);  // Specify a z-axis value
+	  	
 	  	prepareBook();
 	  	buildText();
-	  	
-	  	buildUI();
 
 	}
 	
@@ -179,8 +179,8 @@ public class TheMirrorProject extends PApplet {
 		cp.addSlider("updateHeightVariant")	
 			 .setColorCaptionLabel(0)
 			 .setCaptionLabel("Max arc height variant (pixels)")
-			 .setValue((float)arcVariant)
-		     .setRange((float)0, (float)arcVariant)
+			 .setValue(arcVariant)
+		     .setRange(0.0f, 50.0f)
 		     .setPosition(0, 19+29+29)
 		     .setSize(200, 29);
 		
@@ -348,8 +348,12 @@ public class TheMirrorProject extends PApplet {
 		startButton.hide();
 
 		getSource(poem1Root, "goddess");
-		getTarget(poem2Root, "seasoness");
+		getTarget(poem2Root, "sea");
 
+		frameRate(60);
+		
+		println("frameRate", frameRate);
+		
 		println("sourceWord", sourceWord);
 		println("targetWord", targetWord);
 
@@ -363,9 +367,9 @@ public class TheMirrorProject extends PApplet {
 		println("sourceWord", sourceWord);
 		println("targetWord", targetWord);
 
-		applySourceActions(5);
-		applyTargetActions(5);
-		applyTargetLineActions(5);
+		applySourceActions(8);
+		applyTargetActions(8);
+		applyTargetLineActions(8);
 
 		getSource(poem1Root, "sky");
 		getTarget(poem2Root, "bosom");
@@ -373,9 +377,9 @@ public class TheMirrorProject extends PApplet {
 		println("sourceWord", sourceWord);
 		println("targetWord", targetWord);
 
-		applySourceActions(10);
-		applyTargetActions(10);
-		applyTargetLineActions(10);
+		applySourceActions(16);
+		applyTargetActions(16);
+		applyTargetLineActions(16);
 
 		applyLastSourceActions(10);
 
@@ -542,6 +546,7 @@ public class TheMirrorProject extends PApplet {
 		// apply the behaviours to the text and draw it
 		book.step();
 		book.draw();
+
 	}
 
 	

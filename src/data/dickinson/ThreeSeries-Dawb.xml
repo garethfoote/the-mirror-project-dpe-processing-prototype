@@ -1,0 +1,98 @@
+<output>
+  <line>
+    <tags>
+      <tag class="NNP">DAWN</tag>
+    </tags>
+    <original><![CDATA[DAWN.]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">When</tag>
+      <tag class="NN">night</tag>
+      <tag class="VBZ">is</tag>
+      <tag class="RB">almost</tag>
+      <tag class="JJ">done</tag>
+    </tags>
+    <original><![CDATA[When night is almost done,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="CC">And</tag>
+      <tag class="VB">sunrise</tag>
+      <tag class="VBZ">grows</tag>
+      <tag class="RB">so</tag>
+      <tag class="IN">near</tag>
+    </tags>
+    <original><![CDATA[And sunrise grows so near]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="DT">That</tag>
+      <tag class="PRP">we</tag>
+      <tag class="MD">can</tag>
+      <tag class="VB">touch</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">spaces</tag>
+    </tags>
+    <original><![CDATA[That we can touch the spaces,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="PRP">It</tag>
+      <tag class="NN">time</tag>
+      <tag class="TO">to</tag>
+      <tag class="VBZ">s</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">hair</tag>
+    </tags>
+    <original><![CDATA[It 's time to smooth the hair]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="CC">And</tag>
+      <tag class="VB">get</tag>
+      <tag class="DT">the</tag>
+      <tag class="NNS">dimples</tag>
+      <tag class="-NONE-">ready</tag>
+    </tags>
+    <original><![CDATA[And get the dimples ready,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="CC">And</tag>
+      <tag class="NN">wonder</tag>
+      <tag class="PRP">we</tag>
+      <tag class="MD">could</tag>
+      <tag class="VB">care</tag>
+    </tags>
+    <original><![CDATA[And wonder we could care]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">For</tag>
+      <tag class="IN">that</tag>
+      <tag class="JJ">old</tag>
+      <tag class="JJ">faded</tag>
+      <tag class="NN">midnight</tag>
+    </tags>
+    <original><![CDATA[For that old faded midnight]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="WDT">That</tag>
+      <tag class="VBD">frightened</tag>
+      <tag class="CC">but</tag>
+      <tag class="DT">an</tag>
+      <tag class="NNP">hour</tag>
+    </tags>
+    <original><![CDATA[That frightened but an hour.]]></original>
+  </line>
+</output>

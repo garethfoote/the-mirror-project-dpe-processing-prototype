@@ -1,0 +1,180 @@
+<output>
+  <line>
+    <tags>
+      <tag class="NNP">XIV</tag>
+    </tags>
+    <original><![CDATA[XIV.]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">He</tag>
+      <tag class="VBD">put</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">belt</tag>
+      <tag class="IN">around</tag>
+      <tag class="PRP$">my</tag>
+      <tag class="NN">life</tag>
+    </tags>
+    <original><![CDATA[He put the belt around my life, --]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="PRP">I</tag>
+      <tag class="VBP">heard</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">buckle</tag>
+      <tag class="NN">snap</tag>
+    </tags>
+    <original><![CDATA[I heard the buckle snap,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="CC">And</tag>
+      <tag class="VBD">turned</tag>
+      <tag class="JJ">away</tag>
+      <tag class="NN">imperial</tag>
+    </tags>
+    <original><![CDATA[And turned away, imperial,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">My</tag>
+      <tag class="NN">lifetime</tag>
+      <tag class="VBG">folding</tag>
+      <tag class="RP">up</tag>
+    </tags>
+    <original><![CDATA[My lifetime folding up]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="JJ">Deliberate</tag>
+      <tag class="IN">as</tag>
+      <tag class="DT">a</tag>
+      <tag class="NN">duke</tag>
+      <tag class="MD">would</tag>
+      <tag class="VB">do</tag>
+    </tags>
+    <original><![CDATA[Deliberate, as a duke would do]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="DT">A</tag>
+      <tag class="JJ">kingdom's</tag>
+      <tag class="NN">title-deed</tag>
+    </tags>
+    <original><![CDATA[A kingdom's title-deed, --]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Henceforth</tag>
+      <tag class="DT">a</tag>
+      <tag class="JJ">dedicated</tag>
+      <tag class="NN">sort</tag>
+    </tags>
+    <original><![CDATA[Henceforth a dedicated sort,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="DT">A</tag>
+      <tag class="NN">member</tag>
+      <tag class="IN">of</tag>
+      <tag class="DT">the</tag>
+      <tag class="NNP">cloud</tag>
+    </tags>
+    <original><![CDATA[A member of the cloud.]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Yet</tag>
+      <tag class="RB">not</tag>
+      <tag class="RB">too</tag>
+      <tag class="RB">far</tag>
+      <tag class="TO">to</tag>
+      <tag class="VB">come</tag>
+      <tag class="IN">at</tag>
+      <tag class="JJ">call</tag>
+    </tags>
+    <original><![CDATA[Yet not too far to come at call,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="CC">And</tag>
+      <tag class="VB">do</tag>
+      <tag class="DT">the</tag>
+      <tag class="JJ">little</tag>
+      <tag class="NNS">toils</tag>
+    </tags>
+    <original><![CDATA[And do the little toils]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="WDT">That</tag>
+      <tag class="VBP">make</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">circuit</tag>
+      <tag class="IN">of</tag>
+      <tag class="DT">the</tag>
+      <tag class="JJ">rest</tag>
+    </tags>
+    <original><![CDATA[That make the circuit of the rest,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="CC">And</tag>
+      <tag class="NN">deal</tag>
+      <tag class="JJ">occasional</tag>
+      <tag class="NNS">smiles</tag>
+    </tags>
+    <original><![CDATA[And deal occasional smiles]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="TO">To</tag>
+      <tag class="NNS">lives</tag>
+      <tag class="IN">that</tag>
+      <tag class="NN">stoop</tag>
+      <tag class="TO">to</tag>
+      <tag class="NN">notice</tag>
+      <tag class="NN">mine</tag>
+    </tags>
+    <original><![CDATA[To lives that stoop to notice mine]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="CC">And</tag>
+      <tag class="RB">kindly</tag>
+      <tag class="VB">ask</tag>
+      <tag class="PRP">it</tag>
+      <tag class="-NONE-">in</tag>
+    </tags>
+    <original><![CDATA[And kindly ask it in, --]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Whose</tag>
+      <tag class="NNP">invitation</tag>
+      <tag class="VBD">knew</tag>
+      <tag class="PRP">you</tag>
+      <tag class="RB">not</tag>
+    </tags>
+    <original><![CDATA[Whose invitation, knew you not]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="IN">For</tag>
+      <tag class="WP">whom</tag>
+      <tag class="PRP">I</tag>
+      <tag class="MD">must</tag>
+      <tag class="VB">decline</tag>
+    </tags>
+    <original><![CDATA[For whom I must decline?]]></original>
+  </line>
+</output>

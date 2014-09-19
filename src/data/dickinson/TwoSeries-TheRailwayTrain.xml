@@ -1,0 +1,188 @@
+<output>
+  <line>
+    <tags>
+      <tag class="DT">THE</tag>
+      <tag class="NNP">RAILWAY</tag>
+      <tag class="NNP">TRAIN</tag>
+    </tags>
+    <original><![CDATA[THE RAILWAY TRAIN.]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">I</tag>
+      <tag class="IN">like</tag>
+      <tag class="TO">to</tag>
+      <tag class="VB">see</tag>
+      <tag class="PRP">it</tag>
+      <tag class="VB">lap</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">miles</tag>
+    </tags>
+    <original><![CDATA[I like to see it lap the miles,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="CC">And</tag>
+      <tag class="NN">lick</tag>
+      <tag class="DT">the</tag>
+      <tag class="NNS">valleys</tag>
+      <tag class="-NONE-">up</tag>
+    </tags>
+    <original><![CDATA[And lick the valleys up,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="CC">And</tag>
+      <tag class="VB">stop</tag>
+      <tag class="TO">to</tag>
+      <tag class="VB">feed</tag>
+      <tag class="PRP">itself</tag>
+      <tag class="IN">at</tag>
+      <tag class="JJ">tanks</tag>
+    </tags>
+    <original><![CDATA[And stop to feed itself at tanks;]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="CC">And</tag>
+      <tag class="JJ">then</tag>
+      <tag class="NN">prodigious</tag>
+      <tag class="NN">step</tag>
+    </tags>
+    <original><![CDATA[And then, prodigious, step]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[ ]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Around</tag>
+      <tag class="DT">a</tag>
+      <tag class="NN">pile</tag>
+      <tag class="IN">of</tag>
+      <tag class="NNP">mountains</tag>
+    </tags>
+    <original><![CDATA[Around a pile of mountains,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">And</tag>
+      <tag class="NNP">supercilious</tag>
+      <tag class="NN">peer</tag>
+    </tags>
+    <original><![CDATA[And, supercilious, peer]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="IN">In</tag>
+      <tag class="NNS">shanties</tag>
+      <tag class="IN">by</tag>
+      <tag class="DT">the</tag>
+      <tag class="NNS">sides</tag>
+      <tag class="IN">of</tag>
+      <tag class="JJ">roads</tag>
+    </tags>
+    <original><![CDATA[In shanties by the sides of roads;]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="CC">And</tag>
+      <tag class="RB">then</tag>
+      <tag class="DT">a</tag>
+      <tag class="NN">quarry</tag>
+      <tag class="NN">pare</tag>
+    </tags>
+    <original><![CDATA[And then a quarry pare]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="TO">To</tag>
+      <tag class="VB">fit</tag>
+      <tag class="PRP$">its</tag>
+      <tag class="JJ">sides</tag>
+      <tag class="CC">and</tag>
+      <tag class="NN">crawl</tag>
+      <tag class="NN">between</tag>
+    </tags>
+    <original><![CDATA[To fit its sides, and crawl between,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Complaining</tag>
+      <tag class="DT">all</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">while</tag>
+    </tags>
+    <original><![CDATA[Complaining all the while]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="IN">In</tag>
+      <tag class="NN">horrid</tag>
+      <tag class="VBG">hooting</tag>
+      <tag class="NN">stanza</tag>
+    </tags>
+    <original><![CDATA[In horrid, hooting stanza;]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="RB">Then</tag>
+      <tag class="VB">chase</tag>
+      <tag class="PRP">itself</tag>
+      <tag class="IN">down</tag>
+      <tag class="NN">hill</tag>
+    </tags>
+    <original><![CDATA[Then chase itself down hill]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="CC">And</tag>
+      <tag class="JJ">neigh</tag>
+      <tag class="IN">like</tag>
+      <tag class="JJ">Boanerges</tag>
+    </tags>
+    <original><![CDATA[And neigh like Boanerges;]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NN">Then</tag>
+      <tag class="JJ">punctual</tag>
+      <tag class="IN">as</tag>
+      <tag class="DT">a</tag>
+      <tag class="NN">star</tag>
+    </tags>
+    <original><![CDATA[Then, punctual as a star,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Stop</tag>
+      <tag class="JJ">docile</tag>
+      <tag class="CC">and</tag>
+      <tag class="NN">omnipotent</tag>
+    </tags>
+    <original><![CDATA[Stop -- docile and omnipotent --]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="IN">At</tag>
+      <tag class="PRP$">its</tag>
+      <tag class="JJ">own</tag>
+      <tag class="NN">stable</tag>
+      <tag class="NNP">door</tag>
+    </tags>
+    <original><![CDATA[At its own stable door.]]></original>
+  </line>
+</output>

@@ -1,0 +1,89 @@
+<output>
+  <line>
+    <tags>
+      <tag class="NNP">ASTRA</tag>
+      <tag class="NNP">CASTRA</tag>
+    </tags>
+    <original><![CDATA[ASTRA CASTRA.]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Departed</tag>
+      <tag class="TO">to</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">judgment</tag>
+    </tags>
+    <original><![CDATA[Departed to the judgment,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="DT">A</tag>
+      <tag class="NN">mighty</tag>
+      <tag class="NN">afternoon</tag>
+    </tags>
+    <original><![CDATA[A mighty afternoon;]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Great</tag>
+      <tag class="NNS">clouds</tag>
+      <tag class="IN">like</tag>
+      <tag class="NNS">ushers</tag>
+      <tag class="-NONE-">leaning</tag>
+    </tags>
+    <original><![CDATA[Great clouds like ushers leaning,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Creation</tag>
+      <tag class="VBG">looking</tag>
+      <tag class="NNP">on</tag>
+    </tags>
+    <original><![CDATA[Creation looking on.]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">The</tag>
+      <tag class="NN">flesh</tag>
+      <tag class="-NONE-">surrendered</tag>
+      <tag class="-NONE-">cancelled</tag>
+    </tags>
+    <original><![CDATA[The flesh surrendered, cancelled,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="DT">The</tag>
+      <tag class="NN">bodiless</tag>
+      <tag class="NN">begun</tag>
+    </tags>
+    <original><![CDATA[The bodiless begun;]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="CD">Two</tag>
+      <tag class="JJ">worlds</tag>
+      <tag class="IN">like</tag>
+      <tag class="JJ">audiences</tag>
+      <tag class="NN">disperse</tag>
+    </tags>
+    <original><![CDATA[Two worlds, like audiences, disperse]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="CC">And</tag>
+      <tag class="VB">leave</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">soul</tag>
+      <tag class="NNP">alone</tag>
+    </tags>
+    <original><![CDATA[And leave the soul alone.]]></original>
+  </line>
+</output>

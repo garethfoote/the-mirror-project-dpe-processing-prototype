@@ -1,0 +1,95 @@
+<output>
+  <line>
+    <tags>
+      <tag class="NNP">POSSESSION</tag>
+    </tags>
+    <original><![CDATA[POSSESSION.]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Did</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">harebell</tag>
+      <tag class="NN">loose</tag>
+      <tag class="PRP$">her</tag>
+      <tag class="NN">girdle</tag>
+    </tags>
+    <original><![CDATA[Did the harebell loose her girdle]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="TO">To</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">lover</tag>
+      <tag class="NN">bee</tag>
+    </tags>
+    <original><![CDATA[To the lover bee,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="MD">Would</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">bee</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">harebell</tag>
+      <tag class="NN">hallow</tag>
+    </tags>
+    <original><![CDATA[Would the bee the harebell hallow]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="RB">Much</tag>
+      <tag class="IN">as</tag>
+      <tag class="JJ">formerly</tag>
+    </tags>
+    <original><![CDATA[Much as formerly?]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Did</tag>
+      <tag class="DT">the</tag>
+      <tag class="NNP">paradise</tag>
+      <tag class="NNP">persuaded</tag>
+    </tags>
+    <original><![CDATA[Did the paradise, persuaded,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Yield</tag>
+      <tag class="PRP$">her</tag>
+      <tag class="NN">moat</tag>
+      <tag class="IN">of</tag>
+      <tag class="NNP">pearl</tag>
+    </tags>
+    <original><![CDATA[Yield her moat of pearl,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Would</tag>
+      <tag class="DT">the</tag>
+      <tag class="NNP">Eden</tag>
+      <tag class="VB">be</tag>
+      <tag class="DT">an</tag>
+      <tag class="JJ">Eden</tag>
+    </tags>
+    <original><![CDATA[Would the Eden be an Eden,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="CC">Or</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">earl</tag>
+      <tag class="DT">an</tag>
+      <tag class="NN">earl</tag>
+    </tags>
+    <original><![CDATA[Or the earl an earl?]]></original>
+  </line>
+</output>

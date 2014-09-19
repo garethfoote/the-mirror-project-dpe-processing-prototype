@@ -1,0 +1,147 @@
+<output>
+  <line>
+    <tags>
+      <tag class="NNP">XL</tag>
+    </tags>
+    <original><![CDATA[XL.]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">She</tag>
+      <tag class="VBZ">sweeps</tag>
+      <tag class="IN">with</tag>
+      <tag class="JJ">many-colored</tag>
+      <tag class="NN">brooms</tag>
+    </tags>
+    <original><![CDATA[She sweeps with many-colored brooms,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="CC">And</tag>
+      <tag class="VBZ">leaves</tag>
+      <tag class="DT">the</tag>
+      <tag class="NNS">shreds</tag>
+      <tag class="-NONE-">behind</tag>
+    </tags>
+    <original><![CDATA[And leaves the shreds behind;]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="-NONE-">Oh</tag>
+      <tag class="NN">housewife</tag>
+      <tag class="IN">in</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">evening</tag>
+      <tag class="NN">west</tag>
+    </tags>
+    <original><![CDATA[Oh, housewife in the evening west,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Come</tag>
+      <tag class="NNP">back</tag>
+      <tag class="CC">and</tag>
+      <tag class="JJ">dust</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">pond</tag>
+    </tags>
+    <original><![CDATA[Come back, and dust the pond!]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="PRP">You</tag>
+      <tag class="VBD">dropped</tag>
+      <tag class="DT">a</tag>
+      <tag class="NN">purple</tag>
+      <tag class="VBG">ravelling</tag>
+      <tag class="NN">in</tag>
+    </tags>
+    <original><![CDATA[You dropped a purple ravelling in,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="PRP">You</tag>
+      <tag class="VBD">dropped</tag>
+      <tag class="DT">an</tag>
+      <tag class="NN">amber</tag>
+      <tag class="NN">thread</tag>
+    </tags>
+    <original><![CDATA[You dropped an amber thread;]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="CC">And</tag>
+      <tag class="RB">now</tag>
+      <tag class="JJ">you've</tag>
+      <tag class="VBN">littered</tag>
+      <tag class="DT">all</tag>
+      <tag class="DT">the</tag>
+      <tag class="NNP">East</tag>
+    </tags>
+    <original><![CDATA[And now you've littered all the East]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">With</tag>
+      <tag class="NNS">duds</tag>
+      <tag class="IN">of</tag>
+      <tag class="JJ">emerald</tag>
+    </tags>
+    <original><![CDATA[With duds of emerald!]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="CC">And</tag>
+      <tag class="RB">still</tag>
+      <tag class="PRP">she</tag>
+      <tag class="VBZ">plies</tag>
+      <tag class="PRP$">her</tag>
+      <tag class="VBN">spotted</tag>
+      <tag class="-NONE-">brooms</tag>
+    </tags>
+    <original><![CDATA[And still she plies her spotted brooms,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="CC">And</tag>
+      <tag class="RB">still</tag>
+      <tag class="DT">the</tag>
+      <tag class="NNS">aprons</tag>
+      <tag class="-NONE-">fly</tag>
+    </tags>
+    <original><![CDATA[And still the aprons fly,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Till</tag>
+      <tag class="NNS">brooms</tag>
+      <tag class="VBP">fade</tag>
+      <tag class="RB">softly</tag>
+      <tag class="IN">into</tag>
+      <tag class="NNS">stars</tag>
+    </tags>
+    <original><![CDATA[Till brooms fade softly into stars --]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="CC">And</tag>
+      <tag class="RB">then</tag>
+      <tag class="PRP">I</tag>
+      <tag class="VBP">come</tag>
+      <tag class="NNP">away</tag>
+    </tags>
+    <original><![CDATA[And then I come away.]]></original>
+  </line>
+</output>

@@ -1,0 +1,101 @@
+<output>
+  <line>
+    <tags>
+      <tag class="NNP">VANISHED</tag>
+    </tags>
+    <original><![CDATA[VANISHED.]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">She</tag>
+      <tag class="NNP">died</tag>
+      <tag class="DT">this</tag>
+      <tag class="VBD">was</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">way</tag>
+      <tag class="PRP">she</tag>
+      <tag class="-NONE-">died</tag>
+    </tags>
+    <original><![CDATA[She died, -- this was the way she died;]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="CC">And</tag>
+      <tag class="WRB">when</tag>
+      <tag class="PRP$">her</tag>
+      <tag class="NN">breath</tag>
+      <tag class="VBD">was</tag>
+      <tag class="JJ">done</tag>
+    </tags>
+    <original><![CDATA[And when her breath was done,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Took</tag>
+      <tag class="IN">up</tag>
+      <tag class="PRP$">her</tag>
+      <tag class="NN">simple</tag>
+      <tag class="NN">wardrobe</tag>
+    </tags>
+    <original><![CDATA[Took up her simple wardrobe]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="CC">And</tag>
+      <tag class="VBD">started</tag>
+      <tag class="IN">for</tag>
+      <tag class="DT">the</tag>
+      <tag class="NNP">sun</tag>
+    </tags>
+    <original><![CDATA[And started for the sun.]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Her</tag>
+      <tag class="RB">little</tag>
+      <tag class="NN">figure</tag>
+      <tag class="IN">at</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">gate</tag>
+    </tags>
+    <original><![CDATA[Her little figure at the gate]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="DT">The</tag>
+      <tag class="NNS">angels</tag>
+      <tag class="MD">must</tag>
+      <tag class="VB">have</tag>
+      <tag class="-NONE-">spied</tag>
+    </tags>
+    <original><![CDATA[The angels must have spied,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="IN">Since</tag>
+      <tag class="PRP">I</tag>
+      <tag class="MD">could</tag>
+      <tag class="RB">never</tag>
+      <tag class="VB">find</tag>
+      <tag class="PRP$">her</tag>
+    </tags>
+    <original><![CDATA[Since I could never find her]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Upon</tag>
+      <tag class="DT">the</tag>
+      <tag class="JJ">mortal</tag>
+      <tag class="NNP">side</tag>
+    </tags>
+    <original><![CDATA[Upon the mortal side.]]></original>
+  </line>
+</output>

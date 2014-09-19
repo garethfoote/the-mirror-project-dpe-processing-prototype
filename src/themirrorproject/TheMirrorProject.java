@@ -25,13 +25,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-
-import com.sun.org.apache.xpath.internal.operations.Bool;
 
 import net.nexttext.Book;
-import net.nexttext.FastMath;
-import net.nexttext.PLocatableVector;
 import net.nexttext.TextObject;
 import net.nexttext.TextObjectBuilder;
 import net.nexttext.TextObjectGlyph;
@@ -42,19 +37,10 @@ import net.nexttext.TextPage;
 import net.nexttext.behaviour.AbstractAction;
 import net.nexttext.behaviour.Behaviour;
 import net.nexttext.behaviour.control.ApplyToGlyph;
-import net.nexttext.behaviour.control.Condition;
 import net.nexttext.behaviour.control.Delay;
-import net.nexttext.behaviour.control.Multiplexer;
-import net.nexttext.behaviour.control.Repeat;
-import net.nexttext.behaviour.physics.Gravity;
 import net.nexttext.behaviour.physics.Move;
-import net.nexttext.behaviour.physics.Stop;
-import net.nexttext.behaviour.standard.DoNothing;
 import net.nexttext.behaviour.standard.FadeTo;
-import net.nexttext.behaviour.standard.MoveBy;
-import net.nexttext.behaviour.standard.MoveTo;
 import net.nexttext.property.ColorProperty;
-import net.nexttext.property.PVectorProperty;
 import net.nexttext.property.Property;
 import processing.core.PApplet;
 import processing.core.PFont;
@@ -74,7 +60,7 @@ public class TheMirrorProject extends PApplet {
 	private Book book;
 	private PFont fenix;
 	private int arcHeight = 200;
-	private int arcVariant = 10;
+	private int arcVariant = 50;
 	private int angleVariant = 10;
 	private double strMax = 0.03;
 	private double strMin = 0.0;
@@ -85,7 +71,7 @@ public class TheMirrorProject extends PApplet {
 	String test = "I am the sea . I hold the Land " + '\n' +
 			"as one holds an apple in his hand." + '\n' +
 			"Hold it fast with sleepless eyes.";
-	String[] poemTwo = {"I am the sea. I hold the Land",
+	String[] poemTwo = {"I am the seasoness. I hold the Land",
 							"as one holds an apple in his hand.",
 							"Hold it fast with sleepless eyes.", 
 							"Watching the continents sink and rise.",
@@ -99,6 +85,8 @@ public class TheMirrorProject extends PApplet {
 							"giant five-headed snake",
 							"wrapped around us"
 							};
+	private String targetText = "marks";
+	private String sourceText = "apple";
 	private TextObjectBuilder builder;
 	private TextObjectGroup poem1Root;
 	private TextObjectGroup poem2Root;
@@ -137,12 +125,10 @@ public class TheMirrorProject extends PApplet {
 	  	fill(0);
 	  	noStroke();
 	  	
-	  	buildUI();
-	  	textSize(32);
-//	  	text("22", 200, 19+29+29+29+29+29);  // Specify a z-axis value
-	  	
 	  	prepareBook();
 	  	buildText();
+	  	
+	  	buildUI();
 
 	}
 	
@@ -348,12 +334,8 @@ public class TheMirrorProject extends PApplet {
 		startButton.hide();
 
 		getSource(poem1Root, "goddess");
-		getTarget(poem2Root, "sea");
+		getTarget(poem2Root, "seasoness");
 
-		frameRate(60);
-		
-		println("frameRate", frameRate);
-		
 		println("sourceWord", sourceWord);
 		println("targetWord", targetWord);
 
@@ -367,9 +349,10 @@ public class TheMirrorProject extends PApplet {
 		println("sourceWord", sourceWord);
 		println("targetWord", targetWord);
 
-		applySourceActions(8);
-		applyTargetActions(8);
-		applyTargetLineActions(8);
+		int delay = 2;
+		applySourceActions(delay);
+		applyTargetActions(delay);
+		applyTargetLineActions(delay);
 
 		getSource(poem1Root, "sky");
 		getTarget(poem2Root, "bosom");
@@ -377,11 +360,12 @@ public class TheMirrorProject extends PApplet {
 		println("sourceWord", sourceWord);
 		println("targetWord", targetWord);
 
-		applySourceActions(16);
-		applyTargetActions(16);
-		applyTargetLineActions(16);
+		delay = 4;
+		applySourceActions(delay);
+		applyTargetActions(delay);
+		applyTargetLineActions(delay);
 
-		applyLastSourceActions(10);
+		applyLastSourceActions(delay);
 
 	}
 

@@ -1,0 +1,139 @@
+<output>
+  <line>
+    <tags>
+      <tag class="NNP">XIX</tag>
+    </tags>
+    <original><![CDATA[XIX.]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">So</tag>
+      <tag class="JJ">bashful</tag>
+      <tag class="WRB">when</tag>
+      <tag class="PRP">I</tag>
+      <tag class="VBD">spied</tag>
+      <tag class="-NONE-">her</tag>
+    </tags>
+    <original><![CDATA[So bashful when I spied her,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="RB">So</tag>
+      <tag class="JJ">pretty</tag>
+      <tag class="IN">so</tag>
+      <tag class="JJ">ashamed</tag>
+    </tags>
+    <original><![CDATA[So pretty, so ashamed!]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">So</tag>
+      <tag class="NN">hidden</tag>
+      <tag class="IN">in</tag>
+      <tag class="PRP$">her</tag>
+      <tag class="NN">leaflets</tag>
+    </tags>
+    <original><![CDATA[So hidden in her leaflets,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Lest</tag>
+      <tag class="NN">anybody</tag>
+      <tag class="-NONE-">find</tag>
+    </tags>
+    <original><![CDATA[Lest anybody find;]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="RB">So</tag>
+      <tag class="RB">breathless</tag>
+      <tag class="IN">till</tag>
+      <tag class="PRP">I</tag>
+      <tag class="VBD">passed</tag>
+      <tag class="-NONE-">her</tag>
+    </tags>
+    <original><![CDATA[So breathless till I passed her,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="RB">So</tag>
+      <tag class="RB">helpless</tag>
+      <tag class="WRB">when</tag>
+      <tag class="PRP">I</tag>
+      <tag class="VBD">turned</tag>
+    </tags>
+    <original><![CDATA[So helpless when I turned]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="CC">And</tag>
+      <tag class="VB">bore</tag>
+      <tag class="JJ">her</tag>
+      <tag class="NN">struggling</tag>
+      <tag class="NN">blushing</tag>
+    </tags>
+    <original><![CDATA[And bore her, struggling, blushing,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Her</tag>
+      <tag class="NN">simple</tag>
+      <tag class="NNS">haunts</tag>
+      <tag class="-NONE-">beyond</tag>
+    </tags>
+    <original><![CDATA[Her simple haunts beyond!]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="IN">For</tag>
+      <tag class="WP">whom</tag>
+      <tag class="PRP">I</tag>
+      <tag class="VBD">robbed</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">dingle</tag>
+    </tags>
+    <original><![CDATA[For whom I robbed the dingle,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="IN">For</tag>
+      <tag class="WP">whom</tag>
+      <tag class="VBN">betrayed</tag>
+      <tag class="DT">the</tag>
+      <tag class="NNP">dell</tag>
+    </tags>
+    <original><![CDATA[For whom betrayed the dell,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Many</tag>
+      <tag class="MD">will</tag>
+      <tag class="VB">doubtless</tag>
+      <tag class="NN">ask</tag>
+      <tag class="-NONE-">me</tag>
+    </tags>
+    <original><![CDATA[Many will doubtless ask me,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="CC">But</tag>
+      <tag class="PRP">I</tag>
+      <tag class="MD">shall</tag>
+      <tag class="RB">never</tag>
+      <tag class="-NONE-">tell</tag>
+    </tags>
+    <original><![CDATA[But I shall never tell!]]></original>
+  </line>
+</output>

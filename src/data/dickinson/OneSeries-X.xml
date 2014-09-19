@@ -1,0 +1,148 @@
+<output>
+  <line>
+    <tags>
+      <tag class="NNP">X</tag>
+    </tags>
+    <original><![CDATA[X.]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="PRP">I</tag>
+      <tag class="VBD">died</tag>
+      <tag class="IN">for</tag>
+      <tag class="JJ">beauty</tag>
+      <tag class="CC">but</tag>
+      <tag class="VBD">was</tag>
+      <tag class="JJ">scarce</tag>
+    </tags>
+    <original><![CDATA[I died for beauty, but was scarce]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Adjusted</tag>
+      <tag class="IN">in</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">tomb</tag>
+    </tags>
+    <original><![CDATA[Adjusted in the tomb,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="WRB">When</tag>
+      <tag class="CD">one</tag>
+      <tag class="WP">who</tag>
+      <tag class="VBN">died</tag>
+      <tag class="IN">for</tag>
+      <tag class="NN">truth</tag>
+      <tag class="VBD">was</tag>
+      <tag class="NN">lain</tag>
+    </tags>
+    <original><![CDATA[When one who died for truth was lain]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="IN">In</tag>
+      <tag class="DT">an</tag>
+      <tag class="NN">adjoining</tag>
+      <tag class="NNP">room</tag>
+    </tags>
+    <original><![CDATA[In an adjoining room.]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">He</tag>
+      <tag class="VBD">questioned</tag>
+      <tag class="RB">softly</tag>
+      <tag class="WRB">why</tag>
+      <tag class="PRP">I</tag>
+      <tag class="VBP">failed</tag>
+    </tags>
+    <original><![CDATA[He questioned softly why I failed?]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NN">beauty</tag>
+      <tag class="PRP">I</tag>
+      <tag class="NNP">replied</tag>
+    </tags>
+    <original><![CDATA["For beauty," I replied.]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">I</tag>
+      <tag class="IN">for</tag>
+      <tag class="JJ">truth</tag>
+      <tag class="DT">the</tag>
+      <tag class="CD">two</tag>
+      <tag class="VBP">are</tag>
+      <tag class="JJ">one</tag>
+    </tags>
+    <original><![CDATA["And I for truth, -- the two are one;]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="PRP">We</tag>
+      <tag class="VBP">brethren</tag>
+      <tag class="-NONE-">are</tag>
+      <tag class="PRP">he</tag>
+      <tag class="NNP">said</tag>
+    </tags>
+    <original><![CDATA[We brethren are," he said.]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">And</tag>
+      <tag class="NNP">so</tag>
+      <tag class="IN">as</tag>
+      <tag class="NNS">kinsmen</tag>
+      <tag class="VBP">met</tag>
+      <tag class="DT">a</tag>
+      <tag class="JJ">night</tag>
+    </tags>
+    <original><![CDATA[And so, as kinsmen met a night,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="PRP">We</tag>
+      <tag class="VBD">talked</tag>
+      <tag class="IN">between</tag>
+      <tag class="DT">the</tag>
+      <tag class="NNP">rooms</tag>
+    </tags>
+    <original><![CDATA[We talked between the rooms,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Until</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">moss</tag>
+      <tag class="VBD">had</tag>
+      <tag class="VBN">reached</tag>
+      <tag class="PRP$">our</tag>
+      <tag class="JJ">lips</tag>
+    </tags>
+    <original><![CDATA[Until the moss had reached our lips,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="CC">And</tag>
+      <tag class="VBN">covered</tag>
+      <tag class="RP">up</tag>
+      <tag class="PRP$">our</tag>
+      <tag class="NNP">names</tag>
+    </tags>
+    <original><![CDATA[And covered up our names.]]></original>
+  </line>
+</output>

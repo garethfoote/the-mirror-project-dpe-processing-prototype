@@ -1,0 +1,100 @@
+<output>
+  <line>
+    <tags>
+      <tag class="DT">THE</tag>
+      <tag class="NNP">MYSTERY</tag>
+      <tag class="NNP">OF</tag>
+      <tag class="NNP">PAIN</tag>
+    </tags>
+    <original><![CDATA[THE MYSTERY OF PAIN.]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Pain</tag>
+      <tag class="VBZ">has</tag>
+      <tag class="DT">an</tag>
+      <tag class="NN">element</tag>
+      <tag class="IN">of</tag>
+      <tag class="NNP">blank</tag>
+    </tags>
+    <original><![CDATA[Pain has an element of blank;]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">It</tag>
+      <tag class="VBD">cannot</tag>
+      <tag class="NN">recollect</tag>
+    </tags>
+    <original><![CDATA[It cannot recollect]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="WRB">When</tag>
+      <tag class="PRP">it</tag>
+      <tag class="-NONE-">began</tag>
+      <tag class="CC">or</tag>
+      <tag class="IN">if</tag>
+      <tag class="EX">there</tag>
+      <tag class="VBD">were</tag>
+    </tags>
+    <original><![CDATA[When it began, or if there were]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="DT">A</tag>
+      <tag class="NN">day</tag>
+      <tag class="WRB">when</tag>
+      <tag class="PRP">it</tag>
+      <tag class="VBD">was</tag>
+      <tag class="NNP">not</tag>
+    </tags>
+    <original><![CDATA[A day when it was not.]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">It</tag>
+      <tag class="VBZ">has</tag>
+      <tag class="DT">no</tag>
+      <tag class="NN">future</tag>
+      <tag class="CC">but</tag>
+      <tag class="NNP">itself</tag>
+    </tags>
+    <original><![CDATA[It has no future but itself,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Its</tag>
+      <tag class="NN">infinite</tag>
+      <tag class="NNS">realms</tag>
+      <tag class="VBP">contain</tag>
+    </tags>
+    <original><![CDATA[Its infinite realms contain]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNS">Its</tag>
+      <tag class="-NONE-">past</tag>
+      <tag class="VBN">enlightened</tag>
+      <tag class="TO">to</tag>
+      <tag class="VB">perceive</tag>
+    </tags>
+    <original><![CDATA[Its past, enlightened to perceive]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">New</tag>
+      <tag class="NNS">periods</tag>
+      <tag class="IN">of</tag>
+      <tag class="NNP">pain</tag>
+    </tags>
+    <original><![CDATA[New periods of pain.]]></original>
+  </line>
+</output>

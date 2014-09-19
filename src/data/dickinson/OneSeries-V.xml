@@ -1,0 +1,140 @@
+<output>
+  <line>
+    <tags>
+      <tag class="NNP">V</tag>
+    </tags>
+    <original><![CDATA[V.]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">On</tag>
+      <tag class="DT">this</tag>
+      <tag class="JJ">long</tag>
+      <tag class="NN">storm</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">rainbow</tag>
+      <tag class="NN">rose</tag>
+    </tags>
+    <original><![CDATA[On this long storm the rainbow rose,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="IN">On</tag>
+      <tag class="DT">this</tag>
+      <tag class="JJ">late</tag>
+      <tag class="NN">morn</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">sun</tag>
+    </tags>
+    <original><![CDATA[On this late morn the sun;]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="DT">The</tag>
+      <tag class="NN">clouds</tag>
+      <tag class="IN">like</tag>
+      <tag class="NN">listless</tag>
+      <tag class="-NONE-">elephants</tag>
+    </tags>
+    <original><![CDATA[The clouds, like listless elephants,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNS">Horizons</tag>
+      <tag class="VBD">straggled</tag>
+      <tag class="NNP">down</tag>
+    </tags>
+    <original><![CDATA[Horizons straggled down.]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">The</tag>
+      <tag class="NNS">birds</tag>
+      <tag class="VBD">rose</tag>
+      <tag class="VBG">smiling</tag>
+      <tag class="IN">in</tag>
+      <tag class="PRP$">their</tag>
+      <tag class="NN">nests</tag>
+    </tags>
+    <original><![CDATA[The birds rose smiling in their nests,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="DT">The</tag>
+      <tag class="NNS">gales</tag>
+      <tag class="RB">indeed</tag>
+      <tag class="VBD">were</tag>
+      <tag class="JJ">done</tag>
+    </tags>
+    <original><![CDATA[The gales indeed were done;]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NN">Alas</tag>
+      <tag class="WRB">how</tag>
+      <tag class="NN">heedless</tag>
+      <tag class="VBD">were</tag>
+      <tag class="DT">the</tag>
+      <tag class="NNS">eyes</tag>
+    </tags>
+    <original><![CDATA[Alas! how heedless were the eyes]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="IN">On</tag>
+      <tag class="WP">whom</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">summer</tag>
+      <tag class="NN">shone</tag>
+    </tags>
+    <original><![CDATA[On whom the summer shone!]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="DT">The</tag>
+      <tag class="JJ">quiet</tag>
+      <tag class="NN">nonchalance</tag>
+      <tag class="IN">of</tag>
+      <tag class="NN">death</tag>
+    </tags>
+    <original><![CDATA[The quiet nonchalance of death]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="DT">No</tag>
+      <tag class="NN">daybreak</tag>
+      <tag class="MD">can</tag>
+      <tag class="VB">bestir</tag>
+    </tags>
+    <original><![CDATA[No daybreak can bestir;]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="DT">The</tag>
+      <tag class="JJ">slow</tag>
+      <tag class="NNS">archangel's</tag>
+      <tag class="NNS">syllables</tag>
+    </tags>
+    <original><![CDATA[The slow archangel's syllables]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="MD">Must</tag>
+      <tag class="VB">awaken</tag>
+      <tag class="NNP">her</tag>
+    </tags>
+    <original><![CDATA[Must awaken her.]]></original>
+  </line>
+</output>

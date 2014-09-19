@@ -1,0 +1,101 @@
+<output>
+  <line>
+    <tags>
+      <tag class="NNP">BECLOUDED</tag>
+    </tags>
+    <original><![CDATA[BECLOUDED.]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="DT">The</tag>
+      <tag class="NN">sky</tag>
+      <tag class="VBZ">is</tag>
+      <tag class="JJ">low</tag>
+      <tag class="DT">the</tag>
+      <tag class="NNS">clouds</tag>
+      <tag class="VBP">are</tag>
+      <tag class="JJ">mean</tag>
+    </tags>
+    <original><![CDATA[The sky is low, the clouds are mean,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="DT">A</tag>
+      <tag class="NN">travelling</tag>
+      <tag class="NN">flake</tag>
+      <tag class="IN">of</tag>
+      <tag class="NN">snow</tag>
+    </tags>
+    <original><![CDATA[A travelling flake of snow]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="IN">Across</tag>
+      <tag class="DT">a</tag>
+      <tag class="NN">barn</tag>
+      <tag class="CC">or</tag>
+      <tag class="IN">through</tag>
+      <tag class="DT">a</tag>
+      <tag class="NN">rut</tag>
+    </tags>
+    <original><![CDATA[Across a barn or through a rut]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="VBZ">Debates</tag>
+      <tag class="IN">if</tag>
+      <tag class="PRP">it</tag>
+      <tag class="MD">will</tag>
+      <tag class="VB">go</tag>
+    </tags>
+    <original><![CDATA[Debates if it will go.]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="DT">A</tag>
+      <tag class="NN">narrow</tag>
+      <tag class="NN">wind</tag>
+      <tag class="VBZ">complains</tag>
+      <tag class="DT">all</tag>
+      <tag class="NN">day</tag>
+    </tags>
+    <original><![CDATA[A narrow wind complains all day]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="WRB">How</tag>
+      <tag class="DT">some</tag>
+      <tag class="CD">one</tag>
+      <tag class="VBN">treated</tag>
+      <tag class="-NONE-">him</tag>
+    </tags>
+    <original><![CDATA[How some one treated him;]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="-NONE-">Nature</tag>
+      <tag class="IN">like</tag>
+      <tag class="NNP">us</tag>
+      <tag class="VBZ">is</tag>
+      <tag class="RB">sometimes</tag>
+      <tag class="VBN">caught</tag>
+    </tags>
+    <original><![CDATA[Nature, like us, is sometimes caught]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="IN">Without</tag>
+      <tag class="PRP$">her</tag>
+      <tag class="NNP">diadem</tag>
+    </tags>
+    <original><![CDATA[Without her diadem.]]></original>
+  </line>
+</output>

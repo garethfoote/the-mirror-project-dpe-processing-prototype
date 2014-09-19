@@ -1,0 +1,244 @@
+<output>
+  <line>
+    <tags>
+      <tag class="NNP">GONE</tag>
+    </tags>
+    <original><![CDATA[ GONE.]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Went</tag>
+      <tag class="IN">up</tag>
+      <tag class="DT">a</tag>
+      <tag class="NN">year</tag>
+      <tag class="DT">this</tag>
+      <tag class="NN">evening</tag>
+    </tags>
+    <original><![CDATA[Went up a year this evening!]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="PRP">I</tag>
+      <tag class="VBP">recollect</tag>
+      <tag class="PRP">it</tag>
+      <tag class="-NONE-">well</tag>
+    </tags>
+    <original><![CDATA[I recollect it well!]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Amid</tag>
+      <tag class="DT">no</tag>
+      <tag class="NNS">bells</tag>
+      <tag class="CC">nor</tag>
+      <tag class="NNS">bravos</tag>
+    </tags>
+    <original><![CDATA[Amid no bells nor bravos]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="DT">The</tag>
+      <tag class="NNS">bystanders</tag>
+      <tag class="MD">will</tag>
+      <tag class="VB">tell</tag>
+    </tags>
+    <original><![CDATA[The bystanders will tell!]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="-NONE-">Cheerful</tag>
+      <tag class="IN">as</tag>
+      <tag class="TO">to</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">village</tag>
+    </tags>
+    <original><![CDATA[Cheerful, as to the village,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NN">Tranquil</tag>
+      <tag class="IN">as</tag>
+      <tag class="TO">to</tag>
+      <tag class="NNP">repose</tag>
+    </tags>
+    <original><![CDATA[Tranquil, as to repose,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Chastened</tag>
+      <tag class="IN">as</tag>
+      <tag class="TO">to</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">chapel</tag>
+    </tags>
+    <original><![CDATA[Chastened, as to the chapel,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="DT">This</tag>
+      <tag class="JJ">humble</tag>
+      <tag class="NN">tourist</tag>
+      <tag class="NNP">rose</tag>
+    </tags>
+    <original><![CDATA[This humble tourist rose.]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Did</tag>
+      <tag class="RB">not</tag>
+      <tag class="VB">talk</tag>
+      <tag class="IN">of</tag>
+      <tag class="JJ">returning</tag>
+    </tags>
+    <original><![CDATA[Did not talk of returning,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Alluded</tag>
+      <tag class="TO">to</tag>
+      <tag class="DT">no</tag>
+      <tag class="NN">time</tag>
+    </tags>
+    <original><![CDATA[Alluded to no time]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="-NONE-">When</tag>
+      <tag class="VBD">were</tag>
+      <tag class="DT">the</tag>
+      <tag class="NNS">gales</tag>
+      <tag class="-NONE-">propitious</tag>
+    </tags>
+    <original><![CDATA[When, were the gales propitious,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="PRP">We</tag>
+      <tag class="MD">might</tag>
+      <tag class="VB">look</tag>
+      <tag class="IN">for</tag>
+      <tag class="JJ">him</tag>
+    </tags>
+    <original><![CDATA[We might look for him;]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Was</tag>
+      <tag class="JJ">grateful</tag>
+      <tag class="IN">for</tag>
+      <tag class="DT">the</tag>
+      <tag class="NNS">roses</tag>
+    </tags>
+    <original><![CDATA[Was grateful for the roses]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="IN">In</tag>
+      <tag class="JJ">life's</tag>
+      <tag class="NN">diverse</tag>
+      <tag class="NN">bouquet</tag>
+    </tags>
+    <original><![CDATA[In life's diverse bouquet,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Talked</tag>
+      <tag class="RB">softly</tag>
+      <tag class="IN">of</tag>
+      <tag class="JJ">new</tag>
+      <tag class="NNS">species</tag>
+    </tags>
+    <original><![CDATA[Talked softly of new species]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="TO">To</tag>
+      <tag class="VB">pick</tag>
+      <tag class="DT">another</tag>
+      <tag class="NNP">day</tag>
+    </tags>
+    <original><![CDATA[To pick another day.]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Beguiling</tag>
+      <tag class="RB">thus</tag>
+      <tag class="DT">the</tag>
+      <tag class="JJ">wonder</tag>
+    </tags>
+    <original><![CDATA[Beguiling thus the wonder,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="DT">The</tag>
+      <tag class="JJ">wondrous</tag>
+      <tag class="NN">nearer</tag>
+      <tag class="NN">drew</tag>
+    </tags>
+    <original><![CDATA[The wondrous nearer drew;]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNS">Hands</tag>
+      <tag class="VBD">bustled</tag>
+      <tag class="IN">at</tag>
+      <tag class="DT">the</tag>
+      <tag class="NNS">moorings</tag>
+    </tags>
+    <original><![CDATA[Hands bustled at the moorings --]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">The</tag>
+      <tag class="NN">crowd</tag>
+      <tag class="NN">respectful</tag>
+      <tag class="NNP">grew</tag>
+    </tags>
+    <original><![CDATA[The crowd respectful grew.]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Ascended</tag>
+      <tag class="IN">from</tag>
+      <tag class="PRP$">our</tag>
+      <tag class="NN">vision</tag>
+    </tags>
+    <original><![CDATA[Ascended from our vision]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="TO">To</tag>
+      <tag class="NNS">countenances</tag>
+      <tag class="-NONE-">new</tag>
+    </tags>
+    <original><![CDATA[To countenances new!]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="DT">A</tag>
+      <tag class="JJ">difference</tag>
+      <tag class="DT">a</tag>
+      <tag class="JJ">daisy</tag>
+    </tags>
+    <original><![CDATA[A difference, a daisy,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Is</tag>
+      <tag class="DT">all</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">rest</tag>
+      <tag class="PRP">I</tag>
+      <tag class="VBP">knew</tag>
+    </tags>
+    <original><![CDATA[Is all the rest I knew!]]></original>
+  </line>
+</output>

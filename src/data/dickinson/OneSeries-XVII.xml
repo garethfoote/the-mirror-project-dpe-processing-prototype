@@ -1,0 +1,101 @@
+<output>
+  <line>
+    <tags>
+      <tag class="NNP">XVII</tag>
+    </tags>
+    <original><![CDATA[XVII.]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="PRP">I</tag>
+      <tag class="RB">never</tag>
+      <tag class="VBD">saw</tag>
+      <tag class="DT">a</tag>
+      <tag class="NN">moor</tag>
+    </tags>
+    <original><![CDATA[I never saw a moor,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="PRP">I</tag>
+      <tag class="RB">never</tag>
+      <tag class="VBD">saw</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">sea</tag>
+    </tags>
+    <original><![CDATA[I never saw the sea;]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Yet</tag>
+      <tag class="NN">know</tag>
+      <tag class="PRP">I</tag>
+      <tag class="WRB">how</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">heather</tag>
+      <tag class="NN">looks</tag>
+    </tags>
+    <original><![CDATA[Yet know I how the heather looks,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="CC">And</tag>
+      <tag class="WP">what</tag>
+      <tag class="DT">a</tag>
+      <tag class="NN">wave</tag>
+      <tag class="MD">must</tag>
+      <tag class="NNP">be</tag>
+    </tags>
+    <original><![CDATA[And what a wave must be.]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="PRP">I</tag>
+      <tag class="RB">never</tag>
+      <tag class="VB">spoke</tag>
+      <tag class="IN">with</tag>
+      <tag class="JJ">God</tag>
+    </tags>
+    <original><![CDATA[I never spoke with God,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Nor</tag>
+      <tag class="VBD">visited</tag>
+      <tag class="IN">in</tag>
+      <tag class="NNP">heaven</tag>
+    </tags>
+    <original><![CDATA[Nor visited in heaven;]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Yet</tag>
+      <tag class="JJ">certain</tag>
+      <tag class="NN">am</tag>
+      <tag class="PRP">I</tag>
+      <tag class="IN">of</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">spot</tag>
+    </tags>
+    <original><![CDATA[Yet certain am I of the spot]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="IN">As</tag>
+      <tag class="IN">if</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">chart</tag>
+      <tag class="VBD">were</tag>
+      <tag class="NNP">given</tag>
+    </tags>
+    <original><![CDATA[As if the chart were given.]]></original>
+  </line>
+</output>

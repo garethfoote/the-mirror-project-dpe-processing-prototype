@@ -1,0 +1,138 @@
+<output>
+  <line>
+    <tags>
+      <tag class="CD">TWO</tag>
+      <tag class="NNP">WORLDS</tag>
+    </tags>
+    <original><![CDATA[TWO WORLDS.]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">It</tag>
+      <tag class="VBZ">makes</tag>
+      <tag class="DT">no</tag>
+      <tag class="NN">difference</tag>
+      <tag class="-NONE-">abroad</tag>
+    </tags>
+    <original><![CDATA[It makes no difference abroad,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="DT">The</tag>
+      <tag class="NNS">seasons</tag>
+      <tag class="VBP">fit</tag>
+      <tag class="DT">the</tag>
+      <tag class="NNP">same</tag>
+    </tags>
+    <original><![CDATA[The seasons fit the same,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">The</tag>
+      <tag class="NNS">mornings</tag>
+      <tag class="VBP">blossom</tag>
+      <tag class="IN">into</tag>
+      <tag class="JJ">noons</tag>
+    </tags>
+    <original><![CDATA[The mornings blossom into noons,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="CC">And</tag>
+      <tag class="NN">split</tag>
+      <tag class="PRP$">their</tag>
+      <tag class="NNS">pods</tag>
+      <tag class="IN">of</tag>
+      <tag class="NNP">flame</tag>
+    </tags>
+    <original><![CDATA[And split their pods of flame.]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Wild-flowers</tag>
+      <tag class="NN">kindle</tag>
+      <tag class="IN">in</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">woods</tag>
+    </tags>
+    <original><![CDATA[Wild-flowers kindle in the woods,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="DT">The</tag>
+      <tag class="NNS">brooks</tag>
+      <tag class="VBP">brag</tag>
+      <tag class="DT">all</tag>
+      <tag class="DT">the</tag>
+      <tag class="NNP">day</tag>
+    </tags>
+    <original><![CDATA[The brooks brag all the day;]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">No</tag>
+      <tag class="NN">blackbird</tag>
+      <tag class="VBZ">bates</tag>
+      <tag class="PRP$">his</tag>
+      <tag class="NN">jargoning</tag>
+    </tags>
+    <original><![CDATA[No blackbird bates his jargoning]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="IN">For</tag>
+      <tag class="NN">passing</tag>
+      <tag class="NNP">Calvary</tag>
+    </tags>
+    <original><![CDATA[For passing Calvary.]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Auto-da-fe</tag>
+      <tag class="CC">and</tag>
+      <tag class="NN">judgment</tag>
+    </tags>
+    <original><![CDATA[Auto-da-fe and judgment]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Are</tag>
+      <tag class="NN">nothing</tag>
+      <tag class="TO">to</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">bee</tag>
+    </tags>
+    <original><![CDATA[Are nothing to the bee;]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">His</tag>
+      <tag class="NN">separation</tag>
+      <tag class="IN">from</tag>
+      <tag class="PRP$">his</tag>
+      <tag class="NN">rose</tag>
+    </tags>
+    <original><![CDATA[His separation from his rose]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="TO">To</tag>
+      <tag class="PRP">him</tag>
+      <tag class="VBZ">seems</tag>
+      <tag class="NNP">misery</tag>
+    </tags>
+    <original><![CDATA[To him seems misery.]]></original>
+  </line>
+</output>

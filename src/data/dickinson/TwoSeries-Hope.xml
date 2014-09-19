@@ -1,0 +1,149 @@
+<output>
+  <line>
+    <tags>
+      <tag class="NNP">HOPE</tag>
+    </tags>
+    <original><![CDATA[HOPE.]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Hope</tag>
+      <tag class="VBZ">is</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">thing</tag>
+      <tag class="IN">with</tag>
+      <tag class="NNS">feathers</tag>
+    </tags>
+    <original><![CDATA[Hope is the thing with feathers]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="WDT">That</tag>
+      <tag class="VBZ">perches</tag>
+      <tag class="IN">in</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">soul</tag>
+    </tags>
+    <original><![CDATA[That perches in the soul,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="CC">And</tag>
+      <tag class="NNS">sings</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">tune</tag>
+      <tag class="IN">without</tag>
+      <tag class="DT">the</tag>
+      <tag class="NNP">words</tag>
+    </tags>
+    <original><![CDATA[And sings the tune without the words,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="CC">And</tag>
+      <tag class="RB">never</tag>
+      <tag class="NNS">stops</tag>
+      <tag class="IN">at</tag>
+      <tag class="JJ">all</tag>
+    </tags>
+    <original><![CDATA[And never stops at all,]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="CC">And</tag>
+      <tag class="JJS">sweetest</tag>
+      <tag class="IN">in</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">gale</tag>
+      <tag class="VBZ">is</tag>
+      <tag class="JJ">heard</tag>
+    </tags>
+    <original><![CDATA[And sweetest in the gale is heard;]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="CC">And</tag>
+      <tag class="NN">sore</tag>
+      <tag class="MD">must</tag>
+      <tag class="VB">be</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">storm</tag>
+    </tags>
+    <original><![CDATA[And sore must be the storm]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="WDT">That</tag>
+      <tag class="MD">could</tag>
+      <tag class="VB">abash</tag>
+      <tag class="DT">the</tag>
+      <tag class="JJ">little</tag>
+      <tag class="NN">bird</tag>
+    </tags>
+    <original><![CDATA[That could abash the little bird]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="WDT">That</tag>
+      <tag class="VBD">kept</tag>
+      <tag class="RB">so</tag>
+      <tag class="JJ">many</tag>
+      <tag class="NNP">warm</tag>
+    </tags>
+    <original><![CDATA[That kept so many warm.]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="PRP">I</tag>
+      <tag class="RB">heard</tag>
+      <tag class="PRP">it</tag>
+      <tag class="IN">in</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">chillest</tag>
+      <tag class="NN">land</tag>
+    </tags>
+    <original><![CDATA[I 've heard it in the chillest land,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="CC">And</tag>
+      <tag class="IN">on</tag>
+      <tag class="DT">the</tag>
+      <tag class="JJS">strangest</tag>
+      <tag class="NN">sea</tag>
+    </tags>
+    <original><![CDATA[And on the strangest sea;]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NN">Yet</tag>
+      <tag class="NN">never</tag>
+      <tag class="IN">in</tag>
+      <tag class="NNP">extremity</tag>
+    </tags>
+    <original><![CDATA[Yet, never, in extremity,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">It</tag>
+      <tag class="VBD">asked</tag>
+      <tag class="DT">a</tag>
+      <tag class="NN">crumb</tag>
+      <tag class="IN">of</tag>
+      <tag class="NNP">me</tag>
+    </tags>
+    <original><![CDATA[It asked a crumb of me.]]></original>
+  </line>
+</output>

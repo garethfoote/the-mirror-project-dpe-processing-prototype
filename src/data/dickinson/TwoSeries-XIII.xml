@@ -1,0 +1,145 @@
+<output>
+  <line>
+    <tags>
+      <tag class="NNP">XIII</tag>
+    </tags>
+    <original><![CDATA[XIII.]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="DT">The</tag>
+      <tag class="NN">moon</tag>
+      <tag class="VBZ">is</tag>
+      <tag class="JJ">distant</tag>
+      <tag class="IN">from</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">sea</tag>
+    </tags>
+    <original><![CDATA[The moon is distant from the sea,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="CC">And</tag>
+      <tag class="RB">yet</tag>
+      <tag class="IN">with</tag>
+      <tag class="NN">amber</tag>
+      <tag class="NNS">hands</tag>
+    </tags>
+    <original><![CDATA[And yet with amber hands]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="PRP">She</tag>
+      <tag class="VBZ">leads</tag>
+      <tag class="JJ">him</tag>
+      <tag class="NN">docile</tag>
+      <tag class="IN">as</tag>
+      <tag class="DT">a</tag>
+      <tag class="NN">boy</tag>
+    </tags>
+    <original><![CDATA[She leads him, docile as a boy,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Along</tag>
+      <tag class="VBD">appointed</tag>
+      <tag class="NNP">sands</tag>
+    </tags>
+    <original><![CDATA[Along appointed sands.]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">He</tag>
+      <tag class="RB">never</tag>
+      <tag class="VBZ">misses</tag>
+      <tag class="DT">a</tag>
+      <tag class="NN">degree</tag>
+    </tags>
+    <original><![CDATA[He never misses a degree;]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Obedient</tag>
+      <tag class="TO">to</tag>
+      <tag class="PRP$">her</tag>
+      <tag class="NN">eye</tag>
+    </tags>
+    <original><![CDATA[Obedient to her eye,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="PRP">He</tag>
+      <tag class="VBZ">comes</tag>
+      <tag class="RB">just</tag>
+      <tag class="RB">so</tag>
+      <tag class="RB">far</tag>
+      <tag class="IN">toward</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">town</tag>
+    </tags>
+    <original><![CDATA[He comes just so far toward the town,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Just</tag>
+      <tag class="RB">so</tag>
+      <tag class="RB">far</tag>
+      <tag class="VBZ">goes</tag>
+      <tag class="NNP">away</tag>
+    </tags>
+    <original><![CDATA[Just so far goes away.]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Oh</tag>
+      <tag class="NNP">Signor</tag>
+      <tag class="NN">thine</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">amber</tag>
+      <tag class="NN">hand</tag>
+    </tags>
+    <original><![CDATA[Oh, Signor, thine the amber hand,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="CC">And</tag>
+      <tag class="JJ">mine</tag>
+      <tag class="DT">the</tag>
+      <tag class="JJ">distant</tag>
+      <tag class="NN">sea</tag>
+    </tags>
+    <original><![CDATA[And mine the distant sea, --]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Obedient</tag>
+      <tag class="TO">to</tag>
+      <tag class="DT">the</tag>
+      <tag class="JJS">least</tag>
+      <tag class="NN">command</tag>
+    </tags>
+    <original><![CDATA[Obedient to the least command]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Thine</tag>
+      <tag class="VBZ">eyes</tag>
+      <tag class="NN">impose</tag>
+      <tag class="IN">on</tag>
+      <tag class="NNP">me</tag>
+    </tags>
+    <original><![CDATA[Thine eyes impose on me.]]></original>
+  </line>
+</output>

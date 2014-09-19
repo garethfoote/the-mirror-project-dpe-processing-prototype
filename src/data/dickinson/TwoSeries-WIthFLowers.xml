@@ -1,0 +1,81 @@
+<output>
+  <line>
+    <tags>
+      <tag class="IN">WITH</tag>
+      <tag class="NNP">FLOWERS</tag>
+    </tags>
+    <original><![CDATA[WITH FLOWERS.]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">South</tag>
+      <tag class="VBZ">winds</tag>
+      <tag class="NN">jostle</tag>
+      <tag class="-NONE-">them</tag>
+    </tags>
+    <original><![CDATA[South winds jostle them,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="VBZ">Bumblebees</tag>
+      <tag class="JJ">come</tag>
+    </tags>
+    <original><![CDATA[Bumblebees come, ]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NN">Hover</tag>
+      <tag class="NN">hesitate</tag>
+    </tags>
+    <original><![CDATA[Hover, hesitate,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NN">Drink</tag>
+      <tag class="CC">and</tag>
+      <tag class="VBP">are</tag>
+      <tag class="NNP">gone</tag>
+    </tags>
+    <original><![CDATA[Drink, and are gone.]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Butterflies</tag>
+      <tag class="NN">pause</tag>
+    </tags>
+    <original><![CDATA[Butterflies pause]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="IN">On</tag>
+      <tag class="PRP$">their</tag>
+      <tag class="NN">passage</tag>
+      <tag class="-NONE-">Cashmere</tag>
+    </tags>
+    <original><![CDATA[On their passage Cashmere;]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="-NONE-">I</tag>
+      <tag class="RB">softly</tag>
+      <tag class="JJ">plucking</tag>
+    </tags>
+    <original><![CDATA[I, softly plucking,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Present</tag>
+      <tag class="PRP">them</tag>
+      <tag class="-NONE-">here</tag>
+    </tags>
+    <original><![CDATA[Present them here!]]></original>
+  </line>
+</output>

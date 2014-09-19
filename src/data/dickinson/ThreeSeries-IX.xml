@@ -1,0 +1,95 @@
+<output>
+  <line>
+    <tags>
+      <tag class="NNP">IX</tag>
+    </tags>
+    <original><![CDATA[IX.]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="DT">The</tag>
+      <tag class="NN">heart</tag>
+      <tag class="VBZ">asks</tag>
+      <tag class="NN">pleasure</tag>
+      <tag class="-NONE-">first</tag>
+    </tags>
+    <original><![CDATA[The heart asks pleasure first,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="CC">And</tag>
+      <tag class="NNP">then</tag>
+      <tag class="NN">excuse</tag>
+      <tag class="IN">from</tag>
+      <tag class="NNP">pain</tag>
+    </tags>
+    <original><![CDATA[And then, excuse from pain;]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="CC">And</tag>
+      <tag class="NNP">then</tag>
+      <tag class="DT">those</tag>
+      <tag class="JJ">little</tag>
+      <tag class="NNS">anodynes</tag>
+    </tags>
+    <original><![CDATA[And then, those little anodynes]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="WDT">That</tag>
+      <tag class="VBN">deaden</tag>
+      <tag class="-NONE-">suffering</tag>
+    </tags>
+    <original><![CDATA[That deaden suffering;]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="CC">And</tag>
+      <tag class="NNP">then</tag>
+      <tag class="TO">to</tag>
+      <tag class="VB">go</tag>
+      <tag class="TO">to</tag>
+      <tag class="NNP">sleep</tag>
+    </tags>
+    <original><![CDATA[And then, to go to sleep;]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="CC">And</tag>
+      <tag class="NNP">then</tag>
+      <tag class="IN">if</tag>
+      <tag class="PRP">it</tag>
+      <tag class="MD">should</tag>
+      <tag class="VB">be</tag>
+    </tags>
+    <original><![CDATA[And then, if it should be]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="DT">The</tag>
+      <tag class="MD">will</tag>
+      <tag class="IN">of</tag>
+      <tag class="PRP$">its</tag>
+      <tag class="JJ">Inquisitor</tag>
+    </tags>
+    <original><![CDATA[The will of its Inquisitor,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">The</tag>
+      <tag class="NN">liberty</tag>
+      <tag class="TO">to</tag>
+      <tag class="NNP">die</tag>
+    </tags>
+    <original><![CDATA[The liberty to die.]]></original>
+  </line>
+</output>

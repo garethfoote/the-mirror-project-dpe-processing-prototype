@@ -1,0 +1,145 @@
+<output>
+  <line>
+    <tags>
+      <tag class="IN">FROM</tag>
+      <tag class="DT">THE</tag>
+      <tag class="NNP">CHRYSALIS</tag>
+    </tags>
+    <original><![CDATA[FROM THE CHRYSALIS.]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">My</tag>
+      <tag class="NN">cocoon</tag>
+      <tag class="-NONE-">tightens</tag>
+      <tag class="NNS">colors</tag>
+      <tag class="-NONE-">tease</tag>
+    </tags>
+    <original><![CDATA[My cocoon tightens, colors tease,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="JJ">I'm</tag>
+      <tag class="NN">feeling</tag>
+      <tag class="IN">for</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">air</tag>
+    </tags>
+    <original><![CDATA[I'm feeling for the air;]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="DT">A</tag>
+      <tag class="NN">dim</tag>
+      <tag class="NN">capacity</tag>
+      <tag class="IN">for</tag>
+      <tag class="NNS">wings</tag>
+    </tags>
+    <original><![CDATA[A dim capacity for wings]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNPS">Degrades</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">dress</tag>
+      <tag class="PRP">I</tag>
+      <tag class="NNP">wear</tag>
+    </tags>
+    <original><![CDATA[Degrades the dress I wear.]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="DT">A</tag>
+      <tag class="NN">power</tag>
+      <tag class="IN">of</tag>
+      <tag class="RB">butterfly</tag>
+      <tag class="MD">must</tag>
+      <tag class="VB">be</tag>
+    </tags>
+    <original><![CDATA[A power of butterfly must be]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="DT">The</tag>
+      <tag class="NN">aptitude</tag>
+      <tag class="TO">to</tag>
+      <tag class="NNP">fly</tag>
+    </tags>
+    <original><![CDATA[The aptitude to fly,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Meadows</tag>
+      <tag class="IN">of</tag>
+      <tag class="NN">majesty</tag>
+      <tag class="NNS">concedes</tag>
+    </tags>
+    <original><![CDATA[Meadows of majesty concedes]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="CC">And</tag>
+      <tag class="JJ">easy</tag>
+      <tag class="NNS">sweeps</tag>
+      <tag class="IN">of</tag>
+      <tag class="NNP">sky</tag>
+    </tags>
+    <original><![CDATA[And easy sweeps of sky.]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">So</tag>
+      <tag class="NNP">I</tag>
+      <tag class="MD">must</tag>
+      <tag class="VB">baffle</tag>
+      <tag class="IN">at</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">hint</tag>
+    </tags>
+    <original><![CDATA[So I must baffle at the hint]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="CC">And</tag>
+      <tag class="NN">cipher</tag>
+      <tag class="IN">at</tag>
+      <tag class="DT">the</tag>
+      <tag class="NNP">sign</tag>
+    </tags>
+    <original><![CDATA[And cipher at the sign,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="CC">And</tag>
+      <tag class="VB">make</tag>
+      <tag class="JJ">much</tag>
+      <tag class="NN">blunder</tag>
+      <tag class="IN">if</tag>
+      <tag class="IN">at</tag>
+      <tag class="JJ">last</tag>
+    </tags>
+    <original><![CDATA[And make much blunder, if at last]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="PRP">I</tag>
+      <tag class="VBP">take</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">clew</tag>
+      <tag class="NNP">divine</tag>
+    </tags>
+    <original><![CDATA[I take the clew divine.]]></original>
+  </line>
+</output>

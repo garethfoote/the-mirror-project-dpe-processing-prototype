@@ -1,0 +1,181 @@
+<output>
+  <line>
+    <tags>
+      <tag class="NNP">APRIL</tag>
+    </tags>
+    <original><![CDATA[APRIL.]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">An</tag>
+      <tag class="VBD">altered</tag>
+      <tag class="NN">look</tag>
+      <tag class="IN">about</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">hills</tag>
+    </tags>
+    <original><![CDATA[An altered look about the hills;]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="DT">A</tag>
+      <tag class="JJ">Tyrian</tag>
+      <tag class="NN">light</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">village</tag>
+      <tag class="NN">fills</tag>
+    </tags>
+    <original><![CDATA[A Tyrian light the village fills;]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="DT">A</tag>
+      <tag class="NN">wider</tag>
+      <tag class="NN">sunrise</tag>
+      <tag class="IN">in</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">dawn</tag>
+    </tags>
+    <original><![CDATA[A wider sunrise in the dawn;]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="DT">A</tag>
+      <tag class="NN">deeper</tag>
+      <tag class="NN">twilight</tag>
+      <tag class="IN">on</tag>
+      <tag class="DT">the</tag>
+      <tag class="NNP">lawn</tag>
+    </tags>
+    <original><![CDATA[A deeper twilight on the lawn;]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="DT">A</tag>
+      <tag class="NN">print</tag>
+      <tag class="IN">of</tag>
+      <tag class="DT">a</tag>
+      <tag class="NN">vermilion</tag>
+      <tag class="NN">foot</tag>
+    </tags>
+    <original><![CDATA[A print of a vermilion foot;]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="DT">A</tag>
+      <tag class="NN">purple</tag>
+      <tag class="NN">finger</tag>
+      <tag class="IN">on</tag>
+      <tag class="DT">the</tag>
+      <tag class="NNP">slope</tag>
+    </tags>
+    <original><![CDATA[A purple finger on the slope;]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="DT">A</tag>
+      <tag class="NN">flippant</tag>
+      <tag class="RB">fly</tag>
+      <tag class="IN">upon</tag>
+      <tag class="DT">the</tag>
+      <tag class="NNP">pane</tag>
+    </tags>
+    <original><![CDATA[A flippant fly upon the pane; ]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="DT">A</tag>
+      <tag class="NN">spider</tag>
+      <tag class="IN">at</tag>
+      <tag class="PRP$">his</tag>
+      <tag class="NN">trade</tag>
+      <tag class="-NONE-">again</tag>
+    </tags>
+    <original><![CDATA[A spider at his trade again;]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="DT">An</tag>
+      <tag class="JJ">added</tag>
+      <tag class="NN">strut</tag>
+      <tag class="IN">in</tag>
+      <tag class="NNP">chanticleer</tag>
+    </tags>
+    <original><![CDATA[An added strut in chanticleer;]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="DT">A</tag>
+      <tag class="NN">flower</tag>
+      <tag class="VBN">expected</tag>
+      <tag class="-NONE-">everywhere</tag>
+    </tags>
+    <original><![CDATA[A flower expected everywhere;]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="DT">An</tag>
+      <tag class="NN">axe</tag>
+      <tag class="NN">shrill</tag>
+      <tag class="VBG">singing</tag>
+      <tag class="IN">in</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">woods</tag>
+    </tags>
+    <original><![CDATA[An axe shrill singing in the woods;]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNS">Fern-odors</tag>
+      <tag class="IN">on</tag>
+      <tag class="VBN">untravelled</tag>
+      <tag class="-NONE-">roads</tag>
+    </tags>
+    <original><![CDATA[Fern-odors on untravelled roads, --]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="DT">All</tag>
+      <tag class="JJ">this</tag>
+      <tag class="CC">and</tag>
+      <tag class="RBR">more</tag>
+      <tag class="PRP">I</tag>
+      <tag class="RB">cannot</tag>
+      <tag class="JJ">tell</tag>
+    </tags>
+    <original><![CDATA[All this, and more I cannot tell,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="DT">A</tag>
+      <tag class="JJ">furtive</tag>
+      <tag class="NN">look</tag>
+      <tag class="PRP">you</tag>
+      <tag class="VBP">know</tag>
+      <tag class="IN">as</tag>
+      <tag class="JJ">well</tag>
+    </tags>
+    <original><![CDATA[A furtive look you know as well,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="CC">And</tag>
+      <tag class="NNP">Nicodemus</tag>
+      <tag class="NN">mystery</tag>
+    </tags>
+    <original><![CDATA[And Nicodemus' mystery]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="VBZ">Receives</tag>
+      <tag class="PRP$">its</tag>
+      <tag class="JJ">annual</tag>
+      <tag class="NNP">reply</tag>
+    </tags>
+    <original><![CDATA[Receives its annual reply.]]></original>
+  </line>
+</output>

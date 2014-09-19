@@ -1,0 +1,54 @@
+<output>
+  <line>
+    <tags>
+      <tag class="NNP">VIII</tag>
+    </tags>
+    <original><![CDATA[VIII.]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Look</tag>
+      <tag class="RB">back</tag>
+      <tag class="IN">on</tag>
+      <tag class="NN">time</tag>
+      <tag class="IN">with</tag>
+      <tag class="RB">kindly</tag>
+      <tag class="JJ">eyes</tag>
+    </tags>
+    <original><![CDATA[Look back on time with kindly eyes,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="PRP">He</tag>
+      <tag class="VBZ">doubtless</tag>
+      <tag class="VBD">did</tag>
+      <tag class="PRP$">his</tag>
+      <tag class="NN">best</tag>
+    </tags>
+    <original><![CDATA[He doubtless did his best;]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="WRB">How</tag>
+      <tag class="RB">softly</tag>
+      <tag class="VBZ">sinks</tag>
+      <tag class="PRP$">his</tag>
+      <tag class="NN">trembling</tag>
+      <tag class="NN">sun</tag>
+    </tags>
+    <original><![CDATA[How softly sinks his trembling sun]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="IN">In</tag>
+      <tag class="NN">human</tag>
+      <tag class="NNS">nature's</tag>
+      <tag class="-NONE-">west</tag>
+    </tags>
+    <original><![CDATA[In human nature's west!]]></original>
+  </line>
+</output>

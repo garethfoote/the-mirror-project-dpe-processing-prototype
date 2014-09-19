@@ -1,0 +1,188 @@
+<output>
+  <line>
+    <tags>
+      <tag class="NNP">V</tag>
+    </tags>
+    <original><![CDATA[V.]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Glee</tag>
+      <tag class="NNP">The</tag>
+      <tag class="JJ">great</tag>
+      <tag class="NN">storm</tag>
+      <tag class="VBZ">is</tag>
+      <tag class="JJ">over</tag>
+    </tags>
+    <original><![CDATA[Glee! The great storm is over!]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="CD">Four</tag>
+      <tag class="VBP">have</tag>
+      <tag class="VBN">recovered</tag>
+      <tag class="DT">the</tag>
+      <tag class="NNP">land</tag>
+    </tags>
+    <original><![CDATA[Four have recovered the land;]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Forty</tag>
+      <tag class="NN">gone</tag>
+      <tag class="IN">down</tag>
+      <tag class="RB">together</tag>
+    </tags>
+    <original><![CDATA[Forty gone down together]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Into</tag>
+      <tag class="DT">the</tag>
+      <tag class="VBG">boiling</tag>
+      <tag class="NNP">sand</tag>
+    </tags>
+    <original><![CDATA[Into the boiling sand.]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Ring</tag>
+      <tag class="IN">for</tag>
+      <tag class="DT">the</tag>
+      <tag class="JJ">scant</tag>
+      <tag class="NN">salvation</tag>
+    </tags>
+    <original><![CDATA[Ring, for the scant salvation!]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NN">Toll</tag>
+      <tag class="IN">for</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">bonnie</tag>
+      <tag class="NN">souls</tag>
+    </tags>
+    <original><![CDATA[Toll, for the bonnie souls, --]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Neighbor</tag>
+      <tag class="CC">and</tag>
+      <tag class="NN">friend</tag>
+      <tag class="CC">and</tag>
+      <tag class="NNP">bridegroom</tag>
+    </tags>
+    <original><![CDATA[Neighbor and friend and bridegroom,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Spinning</tag>
+      <tag class="IN">upon</tag>
+      <tag class="DT">the</tag>
+      <tag class="NNP">shoals</tag>
+    </tags>
+    <original><![CDATA[Spinning upon the shoals!]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">How</tag>
+      <tag class="PRP">they</tag>
+      <tag class="MD">will</tag>
+      <tag class="VB">tell</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">shipwreck</tag>
+    </tags>
+    <original><![CDATA[How they will tell the shipwreck]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="WRB">When</tag>
+      <tag class="NN">winter</tag>
+      <tag class="VBZ">shakes</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">door</tag>
+    </tags>
+    <original><![CDATA[When winter shakes the door,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Till</tag>
+      <tag class="DT">the</tag>
+      <tag class="NNS">children</tag>
+      <tag class="-NONE-">ask</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">forty</tag>
+    </tags>
+    <original><![CDATA[Till the children ask, "But the forty?]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Did</tag>
+      <tag class="PRP">they</tag>
+      <tag class="VBP">come</tag>
+      <tag class="RB">back</tag>
+      <tag class="DT">no</tag>
+      <tag class="NN">more</tag>
+    </tags>
+    <original><![CDATA[Did they come back no more?"]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="RB">Then</tag>
+      <tag class="DT">a</tag>
+      <tag class="NN">silence</tag>
+      <tag class="VBZ">suffuses</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">story</tag>
+    </tags>
+    <original><![CDATA[Then a silence suffuses the story,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="CC">And</tag>
+      <tag class="DT">a</tag>
+      <tag class="NN">softness</tag>
+      <tag class="DT">the</tag>
+      <tag class="NNP">teller's</tag>
+      <tag class="NNP">eye</tag>
+    </tags>
+    <original><![CDATA[And a softness the teller's eye;]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="CC">And</tag>
+      <tag class="DT">the</tag>
+      <tag class="NNS">children</tag>
+      <tag class="DT">no</tag>
+      <tag class="JJ">further</tag>
+      <tag class="NN">question</tag>
+    </tags>
+    <original><![CDATA[And the children no further question,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="CC">And</tag>
+      <tag class="RB">only</tag>
+      <tag class="DT">the</tag>
+      <tag class="NNS">waves</tag>
+      <tag class="NNP">reply</tag>
+    </tags>
+    <original><![CDATA[And only the waves reply.]]></original>
+  </line>
+</output>

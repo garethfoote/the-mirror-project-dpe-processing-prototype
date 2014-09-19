@@ -1,0 +1,278 @@
+<output>
+  <line>
+    <tags>
+      <tag class="NNP">PROBLEMS</tag>
+    </tags>
+    <original><![CDATA[PROBLEMS.]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Bring</tag>
+      <tag class="PRP">me</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">sunset</tag>
+      <tag class="IN">in</tag>
+      <tag class="DT">a</tag>
+      <tag class="NN">cup</tag>
+    </tags>
+    <original><![CDATA[Bring me the sunset in a cup,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Reckon</tag>
+      <tag class="DT">the</tag>
+      <tag class="NNP">morning's</tag>
+      <tag class="NNS">flagons</tag>
+      <tag class="-NONE-">up</tag>
+    </tags>
+    <original><![CDATA[Reckon the morning's flagons up,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="CC">And</tag>
+      <tag class="VB">say</tag>
+      <tag class="WRB">how</tag>
+      <tag class="JJ">many</tag>
+      <tag class="JJ">dew</tag>
+    </tags>
+    <original><![CDATA[ And say how many dew;]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Tell</tag>
+      <tag class="PRP">me</tag>
+      <tag class="WRB">how</tag>
+      <tag class="RB">far</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">morning</tag>
+      <tag class="NN">leaps</tag>
+    </tags>
+    <original><![CDATA[Tell me how far the morning leaps,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Tell</tag>
+      <tag class="PRP">me</tag>
+      <tag class="WP">what</tag>
+      <tag class="NN">time</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">weaver</tag>
+      <tag class="VBZ">sleeps</tag>
+    </tags>
+    <original><![CDATA[Tell me what time the weaver sleeps]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="WP">Who</tag>
+      <tag class="VBN">spun</tag>
+      <tag class="DT">the</tag>
+      <tag class="NNS">breadths</tag>
+      <tag class="IN">of</tag>
+      <tag class="JJ">blue</tag>
+    </tags>
+    <original><![CDATA[ Who spun the breadths of blue!]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Write</tag>
+      <tag class="PRP">me</tag>
+      <tag class="WRB">how</tag>
+      <tag class="JJ">many</tag>
+      <tag class="NNS">notes</tag>
+      <tag class="EX">there</tag>
+      <tag class="VB">be</tag>
+    </tags>
+    <original><![CDATA[Write me how many notes there be]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">In</tag>
+      <tag class="DT">the</tag>
+      <tag class="JJ">new</tag>
+      <tag class="NNS">robin's</tag>
+      <tag class="JJ">ecstasy</tag>
+    </tags>
+    <original><![CDATA[In the new robin's ecstasy]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="IN">Among</tag>
+      <tag class="JJ">astonished</tag>
+      <tag class="JJ">boughs</tag>
+    </tags>
+    <original><![CDATA[ Among astonished boughs;]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="WRB">How</tag>
+      <tag class="JJ">many</tag>
+      <tag class="NNS">trips</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">tortoise</tag>
+      <tag class="NN">makes</tag>
+    </tags>
+    <original><![CDATA[How many trips the tortoise makes,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="WRB">How</tag>
+      <tag class="JJ">many</tag>
+      <tag class="NNS">cups</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">bee</tag>
+      <tag class="NN">partakes</tag>
+    </tags>
+    <original><![CDATA[How many cups the bee partakes, --]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">The</tag>
+      <tag class="NN">debauchee</tag>
+      <tag class="IN">of</tag>
+      <tag class="NNP">dews</tag>
+    </tags>
+    <original><![CDATA[ The debauchee of dews!]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Also</tag>
+      <tag class="WP">who</tag>
+      <tag class="VBD">laid</tag>
+      <tag class="DT">the</tag>
+      <tag class="NNP">rainbow's</tag>
+      <tag class="NNP">piers</tag>
+    </tags>
+    <original><![CDATA[Also, who laid the rainbow's piers,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Also</tag>
+      <tag class="WP">who</tag>
+      <tag class="NNS">leads</tag>
+      <tag class="DT">the</tag>
+      <tag class="JJ">docile</tag>
+      <tag class="NNS">spheres</tag>
+    </tags>
+    <original><![CDATA[Also, who leads the docile spheres]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="IN">By</tag>
+      <tag class="NNS">withes</tag>
+      <tag class="IN">of</tag>
+      <tag class="NN">supple</tag>
+      <tag class="NN">blue</tag>
+    </tags>
+    <original><![CDATA[ By withes of supple blue?]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Whose</tag>
+      <tag class="NNS">fingers</tag>
+      <tag class="VBG">string</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">stalactite</tag>
+    </tags>
+    <original><![CDATA[Whose fingers string the stalactite,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="WP">Who</tag>
+      <tag class="NNS">counts</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">wampum</tag>
+      <tag class="IN">of</tag>
+      <tag class="DT">the</tag>
+      <tag class="JJ">night</tag>
+    </tags>
+    <original><![CDATA[Who counts the wampum of the night,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="TO">To</tag>
+      <tag class="VB">see</tag>
+      <tag class="IN">that</tag>
+      <tag class="NN">none</tag>
+      <tag class="VBZ">is</tag>
+      <tag class="JJ">due</tag>
+    </tags>
+    <original><![CDATA[ To see that none is due?]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="WP">Who</tag>
+      <tag class="VBN">built</tag>
+      <tag class="DT">this</tag>
+      <tag class="JJ">little</tag>
+      <tag class="NNP">Alban</tag>
+      <tag class="NN">house</tag>
+    </tags>
+    <original><![CDATA[Who built this little Alban house]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="CC">And</tag>
+      <tag class="NN">shut</tag>
+      <tag class="DT">the</tag>
+      <tag class="NNS">windows</tag>
+      <tag class="IN">down</tag>
+      <tag class="RB">so</tag>
+      <tag class="JJ">close</tag>
+    </tags>
+    <original><![CDATA[And shut the windows down so close]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">My</tag>
+      <tag class="NN">spirit</tag>
+      <tag class="RB">cannot</tag>
+      <tag class="JJ">see</tag>
+    </tags>
+    <original><![CDATA[ My spirit cannot see?]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="WP">Who</tag>
+      <tag class="VBP">let</tag>
+      <tag class="PRP">me</tag>
+      <tag class="RP">out</tag>
+      <tag class="DT">some</tag>
+      <tag class="NN">gala</tag>
+      <tag class="NN">day</tag>
+    </tags>
+    <original><![CDATA[Who 'll let me out some gala day,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="IN">With</tag>
+      <tag class="NNS">implements</tag>
+      <tag class="TO">to</tag>
+      <tag class="RB">fly</tag>
+      <tag class="JJ">away</tag>
+    </tags>
+    <original><![CDATA[With implements to fly away,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Passing</tag>
+      <tag class="NNP">pomposity</tag>
+    </tags>
+    <original><![CDATA[ Passing pomposity?]]></original>
+  </line>
+</output>

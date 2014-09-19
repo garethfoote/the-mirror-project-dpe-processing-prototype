@@ -1,0 +1,105 @@
+<output>
+  <line>
+    <tags>
+      <tag class="NNP">IX</tag>
+    </tags>
+    <original><![CDATA[IX.]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="DT">A</tag>
+      <tag class="NN">train</tag>
+      <tag class="NN">went</tag>
+      <tag class="IN">through</tag>
+      <tag class="DT">a</tag>
+      <tag class="JJ">burial</tag>
+      <tag class="NN">gate</tag>
+    </tags>
+    <original><![CDATA[A train went through a burial gate,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="DT">A</tag>
+      <tag class="NN">bird</tag>
+      <tag class="NN">broke</tag>
+      <tag class="NN">forth</tag>
+      <tag class="CC">and</tag>
+      <tag class="NNP">sang</tag>
+    </tags>
+    <original><![CDATA[A bird broke forth and sang,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="CC">And</tag>
+      <tag class="NNP">trilled</tag>
+      <tag class="CC">and</tag>
+      <tag class="NNP">quivered</tag>
+      <tag class="CC">and</tag>
+      <tag class="VBD">shook</tag>
+      <tag class="PRP$">his</tag>
+      <tag class="NN">throat</tag>
+    </tags>
+    <original><![CDATA[And trilled, and quivered, and shook his throat]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Till</tag>
+      <tag class="DT">all</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">churchyard</tag>
+      <tag class="NN">rang</tag>
+    </tags>
+    <original><![CDATA[Till all the churchyard rang;]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="CC">And</tag>
+      <tag class="RB">then</tag>
+      <tag class="VBN">adjusted</tag>
+      <tag class="PRP$">his</tag>
+      <tag class="JJ">little</tag>
+      <tag class="NN">notes</tag>
+    </tags>
+    <original><![CDATA[And then adjusted his little notes,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="CC">And</tag>
+      <tag class="VBD">bowed</tag>
+      <tag class="CC">and</tag>
+      <tag class="NN">sang</tag>
+      <tag class="NNP">again</tag>
+    </tags>
+    <original><![CDATA[And bowed and sang again.]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Doubtless</tag>
+      <tag class="PRP">he</tag>
+      <tag class="VBD">thought</tag>
+      <tag class="PRP">it</tag>
+      <tag class="VBP">meet</tag>
+      <tag class="IN">of</tag>
+      <tag class="PRP">him</tag>
+    </tags>
+    <original><![CDATA[Doubtless, he thought it meet of him]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="TO">To</tag>
+      <tag class="VB">say</tag>
+      <tag class="JJ">good-by</tag>
+      <tag class="TO">to</tag>
+      <tag class="NNP">men</tag>
+    </tags>
+    <original><![CDATA[To say good-by to men.]]></original>
+  </line>
+</output>

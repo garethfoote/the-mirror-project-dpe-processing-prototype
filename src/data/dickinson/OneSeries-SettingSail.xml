@@ -1,0 +1,96 @@
+<output>
+  <line>
+    <tags>
+      <tag class="NN">SETTING</tag>
+      <tag class="NNP">SAIL</tag>
+    </tags>
+    <original><![CDATA[SETTING SAIL.]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Exultation</tag>
+      <tag class="VBZ">is</tag>
+      <tag class="DT">the</tag>
+      <tag class="VBG">going</tag>
+    </tags>
+    <original><![CDATA[Exultation is the going]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="IN">Of</tag>
+      <tag class="DT">an</tag>
+      <tag class="NN">inland</tag>
+      <tag class="NN">soul</tag>
+      <tag class="TO">to</tag>
+      <tag class="NNP">sea</tag>
+    </tags>
+    <original><![CDATA[Of an inland soul to sea, --]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="JJ">Past</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">houses</tag>
+      <tag class="NN">past</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">headlands</tag>
+    </tags>
+    <original><![CDATA[Past the houses, past the headlands,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Into</tag>
+      <tag class="NN">deep</tag>
+      <tag class="-NONE-">eternity</tag>
+    </tags>
+    <original><![CDATA[Into deep eternity!]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Bred</tag>
+      <tag class="IN">as</tag>
+      <tag class="NNP">we</tag>
+      <tag class="IN">among</tag>
+      <tag class="DT">the</tag>
+      <tag class="JJ">mountains</tag>
+    </tags>
+    <original><![CDATA[Bred as we, among the mountains,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Can</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">sailor</tag>
+      <tag class="NN">understand</tag>
+    </tags>
+    <original><![CDATA[Can the sailor understand]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="DT">The</tag>
+      <tag class="NN">divine</tag>
+      <tag class="NN">intoxication</tag>
+    </tags>
+    <original><![CDATA[The divine intoxication]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="IN">Of</tag>
+      <tag class="DT">the</tag>
+      <tag class="JJ">first</tag>
+      <tag class="NN">league</tag>
+      <tag class="IN">out</tag>
+      <tag class="IN">from</tag>
+      <tag class="NNP">land</tag>
+    </tags>
+    <original><![CDATA[Of the first league out from land?]]></original>
+  </line>
+</output>

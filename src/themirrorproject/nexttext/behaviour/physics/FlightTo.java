@@ -23,11 +23,14 @@ public class FlightTo extends PhysicsAction implements TargetingAction{
 
 	private Locatable target;
 	private int arcHeight;
+	boolean arcRelative = true;
+	private int arcPosition;
 	private int arcVariant;
 	private PVector difference;
 
     public FlightTo ( PVector difference, int arcHeight, int arcVariant, float strength ) {
     	this.arcHeight = arcHeight;
+    	this.arcPosition = 300;
     	this.arcVariant = arcVariant;
         this.difference = difference;
         properties().init( "Strength", new NumberProperty(strength) );
@@ -39,14 +42,21 @@ public class FlightTo extends PhysicsAction implements TargetingAction{
         properties().init( "Strength", new NumberProperty(strength) );
     }
     
-    public PVector calculateLaunchVector(TextObject to, PVector source, PVector target){
+    public PVector calculateLaunchVector(TextObject to, PVector source, PVector target, PVector sourceGlobal){
 
 		int hDistance = (int)(target.x - source.x);
 		int vDistance = (int)(source.y - target.y);
 
         int variant = (int) (Math.random()*this.arcVariant);
-        int verticalUpDistance = (int) arcHeight + variant;
-        int verticalDownDistance = (int) arcHeight + variant - vDistance;
+        int verticalUpDistance;
+        int verticalDownDistance;
+        if(arcRelative == true){
+            verticalUpDistance = (int) arcHeight + variant;
+            verticalDownDistance = (int) arcHeight + variant - vDistance;
+        } else {
+        	verticalUpDistance = (int) sourceGlobal.y - arcPosition;
+        	verticalDownDistance = (int) (sourceGlobal.y+difference.y) - arcPosition;
+        }
         
         // Calculate flight time and vectors for horizontal and vertical.
         float strength = ((NumberProperty)properties().get("Strength")).get();
@@ -85,7 +95,8 @@ public class FlightTo extends PhysicsAction implements TargetingAction{
         	tLocal = new PVector(originalPosition.getX(), originalPosition.getY());
         	tLocal.add(difference);
         	// Calculate throw vector.
-        	launchVector = calculateLaunchVector(to, originalPosition.get(), tLocal);
+        	PApplet.println( originalPosition.get(), tLocal);
+        	launchVector = calculateLaunchVector(to, originalPosition.get(), tLocal, to.getLocation());
             textObjectData.put(to, launchVector);
             // Rotation. Apply only once.
             to.getRotation().set((0-angle)*FastMath.DEG_TO_RAD);

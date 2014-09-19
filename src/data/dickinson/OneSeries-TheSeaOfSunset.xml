@@ -1,0 +1,108 @@
+<output>
+  <line>
+    <tags>
+      <tag class="DT">THE</tag>
+      <tag class="NNP">SEA</tag>
+      <tag class="NNP">OF</tag>
+      <tag class="NNP">SUNSET</tag>
+    </tags>
+    <original><![CDATA[THE SEA OF SUNSET.]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">This</tag>
+      <tag class="VBZ">is</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">land</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">sunset</tag>
+      <tag class="NN">washes</tag>
+    </tags>
+    <original><![CDATA[This is the land the sunset washes,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="DT">These</tag>
+      <tag class="VBP">are</tag>
+      <tag class="DT">the</tag>
+      <tag class="NNS">banks</tag>
+      <tag class="IN">of</tag>
+      <tag class="DT">the</tag>
+      <tag class="NNP">Yellow</tag>
+      <tag class="NNP">Sea</tag>
+    </tags>
+    <original><![CDATA[These are the banks of the Yellow Sea;]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Where</tag>
+      <tag class="PRP">it</tag>
+      <tag class="-NONE-">rose</tag>
+      <tag class="CC">or</tag>
+      <tag class="RB">whither</tag>
+      <tag class="PRP">it</tag>
+      <tag class="-NONE-">rushes</tag>
+    </tags>
+    <original><![CDATA[Where it rose, or whither it rushes,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="DT">These</tag>
+      <tag class="VBP">are</tag>
+      <tag class="DT">the</tag>
+      <tag class="JJ">western</tag>
+      <tag class="NN">mystery</tag>
+    </tags>
+    <original><![CDATA[These are the western mystery!]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Night</tag>
+      <tag class="IN">after</tag>
+      <tag class="NN">night</tag>
+      <tag class="PRP$">her</tag>
+      <tag class="NN">purple</tag>
+      <tag class="NN">traffic</tag>
+    </tags>
+    <original><![CDATA[Night after night her purple traffic]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNS">Strews</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">landing</tag>
+      <tag class="IN">with</tag>
+      <tag class="JJ">opal</tag>
+      <tag class="NN">bales</tag>
+    </tags>
+    <original><![CDATA[Strews the landing with opal bales;]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Merchantmen</tag>
+      <tag class="NN">poise</tag>
+      <tag class="IN">upon</tag>
+      <tag class="NNP">horizons</tag>
+    </tags>
+    <original><![CDATA[Merchantmen poise upon horizons,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Dip</tag>
+      <tag class="CC">and</tag>
+      <tag class="JJ">vanish</tag>
+      <tag class="IN">with</tag>
+      <tag class="NN">fairy</tag>
+      <tag class="NNP">sails</tag>
+    </tags>
+    <original><![CDATA[Dip, and vanish with fairy sails.]]></original>
+  </line>
+</output>

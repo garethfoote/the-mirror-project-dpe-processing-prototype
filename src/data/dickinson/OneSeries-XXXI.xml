@@ -1,0 +1,179 @@
+<output>
+  <line>
+    <tags>
+      <tag class="NNP">XXXI</tag>
+    </tags>
+    <original><![CDATA[XXXI.]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">There's</tag>
+      <tag class="DT">a</tag>
+      <tag class="JJ">certain</tag>
+      <tag class="NN">slant</tag>
+      <tag class="IN">of</tag>
+      <tag class="NNP">light</tag>
+    </tags>
+    <original><![CDATA[There's a certain slant of light,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">On</tag>
+      <tag class="NN">winter</tag>
+      <tag class="NN">afternoons</tag>
+    </tags>
+    <original><![CDATA[On winter afternoons,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="WDT">That</tag>
+      <tag class="-NONE-">oppresses</tag>
+      <tag class="VBP">like</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">weight</tag>
+    </tags>
+    <original><![CDATA[That oppresses, like the weight]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="IN">Of</tag>
+      <tag class="JJ">cathedral</tag>
+      <tag class="NNP">tunes</tag>
+    </tags>
+    <original><![CDATA[Of cathedral tunes.]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Heavenly</tag>
+      <tag class="NN">hurt</tag>
+      <tag class="PRP">it</tag>
+      <tag class="VBZ">gives</tag>
+      <tag class="-NONE-">us</tag>
+    </tags>
+    <original><![CDATA[Heavenly hurt it gives us;]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="PRP">We</tag>
+      <tag class="MD">can</tag>
+      <tag class="VB">find</tag>
+      <tag class="DT">no</tag>
+      <tag class="NN">scar</tag>
+    </tags>
+    <original><![CDATA[We can find no scar,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="CC">But</tag>
+      <tag class="JJ">internal</tag>
+      <tag class="NN">difference</tag>
+    </tags>
+    <original><![CDATA[But internal difference]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="WRB">Where</tag>
+      <tag class="DT">the</tag>
+      <tag class="NNS">meanings</tag>
+      <tag class="NNP">are</tag>
+    </tags>
+    <original><![CDATA[Where the meanings are.]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">None</tag>
+      <tag class="MD">may</tag>
+      <tag class="VB">teach</tag>
+      <tag class="PRP">it</tag>
+      <tag class="-NONE-">anything</tag>
+    </tags>
+    <original><![CDATA[None may teach it anything,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="PRP">It</tag>
+      <tag class="VBZ">is</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">seal</tag>
+      <tag class="NN">despair</tag>
+    </tags>
+    <original><![CDATA[It is the seal, despair, --]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="DT">An</tag>
+      <tag class="JJ">imperial</tag>
+      <tag class="NN">affliction</tag>
+    </tags>
+    <original><![CDATA[An imperial affliction]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Sent</tag>
+      <tag class="PRP">us</tag>
+      <tag class="IN">of</tag>
+      <tag class="DT">the</tag>
+      <tag class="NNP">air</tag>
+    </tags>
+    <original><![CDATA[Sent us of the air.]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">When</tag>
+      <tag class="PRP">it</tag>
+      <tag class="NNP">comes</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">landscape</tag>
+      <tag class="NN">listens</tag>
+    </tags>
+    <original><![CDATA[When it comes, the landscape listens,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="VBZ">Shadows</tag>
+      <tag class="VBN">hold</tag>
+      <tag class="PRP$">their</tag>
+      <tag class="NN">breath</tag>
+    </tags>
+    <original><![CDATA[Shadows hold their breath;]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="WRB">When</tag>
+      <tag class="PRP">it</tag>
+      <tag class="-NONE-">goes</tag>
+      <tag class="PRP">it</tag>
+      <tag class="VBZ">is</tag>
+      <tag class="IN">like</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">distance</tag>
+    </tags>
+    <original><![CDATA[When it goes, it is like the distance]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="IN">On</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">look</tag>
+      <tag class="IN">of</tag>
+      <tag class="NNP">death</tag>
+    </tags>
+    <original><![CDATA[On the look of death.]]></original>
+  </line>
+</output>

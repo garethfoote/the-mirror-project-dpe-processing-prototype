@@ -1,0 +1,109 @@
+<output>
+  <line>
+    <tags>
+      <tag class="NNP">SIMPLICITY</tag>
+    </tags>
+    <original><![CDATA[SIMPLICITY.]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">How</tag>
+      <tag class="NN">happy</tag>
+      <tag class="VBZ">is</tag>
+      <tag class="DT">the</tag>
+      <tag class="JJ">little</tag>
+      <tag class="NN">stone</tag>
+    </tags>
+    <original><![CDATA[How happy is the little stone]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="WDT">That</tag>
+      <tag class="VBZ">rambles</tag>
+      <tag class="IN">in</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">road</tag>
+      <tag class="NN">alone</tag>
+    </tags>
+    <original><![CDATA[That rambles in the road alone,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="CC">And</tag>
+      <tag class="VBZ">does</tag>
+      <tag class="RB">n't</tag>
+      <tag class="VB">care</tag>
+      <tag class="IN">about</tag>
+      <tag class="JJ">careers</tag>
+    </tags>
+    <original><![CDATA[And does n't care about careers,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="CC">And</tag>
+      <tag class="NNS">exigencies</tag>
+      <tag class="RB">never</tag>
+      <tag class="JJ">fears</tag>
+    </tags>
+    <original><![CDATA[And exigencies never fears;]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Whose</tag>
+      <tag class="NN">coat</tag>
+      <tag class="IN">of</tag>
+      <tag class="JJ">elemental</tag>
+      <tag class="NN">brown</tag>
+    </tags>
+    <original><![CDATA[Whose coat of elemental brown]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="DT">A</tag>
+      <tag class="NN">passing</tag>
+      <tag class="NN">universe</tag>
+      <tag class="VBD">put</tag>
+      <tag class="JJ">on</tag>
+    </tags>
+    <original><![CDATA[A passing universe put on;]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="CC">And</tag>
+      <tag class="JJ">independent</tag>
+      <tag class="IN">as</tag>
+      <tag class="DT">the</tag>
+      <tag class="NNP">sun</tag>
+    </tags>
+    <original><![CDATA[And independent as the sun,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNPS">Associates</tag>
+      <tag class="CC">or</tag>
+      <tag class="VBZ">glows</tag>
+      <tag class="JJ">alone</tag>
+    </tags>
+    <original><![CDATA[Associates or glows alone,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Fulfilling</tag>
+      <tag class="NN">absolute</tag>
+      <tag class="NN">decree</tag>
+    </tags>
+    <original><![CDATA[Fulfilling absolute decree]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="IN">In</tag>
+      <tag class="JJ">casual</tag>
+      <tag class="NNP">simplicity</tag>
+    </tags>
+    <original><![CDATA[In casual simplicity.]]></original>
+  </line>
+</output>

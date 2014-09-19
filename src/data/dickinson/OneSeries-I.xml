@@ -1,0 +1,177 @@
+<output>
+  <line>
+    <tags>
+      <tag class="NNP">I</tag>
+    </tags>
+    <original><![CDATA[I.]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="CD">One</tag>
+      <tag class="NN">dignity</tag>
+      <tag class="NNS">delays</tag>
+      <tag class="IN">for</tag>
+      <tag class="JJ">all</tag>
+    </tags>
+    <original><![CDATA[One dignity delays for all,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="CD">One</tag>
+      <tag class="JJ">mitred</tag>
+      <tag class="NNP">afternoon</tag>
+    </tags>
+    <original><![CDATA[One mitred afternoon.]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">None</tag>
+      <tag class="MD">can</tag>
+      <tag class="VB">avoid</tag>
+      <tag class="DT">this</tag>
+      <tag class="NN">purple</tag>
+    </tags>
+    <original><![CDATA[None can avoid this purple,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">None</tag>
+      <tag class="NN">evade</tag>
+      <tag class="DT">this</tag>
+      <tag class="NNP">crown</tag>
+    </tags>
+    <original><![CDATA[None evade this crown.]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Coach</tag>
+      <tag class="PRP">it</tag>
+      <tag class="-NONE-">insures</tag>
+      <tag class="CC">and</tag>
+      <tag class="NNP">footmen</tag>
+    </tags>
+    <original><![CDATA[Coach it insures, and footmen,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Chamber</tag>
+      <tag class="CC">and</tag>
+      <tag class="NN">state</tag>
+      <tag class="CC">and</tag>
+      <tag class="NNP">throng</tag>
+    </tags>
+    <original><![CDATA[Chamber and state and throng;]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Bells</tag>
+      <tag class="NNP">also</tag>
+      <tag class="IN">in</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">village</tag>
+    </tags>
+    <original><![CDATA[Bells, also, in the village,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="IN">As</tag>
+      <tag class="PRP">we</tag>
+      <tag class="VBP">ride</tag>
+      <tag class="VBP">grand</tag>
+      <tag class="NNP">along</tag>
+    </tags>
+    <original><![CDATA[As we ride grand along.]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">What</tag>
+      <tag class="VBD">dignified</tag>
+      <tag class="NNP">attendants</tag>
+    </tags>
+    <original><![CDATA[What dignified attendants,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">What</tag>
+      <tag class="NN">service</tag>
+      <tag class="WRB">when</tag>
+      <tag class="PRP">we</tag>
+      <tag class="VBP">pause</tag>
+    </tags>
+    <original><![CDATA[What service when we pause!]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="WRB">How</tag>
+      <tag class="RB">loyally</tag>
+      <tag class="IN">at</tag>
+      <tag class="VBG">parting</tag>
+    </tags>
+    <original><![CDATA[How loyally at parting]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Their</tag>
+      <tag class="VBD">hundred</tag>
+      <tag class="NNS">hats</tag>
+      <tag class="PRP">they</tag>
+      <tag class="VBP">raise</tag>
+    </tags>
+    <original><![CDATA[Their hundred hats they raise!]]></original>
+  </line>
+  <line>
+    <tags/>
+    <original><![CDATA[]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="WRB">How</tag>
+      <tag class="NN">pomp</tag>
+      <tag class="VBG">surpassing</tag>
+      <tag class="NN">ermine</tag>
+    </tags>
+    <original><![CDATA[How pomp surpassing ermine,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="WRB">When</tag>
+      <tag class="JJ">simple</tag>
+      <tag class="PRP">you</tag>
+      <tag class="CC">and</tag>
+      <tag class="PRP">I</tag>
+    </tags>
+    <original><![CDATA[When simple you and I]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="NNP">Present</tag>
+      <tag class="PRP$">our</tag>
+      <tag class="NN">meek</tag>
+      <tag class="NN">escutcheon</tag>
+    </tags>
+    <original><![CDATA[Present our meek escutcheon,]]></original>
+  </line>
+  <line>
+    <tags>
+      <tag class="CC">And</tag>
+      <tag class="NN">claim</tag>
+      <tag class="DT">the</tag>
+      <tag class="NN">rank</tag>
+      <tag class="TO">to</tag>
+      <tag class="NNP">die</tag>
+    </tags>
+    <original><![CDATA[And claim the rank to die!]]></original>
+  </line>
+</output>

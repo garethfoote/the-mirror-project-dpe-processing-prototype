@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.StringTokenizer;
 
 import net.nexttext.Book;
 import net.nexttext.TextObject;
@@ -41,6 +42,7 @@ import net.nexttext.behaviour.control.Delay;
 import net.nexttext.behaviour.physics.Move;
 import net.nexttext.behaviour.standard.FadeTo;
 import net.nexttext.property.ColorProperty;
+import net.nexttext.property.PVectorProperty;
 import net.nexttext.property.Property;
 import processing.core.PApplet;
 import processing.core.PFont;
@@ -71,12 +73,9 @@ public class TheMirrorProject extends PApplet {
 	String test = "I am the sea . I hold the Land " + '\n' +
 			"as one holds an apple in his hand." + '\n' +
 			"Hold it fast with sleepless eyes.";
-	String[] poemTwo = {"I am the seasoness. I hold the Land",
-							"as one holds an apple in his hand.",
-							"Hold it fast with sleepless eyes.", 
-							"Watching the continents sink and rise.",
-							"Out of my bosom the mountains grow,",
-							"Back to its depths they crumble slow;"
+	String[] poemTwo = {
+							"as one holds an apple in his hand."
+							
 							};
 	String[] poemOne = {"pur means the place where", 
 							"a goddess resides", 
@@ -130,6 +129,10 @@ public class TheMirrorProject extends PApplet {
 	  	
 	  	buildUI();
 
+	  	StringTokenizer st = new StringTokenizer("this is a test. Another sentence.");
+	  	while (st.hasMoreTokens()) {
+	  		System.out.println(st.nextToken());
+	  	}
 	}
 	
 	private void buildUI(){
@@ -270,6 +273,8 @@ public class TheMirrorProject extends PApplet {
 		// Get target word and collect words to right of this.
 		TextObjectIterator itrT = poemRoot.iterator();
 		TextObjectGroup targetLine = null;
+		TextObject fullstop = null;
+		int childCount = 0;
 		while (itrT.hasNext()) {
 			TextObject element = itrT.next();
 			if(found == true
@@ -278,20 +283,42 @@ public class TheMirrorProject extends PApplet {
 				if(element.toString().equals(targetLine.toString())){
 					break;
 				}
+				if(postTargetWords.isEmpty() && fullstop != null){
+					postTargetWords.add(fullstop);
+				}
 				postTargetWords.add(element);
 			}
 			
+			// Capture this before checking for the word.
+			if(element.toString().equals(".")){
+				fullstop = element;
+			}
+			// println(element.toString(), element.getClass().getSimpleName(), element.getPosition());
 			if(!element.getClass().getSimpleName().equals("TextObjectGlyph")
 				&& element.toString().equals(search)
 				|| element.toString().equals(search+".")){
+
 				targetWord = (TextObjectGroup)element;
 				targetLine = targetWord.getParent();
 				targetBox = targetWord.getBounds();
 				targetWidth = targetWord.getBounds().width;
 				book.getSpatialList().add(targetWord);
+				if(false && element.toString().equals(search+".")){
+					// Remove full stop.
+					PVectorProperty fsPosProp = fullstop.getPosition().clone();
+					fullstop.detach();
+					PVector fsPos = fsPosProp.get();
+					fsPos.add(targetWord.getPosition().get());
+					TextObjectGroup newGroup = new TextObjectGroup(fsPos);
+					newGroup.attachChild(fullstop);
+					targetLine.attachChild(newGroup);
+					fullstop.getPosition().set(new PVector(0,0,0));
+					println(targetLine.getPosition(), targetWord.getPosition(), newGroup.getPosition(), fullstop.getPosition());
+				}
 				found = true;
 			}
 		}	
+		println(targetLine);
 	}
 	
 	private void getSource(TextObjectGroup poemRoot, String search){
@@ -326,6 +353,36 @@ public class TheMirrorProject extends PApplet {
 		for (int i = 0; i < poemTwo.length; i++) {
 			builder.buildSentence(poemTwo[i], 0, (lineHeight*i)+(height/2));
 		}
+
+		TextObjectIterator itrT = poem2Root.iterator();
+		println(poem2Root);
+		TextObject fullstop = null;
+		while (itrT.hasNext()) {
+			TextObject element = itrT.next();
+			String str = element.toString();
+			if(element.getClass().getSimpleName().equals("TextObjectGroup")){
+
+				if(str.length() > 1 && str.substring(str.length()-1).equals(".") 
+						&& !str.equals(element.getParent().toString()) 
+						&& str.equals(".") == false){
+					// println(element, element.getParent().getParent());
+					// println("Remove fullstop", childCount);
+					// Get last glyph, i.e. full stop.
+					TextObjectGlyphIterator gitrT = ((TextObjectGroup)element).glyphIterator();
+					while(gitrT.hasNext()){ fullstop = gitrT.next(); }
+					// Remove full stop.
+					PVectorProperty fsPosProp = fullstop.getPosition().clone();
+					fullstop.detach();
+					PVector fsPos = fsPosProp.get();
+					fsPos.add(element.getPosition().get());
+					TextObjectGroup newGroup = new TextObjectGroup(fsPos);
+					newGroup.attachChild(fullstop);
+					element.attachToRight(newGroup);
+					fullstop.getPosition().set(new PVector(0,0,0));
+					println(element.getParent().getPosition(), element.getPosition(), newGroup.getPosition(), fullstop.getPosition());
+				}
+			}
+		}
 		
 	}
 
@@ -343,29 +400,6 @@ public class TheMirrorProject extends PApplet {
 		applyTargetActions(0);
 		applyTargetLineActions(0);
 
-		getSource(poem2Root, "bosom");
-		getTarget(poem1Root, "goddess");
-		
-		println("sourceWord", sourceWord);
-		println("targetWord", targetWord);
-
-		int delay = 2;
-		applySourceActions(delay);
-		applyTargetActions(delay);
-		applyTargetLineActions(delay);
-
-		getSource(poem1Root, "sky");
-		getTarget(poem2Root, "bosom");
-		
-		println("sourceWord", sourceWord);
-		println("targetWord", targetWord);
-
-		delay = 4;
-		applySourceActions(delay);
-		applyTargetActions(delay);
-		applyTargetLineActions(delay);
-
-		applyLastSourceActions(delay);
 
 	}
 
@@ -472,7 +506,7 @@ public class TheMirrorProject extends PApplet {
 		float distance = (float)(sourceWidth-targetWidth);
 		float time = Math.abs(distance)/speed; // frames
 
-		// If right to left and space if reducing.
+		// If right to left and space is reducing.
 		if(leftToRight == false && distance < 0){
 			// Wait until full minFlightTime
 			time = 0-(127/5);
